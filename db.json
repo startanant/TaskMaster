@@ -7,99 +7,141 @@
         "profilePicUrl": "url"
     },
     "dashboards": [{
-            "name": "project X",
-            "columns": [{
-                    "name": "Product reaserch",
-                    "cards": [{
-                        "title": "Kick Off meeting",
-                        "duedate": "2020-12-31",
-                        "lables": ["label1", "label2", "label3"],
-                        "description": "this is my urgent task",
-                        "asignee": ["email1", "email2"]
+                "name": "project X",
+                "columns": [{
+                        "name": "Product reaserch",
+                        "cards": [{
+                            "title": "Kick Off meeting",
+                            "duedate": "2020-12-31",
+                            "lables": ["label1", "label2", "label3"],
+                            "description": "this is my urgent task",
+                            "asignee": ["email1", "email2"]
 
-                    }]
+                        }]
+                    },
+                    {
+                        "name": "Development",
+                        "cards": [{
+                            "title": "Navbar development",
+                            "duedate": "2020-04-31",
+                            "lables": ["label1"],
+                            "description": "Develop navbar for TaskMaster",
+                            "asignee": ["email1", "email2"],
+                            "comments": [{
+                                "email": "test@test.com",
+                                "comment": "I like it"
+                            }, {
+                                "email": "jack@jack",
+                                "comment": "We should do it differently"
+                            }]
+
+                        }]
+                    }
+                ]
+            },
+
+            {
+                "email": "jack@jack",
+                "name": "jack",
+                "password": "password_hash",
+                "user_settings": {
+                    "theme": "dark",
+                    "profilePicUrl": "url"
                 },
-                {
-                    "name": "Development",
-                    "cards": [{
-                        "title": "Navbar development",
-                        "duedate": "2020-04-31",
-                        "lables": ["label1"],
-                        "description": "Develop navbar for TaskMaster",
-                        "asignee": ["email1", "email2"],
-                        "comments": [{
-                            "email": "test@test.com",
-                            "comment": "I like it"
-                        }, {
-                            "email": "jack@jack",
-                            "comment": "We should do it differently"
+                "dashboards": [{
+                        "name": "project ZZZ",
+                        "columns": [{
+                                "name": "Product reaserch",
+                                "cards": [{
+                                    "title": "Kick Off meeting",
+                                    "duedate": "2020-12-31",
+                                    "lables": ["label1", "label2", "label3"],
+                                    "description": "this is my urgent task",
+                                    "asignee": ["email1", "email2"]
+
+                                }]
+                            },
+                            {
+                                "name": "Development",
+                                "cards": [{
+                                    "title": "Navbar development",
+                                    "duedate": "2020-04-31",
+                                    "lables": ["label1"],
+                                    "description": "Develop navbar for TaskMaster",
+                                    "asignee": ["email1", "email2"],
+                                    "comments": [{
+                                        "email": "test@test.com",
+                                        "comment": "I like it"
+                                    }, {
+                                        "email": "jack@jack",
+                                        "comment": "We should do it differently"
+                                    }]
+
+                                }]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "project Y",
+                        "columns": [{
+                            "name": "Product reaserch",
+                            "cards": [{
+
+                            }]
                         }]
 
-                    }]
-                }
-            ]
-        },
-        {
-            "name": "project Y",
-            "columns": [{
-                "name": "Product reaserch",
-                "cards": [{
-
-                }]
-            }]
-
-        }
-    ]
-}, {
-    "email": "jack@jack",
-    "name": "jack",
-    "password": "password_hash",
-    "user_settings": {
-        "theme": "dark",
-        "profilePicUrl": "url"
-    },
-    "dashboards": [{
-            "name": "project ZZZ",
-            "columns": [{
-                    "name": "Product reaserch",
-                    "cards": [{
-                        "title": "Kick Off meeting",
-                        "duedate": "2020-12-31",
-                        "lables": ["label1", "label2", "label3"],
-                        "description": "this is my urgent task",
-                        "asignee": ["email1", "email2"]
-
-                    }]
+                    }
+                ]
+            }, {
+                "email": "tom@tom",
+                "name": "jack",
+                "password": "password_hash",
+                "user_settings": {
+                    "theme": "dark",
+                    "profilePicUrl": "url"
                 },
-                {
-                    "name": "Development",
-                    "cards": [{
-                        "title": "Navbar development",
-                        "duedate": "2020-04-31",
-                        "lables": ["label1"],
-                        "description": "Develop navbar for TaskMaster",
-                        "asignee": ["email1", "email2"],
-                        "comments": [{
-                            "email": "test@test.com",
-                            "comment": "I like it"
-                        }, {
-                            "email": "jack@jack",
-                            "comment": "We should do it differently"
+                "dashboards": [{
+                        "name": "project ZZZ",
+                        "columns": [{
+                                "name": "Product reaserch",
+                                "cards": [{
+                                    "title": "Kick Off meeting",
+                                    "duedate": "2020-12-31",
+                                    "lables": ["label1", "label2", "label3"],
+                                    "description": "this is my urgent task",
+                                    "asignee": ["email1", "email2"]
+
+                                }]
+                            },
+                            {
+                                "name": "Development",
+                                "cards": [{
+                                    "title": "Navbar development",
+                                    "duedate": "2020-04-31",
+                                    "lables": ["label1"],
+                                    "description": "Develop navbar for TaskMaster",
+                                    "asignee": ["email1", "email2"],
+                                    "comments": [{
+                                        "email": "test@test.com",
+                                        "comment": "I like it"
+                                    }, {
+                                        "email": "jack@jack",
+                                        "comment": "We should do it differently"
+                                    }]
+
+                                }]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "project Y",
+                        "columns": [{
+                            "name": "Product reaserch",
+                            "cards": [{
+
+                            }]
                         }]
 
-                    }]
-                }
-            ]
-        },
-        {
-            "name": "project Y",
-            "columns": [{
-                "name": "Product reaserch",
-                "cards": [{
-
-                }]
-            }]
-
-        }
-    ]
-}
+                    }
+                ]
+            }
