@@ -1,0 +1,23 @@
+{
+  "name": "taskmaster",
+  "version": "1.0.0",
+  "description": "Professional task organizer to increase your productivity",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiteRunner2/TaskMaster.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiteRunner2/TaskMaster/issues"
+  },
+  "homepage": "https://github.com/KiteRunner2/TaskMaster#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
