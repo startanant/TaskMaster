@@ -14,7 +14,14 @@ mongoose.connect(db_host, {
 });
 
 const db = mongoose.connection;
-const MySchema = new mongoose.Schema({}, { strict: false, collection: 'user' });
-db.user = mongoose.model('user', MySchema);
+const userSchema = new mongoose.Schema(
+    {
+        email: String,
+        name: String,
+        password: String,
+    },
+    { collection: 'user' }
+);
+db.user = mongoose.model('user', userSchema);
 
-module.exports = db;
+module.exports = db.user;
