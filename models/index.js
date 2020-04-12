@@ -14,14 +14,15 @@ mongoose.connect(db_host, {
 });
 
 const db = mongoose.connection;
-const userSchema = new mongoose.Schema(
-    {
-        email: String,
-        name: String,
-        password: String,
-    },
-    { collection: 'user' }
+const userProfileSchema = new mongoose.Schema(
+    {},
+    { collection: 'userprofile', strict: false }
 );
-db.user = mongoose.model('user', userSchema);
+const userAuthSchema = new mongoose.Schema(
+    {},
+    { collection: 'userauth', strict: false }
+);
+db.userprofile = mongoose.model('userprofile', userProfileSchema);
+db.userauth = mongoose.model('userauth', userAuthSchema);
 
-module.exports = db.user;
+module.exports = db;
