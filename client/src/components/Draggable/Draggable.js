@@ -11,17 +11,21 @@ function Draggable(props) {
     }
     return (
         <div
+            data-colIndex={props.colIndex}
+            data-cardIndex={props.cardIndex}
             id={props.id}
             draggable="true"
             onDragStart={drag}
             onDragOver={noAllowDrop}
             style={props.style}
             onBlur={() =>
-                props.saveCard(props.cardid, props.colIndex, props.index)
+                props.saveCard(props.cardid, props.colIndex, props.cardIndex)
             }
         >
             <button
-                onClick={() => props.deleteCard(props.colIndex, props.index)}
+                onClick={() =>
+                    props.deleteCard(props.colIndex, props.cardIndex)
+                }
             >
                 <i class="far fa-trash-alt"></i>
             </button>

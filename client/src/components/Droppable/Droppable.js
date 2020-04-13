@@ -7,7 +7,7 @@ function Droppable(props) {
         const data = e.dataTransfer.getData('transfer');
         console.log('transfer data', data);
         e.target.appendChild(document.getElementById(data));
-        console.log('something dropped on me!', e.current.id);
+        console.log('something dropped on me!', e.target.id);
     }
 
     function allowDrop(e) {

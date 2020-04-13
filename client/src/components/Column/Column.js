@@ -19,19 +19,54 @@ function Column(props) {
     function drop(e) {
         e.preventDefault();
         const data = e.dataTransfer.getData('transfer');
-        console.log(data);
+        console.log('id of transferred element', data);
         // console.log(document.getElementById('abc'));
         let toDrop = document.getElementById(data);
         e.target.appendChild(toDrop);
-        console.log('dropped element', document.getElementById(data));
+        // console.log('dropped element', document.getElementById(data));
+        let droppedCard = document.getElementById(data);
+        console.log(
+            'dropped card dataset',
+            'colIndex: ',
+            droppedCard.dataset.colindex,
+            'cardIndex: ',
+            droppedCard.dataset.cardindex
+        );
+        console.log(
+            `dropped card content on column ${props.colIndex}`,
+            'TITLE',
+            droppedCard.children[1].children[0].value
+        );
+        console.log(
+            'dropped card content DESCRIPTION',
+            droppedCard.children[1].children[2].value
+        );
+        console.log(
+            'dropped card content DUE DATE',
+            droppedCard.children[1].children[4].value
+        );
+        // console.log('dropped card children', droppedCard.children[1].children);
         // document.removeChild(document.getElementById(data));
         let element = document.getElementById(data);
         element.parentNode.removeChild(element);
-        console.log('something dropped on me!');
-        addCard();
-        let col = document.getElementById('qaz');
-        console.log(col.childNodes);
-        console.log(col.childNodes[2].childNodes.length);
+        // console.log('something dropped on me!');
+        // addCard();
+        let dataToPass = {
+            toAdd: {
+                colIndex: props.colIndex,
+                title: droppedCard.children[1].children[0].value,
+                description: droppedCard.children[1].children[2].value,
+                duedate: droppedCard.children[1].children[4].value,
+            },
+            toRemove: {
+                colIndex: droppedCard.dataset.colindex,
+                cardIndex: droppedCard.dataset.cardindex,
+            },
+        };
+        props.updateCardsOnDrop(dataToPass);
+        // let col = document.getElementById('qaz');
+        // console.log(col.childNodes);
+        // console.log(col.childNodes[2].childNodes.length);
 
         // addCard();
     }
@@ -58,6 +93,7 @@ function Column(props) {
             onDragOver={allowDrop}
             style={props.style}
             onDragEnd={dragEnd}
+            key={Math.random()}
         >
             <div
                 style={{
@@ -93,11 +129,12 @@ function Column(props) {
                     <Draggable
                         id={value}
                         style={{ margin: '8px' }}
-                        index={index}
+                        cardIndex={index}
                         colIndex={props.colIndex}
                         deleteCard={props.deleteCard}
                         cardid={element.cardid}
                         saveCard={props.saveCard}
+                        key={Math.random()}
                     >
                         <Card
                             text={value}
@@ -106,6 +143,7 @@ function Column(props) {
                             description={element.description}
                             cardid={element.cardid}
                             columnid={props.colid}
+                            key={Math.random()}
                         />
                     </Draggable>
                 );

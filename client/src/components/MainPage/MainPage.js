@@ -75,13 +75,40 @@ function MainPage(props) {
 
     function deleteCard(columnIndex, cardIndex) {
         console.log('function deleteCard called!', columnIndex, cardIndex);
+        console.log(
+            'displaying user object before deletetion',
+            JSON.stringify(user.dashboards[0].columns[columnIndex].cards)
+        );
         user.dashboards[0].columns[columnIndex].cards.splice(cardIndex, 1);
+        console.log(
+            'displaying user object after deletetion',
+            JSON.stringify(user.dashboards[0].columns[columnIndex].cards)
+        );
         setUser({ ...user });
         updateUserProfile(user);
     }
     function updateColumnTitle(index, title) {
         console.log('function updateColumnTitle called', index, title);
         user.dashboards[0].columns[index].name = title;
+        setUser({ ...user });
+        updateUserProfile(user);
+    }
+
+    async function updateCardsOnDrop(data) {
+        console.log('updateCardsOnDrop function called...', data);
+        user.dashboards[0].columns[data.toRemove.colIndex].cards.splice(
+            data.toRemove.cardIndex,
+            1
+        );
+        const movedCard = {
+            title: data.toAdd.title,
+            // cardid: cardid,
+            duedate: data.toAdd.duedate,
+            lables: ['Important', 'Medium', 'Low'],
+            description: data.toAdd.description,
+            asignee: [''],
+        };
+        user.dashboards[0].columns[data.toAdd.colIndex].cards.push(movedCard);
         setUser({ ...user });
         updateUserProfile(user);
     }
@@ -122,6 +149,7 @@ function MainPage(props) {
                 return (
                     <Column
                         id={Math.random().toString()}
+                        key={Math.random()}
                         style={columnStyle}
                         cards={element.cards}
                         colName={element.name}
@@ -131,6 +159,7 @@ function MainPage(props) {
                         colIndex={index}
                         deleteColumn={deleteColumn}
                         saveCard={saveCard}
+                        updateCardsOnDrop={updateCardsOnDrop}
                         colTitle={
                             <ColumnTitle
                                 title={element.name}
