@@ -260,7 +260,9 @@ function MainPage(props) {
                                 deleteColumn={deleteColumn}
                                 saveCard={saveCard}
                                 updateCardsOnDrop={updateCardsOnDrop}
-                                shared={user.dashboards[0].shared}
+                                shared={
+                                    user.dashboards[currentDashboard].shared
+                                }
                                 colTitle={
                                     <ColumnTitle
                                         title={element.name}
