@@ -23,7 +23,12 @@ function DashboardControl(props) {
                 Add
             </button>
             <br></br>
-            <select ref={dashboardIndex}>
+            <select
+                ref={dashboardIndex}
+                onChange={() =>
+                    props.switchDashboard(dashboardIndex.current.value)
+                }
+            >
                 {dashboards.map((dash, index) => {
                     return <option value={index}>{dash.name}</option>;
                 })}

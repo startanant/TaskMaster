@@ -8,7 +8,10 @@ function SwitchUser(props) {
 
     return (
         <div style={{ margin: '10px' }}>
-            <select ref={selection}>
+            <select
+                ref={selection}
+                onChange={() => props.switchUser(selection.current.value)}
+            >
                 {email.map((element) => {
                     return (
                         <option value={element.email}>{element.email}</option>
