@@ -101,8 +101,12 @@ app.get('/api/getUserPassword/:email', async (req, res) => {
 app.post('/api/addUser', async (req, res) => {
     console.log(req.body);
     user = { ...user, ...req.body };
-    const response = await db.userprofile.create(user);
-    res.json(response);
+    try {
+        const response = await db.userprofile.create(user);
+        res.json(response);
+    } catch (error) {
+        res.json(error);
+    }
 });
 
 app.post('/api/notify', async (req, res) => {
