@@ -1,5 +1,5 @@
 {
-  "name": "taskmaster",
+  "name": "taskmaster-server",
   "version": "1.0.0",
   "description": "Professional task organizer to increase your productivity",
   "main": "app.js",
