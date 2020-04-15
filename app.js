@@ -8,7 +8,7 @@ const axios = require('axios');
 const app = express();
 const qs = require('qs');
 let db = require('./models');
-let user = require('./user.json');
+let user = require('./server/user.json');
 // let sharedDashboard = require('./shared.json');
 
 // const db_host = process.env.DB_HOST;

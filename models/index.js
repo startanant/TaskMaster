@@ -5,7 +5,7 @@ const db_user = process.env.DB_USER || '';
 const db_pass = process.env.DB_PASS || '';
 const db_name = process.env.DB_NAME || '';
 const db_host = process.env.DB_HOST || '';
-// console.log(db_host);
+console.log(db_host);
 mongoose.connect(db_host, {
     useNewUrlParser: true,
     user: db_user,

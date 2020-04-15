@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
 const mailjet = require('node-mailjet').connect(
     '9bbf027ee6279e41c94fe9415814fe62',
@@ -7,7 +7,7 @@ const mailjet = require('node-mailjet').connect(
 const axios = require('axios');
 const app = express();
 const qs = require('qs');
-let db = require('./models');
+let db = require('../models');
 let user = require('./user.json');
 // let sharedDashboard = require('./shared.json');
 
