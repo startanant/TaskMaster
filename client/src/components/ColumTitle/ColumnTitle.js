@@ -8,7 +8,7 @@ function ColumnTitle(props) {
     return (
         <input
             style={{
-                backgroundColor: 'yellow',
+                backgroundColor: 'grey',
                 border: 'none',
                 textAlign: 'center',
             }}

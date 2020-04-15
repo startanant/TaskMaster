@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './Modal.css';
 
 function Draggable(props) {
+    const showHideClassName = props.show
+        ? 'modal display-block'
+        : 'modal display-none';
+
     function drag(e) {
         e.dataTransfer.setData('transfer', e.target.id);
     }
@@ -36,7 +41,10 @@ function Draggable(props) {
             >
                 <i class="far fa-save"></i>
             </button> */}
-
+            <button onClick={() => props.handleModalOpen()}>
+                <i class="far fa-edit"></i>
+            </button>
+            {/* <div className={showHideClassName}>{props.children}</div> */}
             {props.children}
         </div>
     );

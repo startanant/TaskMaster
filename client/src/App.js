@@ -10,14 +10,13 @@ function App() {
     const Wrapper = styled.div`
         width: 80%;
         padding: 32px;
-        display: flex;
+
         justify-content: center;
     `;
 
     return (
         <Wrapper>
             <MainPage id="qaz" />
-            
         </Wrapper>
     );
 }

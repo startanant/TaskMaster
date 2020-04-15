@@ -16,6 +16,18 @@ function Column(props) {
     const [cards, setCard] = useState(props.cards ? props.cards : []);
     // const [id, setId] = useState(props.id);
 
+    const [show, setShow] = useState(false);
+
+    function showModal() {
+        console.log('showModal function called...');
+        setShow(true);
+    }
+
+    function hideModal() {
+        console.log('hideModal function called...');
+        setShow(false);
+    }
+
     function drop(e) {
         e.preventDefault();
         const data = e.dataTransfer.getData('transfer');
@@ -98,13 +110,13 @@ function Column(props) {
             <div
                 style={{
                     textAlign: 'center',
-                    backgroundColor: 'yellow',
+                    backgroundColor: 'grey',
                     color: 'blue',
                 }}
             >
                 {props.colTitle}
                 <button
-                    style={{ float: 'right', backgroundColor: 'yellow' }}
+                    style={{ float: 'right', backgroundColor: 'grey' }}
                     onClick={() => props.deleteColumn(props.colIndex)}
                 >
                     <i class="far fa-trash-alt"></i>
@@ -114,7 +126,7 @@ function Column(props) {
             <div
                 style={{
                     textAlign: 'center',
-                    backgroundColor: 'yellow',
+                    backgroundColor: 'grey',
                     color: 'blue',
                 }}
             >
@@ -135,6 +147,9 @@ function Column(props) {
                         cardid={element.cardid}
                         saveCard={props.saveCard}
                         key={Math.random()}
+                        show={show}
+                        handleModalClose={hideModal}
+                        handleModalOpen={showModal}
                     >
                         <Card
                             text={value}
@@ -144,6 +159,8 @@ function Column(props) {
                             cardid={element.cardid}
                             columnid={props.colid}
                             key={Math.random()}
+                            shared={props.shared}
+                            asignee={element.asignee}
                         />
                     </Draggable>
                 );
