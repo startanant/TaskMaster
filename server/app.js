@@ -91,7 +91,7 @@ app.get('/api/authUser/:email', async (req, res) => {
 app.get('/api/getUserPassword/:email', async (req, res) => {
     console.log(req.params);
     const query = { email: req.params.email };
-    const response = await db.userauth.find(query, 'name password');
+    const response = await db.userprofile.find(query, 'name password');
     if (response.length > 0) {
         res.json(response);
     } else res.json({ answer: 'nothing found' });
