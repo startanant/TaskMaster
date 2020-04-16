@@ -9,6 +9,7 @@
     },
     "dashboards": [{
         "name": "Dashboard 1",
+        "shared": [],
         "columns": [{
             "name": "Column",
             "columnid": "1",
