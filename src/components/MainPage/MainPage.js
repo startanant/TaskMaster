@@ -270,6 +270,7 @@ function MainPage(props) {
         <div className="dashboard-main">
             <div style={dashboardControlStyle}>
                 <SwitchUser
+                    currentUser={currentUser}
                     switchUser={switchUser}
                     shared={allUsers ? allUsers : []}
                 />
@@ -278,7 +279,10 @@ function MainPage(props) {
                     addDashboard={addDashboard}
                     switchDashboard={switchDashboard}
                 />
-                <InviteCard inviteUser={inviteUser} />
+                <InviteCard
+                    inviteUser={inviteUser}
+                    sharedByUser={user.sharedByUser}
+                />
             </div>
             <div id={props.id} className="project-column-wrapper">
                 {user.dashboards[currentDashboard].columns.map(
