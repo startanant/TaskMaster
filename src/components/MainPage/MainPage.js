@@ -144,19 +144,25 @@ function MainPage(props) {
 
     async function saveCard(cardid, colIndex, cardIndex) {
         console.log('function saveCard called', cardid, colIndex, cardIndex);
-        let title = document.getElementById('title' + cardid);
+        let title = document.getElementById('title' + cardid)
+            ? document.getElementById('title' + cardid)
+            : '';
         console.log('logging card title', title.value);
-        let description = document.getElementById('desc' + cardid);
+        let description = document.getElementById('desc' + cardid)
+            ? document.getElementById('desc' + cardid)
+            : '';
         console.log('logging card description', description.value);
-        let date = document.getElementById('date' + cardid);
+        let date = document.getElementById('date' + cardid)
+            ? document.getElementById('date' + cardid)
+            : '';
         console.log('logging card date', date.value);
         console.log(title.value, description.value, date.value);
         const updatedCard = {
-            title: title.value,
+            title: title.value ? title.value : '',
             cardid: cardid,
-            duedate: date.value,
+            duedate: date.value ? date.value : '',
             lables: ['Important', 'Medium', 'Low'],
-            description: description.value,
+            description: description.value ? description.value : '',
             asignee: [''],
         };
         user.dashboards[currentDashboard].columns[colIndex].cards[
@@ -305,7 +311,13 @@ function MainPage(props) {
                 )}
 
                 <div style={{ margin: '32px' }}>
-                    <button type="button" className="btn-lg btn-outline-secondary"onClick={addColumn}>Add column</button>
+                    <button
+                        type="button"
+                        className="btn-lg btn-outline-secondary"
+                        onClick={addColumn}
+                    >
+                        Add column
+                    </button>
                 </div>
             </div>
         </div>
