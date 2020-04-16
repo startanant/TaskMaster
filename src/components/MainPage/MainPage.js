@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../components-style.css';
 import Column from '../Column/Column';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import InviteCard from '../InviteCard/InviteCard';
@@ -258,7 +259,7 @@ function MainPage(props) {
         padding: '32px',
     };
     return (
-        <>
+        <div className="dashboard-main">
             <div style={dashboardControlStyle}>
                 <SwitchUser
                     switchUser={switchUser}
@@ -271,7 +272,7 @@ function MainPage(props) {
                 />
                 <InviteCard inviteUser={inviteUser} />
             </div>
-            <div id={props.id} style={mainPageStyle}>
+            <div id={props.id} className="project-column-wrapper">
                 {user.dashboards[currentDashboard].columns.map(
                     (element, index) => {
                         return (
@@ -304,10 +305,10 @@ function MainPage(props) {
                 )}
 
                 <div style={{ margin: '32px' }}>
-                    <button onClick={addColumn}>Add column</button>
+                    <button type="button" className="btn-lg btn-outline-secondary"onClick={addColumn}>Add column</button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
