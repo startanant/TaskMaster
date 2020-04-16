@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 
 function Column(props) {
-   
     console.log('showing props.columns from column component', props.cards);
     const [cards, setCard] = useState(props.cards ? props.cards : []);
     // const [id, setId] = useState(props.id);
@@ -96,28 +95,29 @@ function Column(props) {
     }
     return (
         <div
-            className="project-column" 
+            className="project-column"
             id={props.id}
             onDrop={drop}
             onDragOver={allowDrop}
             style={props.style}
             onDragEnd={dragEnd}
             key={Math.random()}
-        >   
+        >
             <div className="column-header">
                 <button
                     type="button"
                     className="btn-sm btn-dark"
                     onClick={() => props.deleteColumn(props.colIndex)}
-            >
-                <i class="far fa-trash-alt"></i>
+                >
+                    <i class="far fa-trash-alt"></i>
                 </button>
-            </div> 
+            </div>
             {props.colTitle}
             <button
-                type="button" 
+                type="button"
                 className="btn-sm btn-dark"
-                onClick={() => props.addCard(props.colIndex)}>
+                onClick={() => props.addCard(props.colIndex)}
+            >
                 Add Card +
             </button>
             {cards.map((element, index) => {
@@ -146,6 +146,9 @@ function Column(props) {
                             key={Math.random()}
                             shared={props.shared}
                             asignee={element.asignee}
+                            deleteCard={props.deleteCard}
+                            cardIndex={index}
+                            colIndex={props.colIndex}
                         />
                     </Draggable>
                 );
