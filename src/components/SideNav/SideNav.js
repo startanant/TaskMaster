@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 function SideNav(){
   return (
     <div className="sideNav">
+      <div className="taskmaster-logo">
+          TaskMaster
+        </div>
       <div className="icon-project-dashboard">
         <Link to="/projectdashboard">Project</Link>
       </div>

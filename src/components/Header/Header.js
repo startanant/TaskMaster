@@ -6,10 +6,8 @@ function Header(){
     <div className="header">
       <div className="header-body">
        <div className="row">
-        <div className="taskmaster-logo col-3">
-          <h2>TaskMaster</h2>
-        </div>
-        <div className="header-project-title col-3">
+        
+        <div className="header-project-title col-6">
           <h2>Project X</h2>
         </div>
         <div className="header-team-members col-6">

@@ -266,17 +266,19 @@ function MainPage(props) {
     };
     return (
         <div className="dashboard-main">
+            <div className="dashboard-header">
+                <DashboardControl
+                        dashboards={user.dashboards}
+                        addDashboard={addDashboard}
+                        switchDashboard={switchDashboard}
+                />
+                <InviteCard inviteUser={inviteUser} />
+            </div>
             <div style={dashboardControlStyle}>
                 <SwitchUser
                     switchUser={switchUser}
                     shared={allUsers ? allUsers : []}
-                />
-                <DashboardControl
-                    dashboards={user.dashboards}
-                    addDashboard={addDashboard}
-                    switchDashboard={switchDashboard}
-                />
-                <InviteCard inviteUser={inviteUser} />
+                />   
             </div>
             <div id={props.id} className="project-column-wrapper">
                 {user.dashboards[currentDashboard].columns.map(
