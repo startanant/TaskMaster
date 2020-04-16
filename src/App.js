@@ -23,14 +23,17 @@ function App() {
     return (
 
         <Router>
-            <Header />
-            <SideNav />
-            <div className="main">
-                <Route exact path="/projectdashboard" component={MainPage} />
-                <Route exact path="/mytasks" component={MyTasksPage} />
-                <Route exact path="/settings" component={SettingsPage} />
-             </div>  
-    
+            <div className="taskmaster">
+                <div className="sideNav-container">
+                <SideNav />
+                </div>
+                <div className="main">
+                    <Header />
+                    <Route exact path="/projectdashboard" component={MainPage} />
+                    <Route exact path="/mytasks" component={MyTasksPage} />
+                    <Route exact path="/settings" component={SettingsPage} />
+                </div>
+                </div>  
         </Router>
 
         // <Wrapper>
