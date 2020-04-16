@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../components-style.css';
 import Column from '../Column/Column';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import InviteCard from '../InviteCard/InviteCard';

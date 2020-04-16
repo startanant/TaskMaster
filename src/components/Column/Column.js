@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../components-style.css';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 import Draggable from '../Draggable/Draggable';
@@ -100,13 +101,23 @@ function Column(props) {
     }
     return (
         <div
+            className="project-column" 
             id={props.id}
             onDrop={drop}
             onDragOver={allowDrop}
             style={props.style}
             onDragEnd={dragEnd}
             key={Math.random()}
-        >
+        >   
+            <div className="column-header">
+            <button
+                type="button"
+                className="btn-sm btn-dark"
+                onClick={() => props.deleteColumn(props.colIndex)}
+      >
+        <i class="far fa-trash-alt"></i>
+      </button>
+      </div> 
             <div
                 style={{
                     textAlign: 'center',

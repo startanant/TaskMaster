@@ -1,5 +1,5 @@
 import React from 'react';
-//import './components-style.css';
+import '../../components-style.css';
 import { Link } from "react-router-dom";
 
 function SideNav(){
