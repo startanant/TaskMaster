@@ -5,10 +5,10 @@
   flex-direction: row;
 }
 .header {
-  height: 100px;
+  height: 5px;
   width: 100%;
   background-color: darkgray;
-  padding: 20px; 
+  
 }
 .header-body {
   line-height: 50px;
@@ -20,7 +20,7 @@
 
 .sideNav-container {
   width: 15%;
-  background-color: lightgrey;
+  background-color: grey;
   padding: 10px;
 }
 .taskmaster-logo {
@@ -30,7 +30,7 @@
 
 .sideNav {
   height: 100vh;
-  background-color: lightgrey;
+  background-color: grey;
   padding: 0px 30px 0px 30px;
   
   text-align: center; 
@@ -72,8 +72,8 @@
   white-space: nowrap;
 }
 .dashboard-header {
-  height: 100px;
-  background-color: khaki;
+  height: 120px;
+  background-color: lightgray;
   
   padding: 20px 30px 10px 30px;
 }
@@ -108,7 +108,7 @@
   width: 250px;
   /* min-height: 300px; */
   height: auto;
-  margin-right: 16px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
