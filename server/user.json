@@ -30,12 +30,6 @@
             }]
         }]
     }],
-    "sharedToUser": [{
-        "from": "",
-        "dashboards": []
-    }],
-    "sharedByUser": [{
-        "to": "",
-        "dashboards": []
-    }]
+    "sharedToUser": [],
+    "sharedByUser": []
 }
