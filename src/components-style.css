@@ -74,11 +74,25 @@
 .dashboard-header {
   height: 100px;
   background-color: khaki;
-  padding-right: 30px;
-  padding-left: 30px;
+  
+  padding: 20px 30px 10px 30px;
 }
+/* .dash-add {
+  width: 220px;
+  float: left;
+} */
+.header-control {
+  width: 50%;
+  float: left;
+
+}
+.header-invite {
+  width: 50%;
+  float: right;
+}
+
 .invite-form-container {
-  width: 350px;
+  width: 320px;
   float: right;
 }
 

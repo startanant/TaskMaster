@@ -5,10 +5,7 @@ function InviteCard(props) {
         setEmail(e.target.value);
     }
     return (
-
-
         
-        <div className="invite-form-container">
             <div className="input-group mb-3">
                 <input 
                     type="text" 
@@ -32,7 +29,7 @@ function InviteCard(props) {
                     </button>
                 </div>
             </div>
-        </div>
+        
 
         // <div style={{ margin: '10px' }}>
         //     <label>Invite user to Dashboard: </label>
