@@ -5,6 +5,7 @@ import ColumnTitle from '../ColumTitle/ColumnTitle';
 import InviteCard from '../InviteCard/InviteCard';
 import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
+import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
 
 function MainPage(props) {
     const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
@@ -264,6 +265,7 @@ function MainPage(props) {
         width: '80%',
         padding: '32px',
     };
+
     return (
         <div className="dashboard-main">
             <div style={dashboardControlStyle}>
@@ -319,6 +321,11 @@ function MainPage(props) {
                         Add column
                     </button>
                 </div>
+            </div>
+            <div>
+                {sharedToUser.length > 0 ? (
+                    <SharedDashboardInfoPanel sharedDashboards={sharedToUser} />
+                ) : null}
             </div>
         </div>
     );
