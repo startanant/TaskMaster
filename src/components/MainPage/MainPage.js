@@ -87,9 +87,37 @@ function MainPage(props) {
         user.dashboards[currentDashboard].shared = [
             ...new Set(user.dashboards[currentDashboard].shared),
         ];
+
+        // const sharedRecord = {
+        //     to: email,
+        //     dashboards: user.sharedByUser.dashboards.push(currentDashboard),
+        // };
+
+        // user.sharedByUser.push(sharedRecord);
+
+        const userIndex = user.sharedByUser.findIndex(
+            (element) => element.to == `${email}`
+        );
+        if (userIndex > -1) {
+            user.sharedByUser[userIndex].dashboards.push(currentDashboard);
+            user.sharedByUser[userIndex].dashboards = [
+                ...new Set(user.sharedByUser[userIndex].dashboards),
+            ];
+        } else {
+            user.sharedByUser.push({
+                to: email,
+                dashboards: [currentDashboard.toString()],
+            });
+        }
+        console.log(
+            'loggin result from fiding user in shared array',
+            userIndex
+        );
+        console.log(user.sharedByUser[userIndex]);
+
         await setUser({ ...user });
         await updateUserProfile(user);
-        await updateShared(user.email, email, currentDashboard);
+        // await updateShared(user.email, email, currentDashboard);
     }
 
     async function updateShared(from, to, index) {
