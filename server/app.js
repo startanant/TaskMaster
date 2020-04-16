@@ -60,16 +60,19 @@ app.get('/api/getUser/:email', async (req, res) => {
     console.log('getUser called for email:', req.params);
     const query = { email: req.params.email };
     const response = await db.userprofile.find(query);
-    const sharedDashboardsTo = await db.shared.find({
-        sharedTo: req.params.email,
-    });
-    const sharedDashboardsFrom = await db.shared.find({
-        sharedFrom: req.params.email,
-    });
+    const sharedDashboardsTo = await db.userprofile.find(
+        {
+            'sharedByUser.to': req.params.email,
+        },
+        { _id: 0, email: 1, 'sharedByUser.$': 1, dashboards: 1 }
+    );
+    // const sharedDashboardsFrom = await db.shared.find({
+    //     sharedFrom: req.params.email,
+    // });
     let reply = [];
     reply.push(response);
     reply.push(sharedDashboardsTo);
-    reply.push(sharedDashboardsFrom);
+    // reply.push(sharedDashboardsFrom);
     console.log(reply);
 
     if (response.length > 0) {
