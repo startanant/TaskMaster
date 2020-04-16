@@ -228,12 +228,12 @@ function MainPage(props) {
         console.log('loggin getUser response from server: ', result);
         const user = result[0][0];
         const sharedTo = result[1];
-        const sharedFrom = result[2];
+        // const sharedFrom = result[2];
         console.log('logging sharedTo', sharedTo);
-        console.log('logging sharedFrom', sharedFrom);
+        // console.log('logging sharedFrom', sharedFrom);
         setUser({ ...user });
         setCurrentDashboard(0);
-        setSharedFromUser([...sharedFrom]);
+        // setSharedFromUser([...sharedFrom]);
         setSharedToUser([...sharedTo]);
     }
     async function getAllUsers() {
