@@ -110,42 +110,21 @@ function Column(props) {
             key={Math.random()}
         >   
             <div className="column-header">
-            <button
-                type="button"
-                className="btn-sm btn-dark"
-                onClick={() => props.deleteColumn(props.colIndex)}
-      >
-        <i class="far fa-trash-alt"></i>
-      </button>
-      </div> 
-            <div
-                style={{
-                    textAlign: 'center',
-                    backgroundColor: 'grey',
-                    color: 'blue',
-                }}
-            >
-                {props.colTitle}
                 <button
-                    style={{ float: 'right', backgroundColor: 'grey' }}
+                    type="button"
+                    className="btn-sm btn-dark"
                     onClick={() => props.deleteColumn(props.colIndex)}
-                >
-                    <i class="far fa-trash-alt"></i>
-                </button>
-                <hr></hr>
-            </div>
-            <div
-                style={{
-                    textAlign: 'center',
-                    backgroundColor: 'grey',
-                    color: 'blue',
-                }}
             >
-                <button onClick={() => props.addCard(props.colIndex)}>
-                    Add New Card
+                <i class="far fa-trash-alt"></i>
                 </button>
-            </div>
-
+            </div> 
+            {props.colTitle}
+            <button
+                type="button" 
+                className="btn-sm btn-dark"
+                onClick={() => props.addCard(props.colIndex)}>
+                Add Card +
+            </button>
             {cards.map((element, index) => {
                 let value = Math.random().toString();
                 return (
@@ -176,12 +155,10 @@ function Column(props) {
                     </Draggable>
                 );
             })}
-
             {props.children}
         </div>
     );
 }
-
 Column.propTypes = {
     id: PropTypes.string,
     style: PropTypes.object,
