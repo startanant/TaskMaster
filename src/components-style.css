@@ -65,6 +65,7 @@
 
 .dashboard-main {
   overflow-x: auto;
+  overflow-y: scroll;
   white-space: nowrap;
 }
 
