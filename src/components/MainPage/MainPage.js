@@ -122,6 +122,18 @@ function MainPage(props) {
         // await updateShared(user.email, email, currentDashboard);
     }
 
+    async function uninviteUser(email) {
+        console.log('uninviteUSer function called with email', email);
+        const userIndex = user.sharedByUser.findIndex(
+            (element) => element.to == `${email}`
+        );
+        if (userIndex > -1) {
+            user.sharedByUser.splice(userIndex, 1);
+            await setUser({ ...user });
+            await updateUserProfile(user);
+        }
+    }
+
     async function updateShared(from, to, index) {
         console.log('upateShared function called: ', from, to, index);
         const data = {
@@ -280,6 +292,7 @@ function MainPage(props) {
                     switchDashboard={switchDashboard}
                 />
                 <InviteCard
+                    uninviteUser={uninviteUser}
                     inviteUser={inviteUser}
                     sharedByUser={user.sharedByUser}
                 />
