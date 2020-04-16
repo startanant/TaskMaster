@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
-import { logout, isLogin } from '../utils';
+import { logout, isLogin } from '../../utils';
 import { Link } from 'react-router-dom';
+import { render } from '@testing-library/react';
+
+// function Home() {
+//     return (
+//         <>
+//             Home
+//         </>
+//     );
+    
+// }
 
 class Home extends Component {
 

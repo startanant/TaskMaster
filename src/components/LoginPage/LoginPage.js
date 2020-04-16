@@ -1,12 +1,20 @@
-import React, { useState, useRef } from "react";
+import React from 'react';
+import { login } from '../../utils';
 
+const LoginPage = (props) => {
 
-function LoginPage() {
+    const handleLogin = () => {
+        login();
+        props.history.push('/projectdashboard');
+    }
+
     return (
-        <>
-        LoginPage
-        </>
+        <div>
+            <h1>Sign in</h1>
+
+            <button onClick={() => handleLogin()}>Click here to log in</button>
+        </div>
     );
-}
+};
 
 export default LoginPage;
