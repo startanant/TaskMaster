@@ -7,12 +7,7 @@ import styled from 'styled-components';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 
 function Column(props) {
-    const cardStyle = styled.div`
-        padding: 8px;
-        color: #555;
-        background-color: white;
-        border-radius: 3px;
-    `;
+   
     console.log('showing props.columns from column component', props.cards);
     const [cards, setCard] = useState(props.cards ? props.cards : []);
     // const [id, setId] = useState(props.id);
