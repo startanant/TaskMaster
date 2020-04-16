@@ -6,18 +6,21 @@ function ColumnTitle(props) {
         setTitle(e.target.value);
     }
     return (
-        <input
-            style={{
-                backgroundColor: 'grey',
-                border: 'none',
-                textAlign: 'center',
-            }}
-            type="text"
-            placeholder="Add column title"
-            value={title}
-            onChange={handleInputChange}
-            onBlur={() => props.updateColumnTitle(props.index, title)}
-        />
+        <form>
+            <div className="form-row align-items-center">
+                <div className="col-auto">
+                    <input 
+                        type="text" 
+                        className="form-control mb-2" 
+                        id={props.id}
+                        onChange={handleInputChange} 
+                        value={title} 
+                        placeholder="Add column title"
+                        onBlur={() => props.updateColumnTitle(props.index, title)}
+                    />
+                </div>
+            </div>
+        </form>
     );
 }
 export default ColumnTitle;
