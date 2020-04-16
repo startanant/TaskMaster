@@ -20,24 +20,28 @@ function Card(props) {
     };
     return (
         <>
-        <div className="card">
-            <div className="card-utility-header">
-                <button type="button" className="btn-sm btn-outline-secondary"
-                onClick={() => props.deleteCard(props.colIndex, props.index)}
-                >
-                <i class="far fa-trash-alt"></i>
-            </button>
+            <div className="card">
+                <div className="card-utility-header">
+                    <button
+                        type="button"
+                        className="btn-sm btn-outline-secondary"
+                        onClick={() =>
+                            props.deleteCard(props.colIndex, props.cardIndex)
+                        }
+                    >
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </div>
+                <div className="card-header">
+                    <TextArea
+                        id={'title' + props.cardid}
+                        value={props.title}
+                        placeholder="Title"
+                    />
+                </div>
             </div>
-            <div className="card-header">
-            <TextArea
-                id={'title' + props.cardid}
-                value={props.title}
-                placeholder="Title"
-            />
-            </div>
-        </div>
 
-        {/* <div style={style} id={props.cardid}> */}
+            {/* <div style={style} id={props.cardid}> */}
             {/* <textarea
                 id={'title' + props.cardid}
                 type="text"
@@ -65,7 +69,6 @@ function Card(props) {
             {/* <button>Close</button> */}
             {/* <hr></hr>
             <AssignCard id={'email' + props.cardid} shared={props.shared} /> */}
-        
         </>
     );
 }
