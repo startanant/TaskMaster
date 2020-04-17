@@ -2,8 +2,8 @@
 
     "email": "",
     "name": "",
-    "firstname":"",
-    "lastname":"",
+    "firstname": "",
+    "lastname": "",
     "password": "password_hash",
     "user_settings": {
         "theme": "light",
@@ -11,6 +11,7 @@
     },
     "dashboards": [{
         "name": "Dashboard 1",
+        "owner": "",
         "shared": [],
         "columns": [{
             "name": "Column",
