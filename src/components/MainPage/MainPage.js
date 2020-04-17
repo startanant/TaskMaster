@@ -25,7 +25,9 @@ function MainPage(props) {
     function addColumn() {
         const newColumn = {
             name: '',
+            id: uuidv4(),
             columnid: user.dashboards[currentDashboard].columns.length + 1,
+            colid: uuidv4(),
             cards: [],
             //     {
             //         title: 'Card1',
@@ -45,6 +47,7 @@ function MainPage(props) {
     function addDashboard(name) {
         const newDashboard = {
             name: name,
+            id: uuidv4(),
             owner: user.email,
             shared: [],
             columns: [],
@@ -68,6 +71,7 @@ function MainPage(props) {
         const newCard = {
             title: '',
             cardid: Math.random(),
+            id: uuidv4(),
             duedate: '',
             lables: ['Important', 'Medium', 'Low'],
             description: '',
@@ -360,8 +364,8 @@ function MainPage(props) {
                     (element, index) => {
                         return (
                             <Column
-                                id={Math.random().toString()}
-                                key={Math.random()}
+                                id={uuidv4()}
+                                key={uuidv4()}
                                 style={columnStyle}
                                 cards={element.cards}
                                 colName={element.name}
