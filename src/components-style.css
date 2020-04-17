@@ -104,10 +104,11 @@
 } */
 
 .dashboard-subHeader {
-  background-color: tomato;
-  height: 150px;
-  padding: 10px 30px 10px 30px;
+  background-color: #272727;
+  height: auto;
+  padding: 10px 30px 20px 30px;
   position: relative;
+  color: white;
 }
 
 .dash-team {
@@ -131,7 +132,7 @@
 
 .invite-form-container {
   width: 320px;
-  float: right;
+  /* float: right; */
 }
 
 .project-column-wrapper {

@@ -314,33 +314,32 @@ function MainPage(props) {
 
                 
             </div>
-            <div className="dashboard-subHeader">
-                <div className="dash-info">
+            <div className="dashboard-subHeader row">
+                <div className="dash-info col-3">
                     <div className="dash-title">
-                        <h3>Dashboard Title</h3>
+                        <h3>{user.dashboards[currentDashboard].name}</h3>
                     </div>
-                    
                 </div>
-                <div className="dash-team">
-                    <div className="dash-spacer"></div>
-                    <div className="dash-teamIcons">
-                        <h4>Team Members</h4>
-                        <div className="header-invite">
+                <div className="team col-9">
+                    ===TEAM GOES HERE===
+                    <div className="header-invite">
                             <InviteCard
                                 uninviteUser={uninviteUser}
                                 inviteUser={inviteUser}
                                 sharedByUser={user.sharedByUser}
                             />
-                        </div>
                     </div>
                     
+                    
                 </div>
-                
+               
+    
                 <div className="dash-delete">
                         <button type="button" class="btn-sm btn-danger">Delete</button>
                 </div>
 
             </div>
+            
 
             {/* <div style={dashboardControlStyle}>
                 <SwitchUser
