@@ -48,7 +48,7 @@ function MainPage(props) {
             shared: [],
             columns: [],
         };
-        user.dashboards.push(newDashboard);
+        user.dashboards.unshift(newDashboard);
         setUser({ ...user });
         updateUserProfile(user);
     }
@@ -263,6 +263,7 @@ function MainPage(props) {
         console.log('loggin getUser response from server: ', result);
         const user = result[0][0];
         const sharedTo = result[1];
+        console.log('LOGGING getUSer call sharedTo', sharedTo);
         // const sharedFrom = result[2];
         // console.log('logging sharedTo', sharedTo);
         // console.log('logging sharedFrom', sharedFrom);
