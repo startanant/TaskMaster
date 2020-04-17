@@ -32,11 +32,13 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h1>Welcome To TaskMaster</h1>
+                <h1>Welcome To TaskMaster</h1><hr></hr>
+                <h3>The world's #1 task manager to track the progress of your teams and projects.</h3>
+
 
                 {this.state.isLogin ?
                     <button onClick={() => this.handleLogout()}>Click here to log out</button>
-                    : <Link to="/login">Go to sign in page</Link>
+                    : <Link to="/login">Login</Link>
                 }
             </div>
         );

@@ -14,7 +14,7 @@ import MainPage from './components/MainPage/MainPage';
 import LoginPage from './components/LoginPage/LoginPage';
 import Home from './components/Home/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import PublicRoute from './components/PrivateRoute/PrivateRoute';
+import PublicRoute from './components/PublicRoute/PublicRoute';
 
 function App() {
     const [cards, addCard] = useState(0);
@@ -33,12 +33,11 @@ function App() {
             <SideNav />
             <div className="main">
                 <Switch>
-                <Route restricted={true} exact path="/" component={Home}/>
-                <Route restricted={true} exact path="/login" component={LoginPage} />
-                <PrivateRoute exact path="/projectdashboard" component={MainPage} />
-                <Route exact path="/mytasks" component={MyTasksPage} />
-                <Route exact path="/settings" component={SettingsPage} />
-                
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/login" component={LoginPage} />
+                    <PrivateRoute exact path="/projectdashboard" component={MainPage} />
+                    <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
+                    <PrivateRoute exact path="/settings" component={SettingsPage} />
                 </Switch>
                 {/*<Redirect from="*" to="/" /> */}
              </div>  
