@@ -303,19 +303,44 @@ function MainPage(props) {
             <div className="dashboard-header">
                 <div className="header-control">
                     <DashboardControl
-                        dashboards={user.dashboards}
-                        addDashboard={addDashboard}
-                        switchDashboard={switchDashboard}
+                            dashboards={user.dashboards}
+                            addDashboard={addDashboard}
+                            switchDashboard={switchDashboard}
+                            user={user}
+                            currentDashboard={currentDashboard}
                     />
                 </div>
-                <div className="header-invite">
-                    <InviteCard
-                        uninviteUser={uninviteUser}
-                        inviteUser={inviteUser}
-                        sharedByUser={user.sharedByUser}
-                    />
-                </div>
+                
+
+
+                
             </div>
+            <div className="dashboard-subHeader row">
+                <div className="dash-info col-3">
+                    <div className="dash-title">
+                        <h3>{user.dashboards[currentDashboard].name}</h3>
+                    </div>
+                </div>
+                <div className="team col-9">
+                    ===TEAM GOES HERE===
+                    <div className="header-invite">
+                            <InviteCard
+                                uninviteUser={uninviteUser}
+                                inviteUser={inviteUser}
+                                sharedByUser={user.sharedByUser}
+                            />
+                    </div>
+                    
+                    
+                </div>
+               
+    
+                <div className="dash-delete">
+                    <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                </div>
+
+            </div>
+            
 
             {/* <div style={dashboardControlStyle}>
                 <SwitchUser

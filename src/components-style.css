@@ -78,29 +78,61 @@
   white-space: nowrap;
 }
 .dashboard-header {
-  height: 120px;
+  height: auto;
   background-color: lightgray;
   background-color:#16141c;
   border-bottom: solid grey 1px;
-  padding: 20px 30px 10px 30px;
+  padding: 20px 30px 20px 30px;
 }
 /* .dash-add {
   width: 220px;
   float: left;
 } */
-.header-control {
+/* .header-control {
+  width: 50%;
+  height: 100%;
+  float: left;
+} */
+.dash-nav-add {
+  width: 500px;
+}
+
+/* .header-invite {
+  width: 50%;
+  height: 100%;
+  float: right;
+} */
+
+.dashboard-subHeader {
+  background-color: #272727;
+  height: auto;
+  padding: 10px 30px 20px 30px;
+  position: relative;
+  color: white;
+}
+
+.dash-team {
+  height: 80px;
+}
+.dash-spacer {
   width: 50%;
   float: left;
-
 }
-.header-invite {
+.dash-teamIcons {
   width: 50%;
-  float: right;
+  float:right;
+  background-color: blue;
+}
+
+.dash-delete {
+  position: absolute;
+  top: 20px;
+  right: 30px;
 }
 
 .invite-form-container {
   width: 320px;
-  float: right;
+  /* float: right; */
 }
 
 .project-column-wrapper {
