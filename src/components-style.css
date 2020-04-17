@@ -5,7 +5,7 @@
   flex-direction: row;
 }
 .header {
-  height: 5px;
+  height: 2px;
   width: 100%;
   background-color: darkgray;
   
@@ -20,19 +20,21 @@
 
 .sideNav-container {
   width: 15%;
-  background-color: grey;
+  background-color:#16141c;
   padding: 10px;
+  border-right: solid grey 1px;
 }
 .taskmaster-logo {
   padding-top: 30px;
   margin-bottom: 70px;
+  color: aliceblue;
 }
 
 .sideNav {
   height: 100vh;
-  background-color: grey;
-  padding: 0px 30px 0px 30px;
-  
+
+  background-color:#16141c;
+  padding: 0px 20px 0px 20px;
   text-align: center; 
   justify-content: center;
   /* position: fixed; */
@@ -42,28 +44,32 @@
   align-items: center;
   align-content: flex-end; */
 }
-.icon-project-dashboard {
-  width: 100%;
-  height: auto;
-  margin-bottom: 20px;
-  background-color: white;
+
+/* .nav-icon {
+  float: left;
+  width: 50%;
 }
-.icon-mytasks {
-  width: 100%;
-  height: auto;
-  margin-bottom: 20px;
-  background-color: white;
+.nav-heading {
+  width: 50%
+} */
+
+.nav-item {
+  text-align: center;
+  color: grey;
 }
-.icon-settings {
-  width: 100%;
-  height: auto;
-  margin-bottom: 20px;
-  background-color: white;
+.nav-item:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-heading {
+  margin-bottom: 40px;
 }
 
 .main {
   width: 85%;
   height: 100%;  
+  
 } 
 
 .dashboard-main {
@@ -74,7 +80,8 @@
 .dashboard-header {
   height: 120px;
   background-color: lightgray;
-  
+  background-color:#16141c;
+  border-bottom: solid grey 1px;
   padding: 20px 30px 10px 30px;
 }
 /* .dash-add {

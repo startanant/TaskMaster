@@ -41,7 +41,7 @@ function DashboardControl(props) {
                         />
                         <div class="input-group-append">
                             <button 
-                                className="btn btn-outline-secondary" 
+                                className="btn btn-secondary" 
                                 type="button"
                                 onClick={() => {
                                     if (dashboardName.current.value != '') {
