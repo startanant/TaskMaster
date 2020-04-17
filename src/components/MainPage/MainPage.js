@@ -367,12 +367,12 @@ function MainPage(props) {
                     (element, index) => {
                         return (
                             <Column
-                                id={uuidv4()}
+                                // id={element.id}
                                 key={uuidv4()}
                                 style={columnStyle}
                                 cards={element.cards}
                                 colName={element.name}
-                                colid={element.columnid}
+                                colid={element.id}
                                 addCard={addCard}
                                 deleteCard={deleteCard}
                                 colIndex={index}
