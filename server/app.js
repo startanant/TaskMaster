@@ -64,7 +64,14 @@ app.get('/api/getUser/:email', async (req, res) => {
         {
             'sharedByUser.to': req.params.email,
         },
-        { _id: 0, email: 1, 'sharedByUser.$': 1, dashboards: 1 }
+        {
+            _id: 0,
+            email: 1,
+            'sharedByUser.$': 1,
+            dashboards: 1,
+            firstname: 1,
+            lastname: 1,
+        }
     );
     // const sharedDashboardsFrom = await db.shared.find({
     //     sharedFrom: req.params.email,
