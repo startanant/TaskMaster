@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import SharedDashboard from '../SharedDashboard/SharedDashboard';
 
 function SharedDashboardInfoPanel(props) {
     const sharedDashboards = props.sharedDashboards;
@@ -20,7 +21,14 @@ function SharedDashboardInfoPanel(props) {
                 })}
             </select>
             <hr></hr>
-            <div>{show ? 'Dashboard to show if true' : ''}</div>
+            <div>
+                {
+                    <SharedDashboard
+                        toRender={sharedDashboards[0]}
+                        render={show}
+                    />
+                }
+            </div>
         </div>
     );
 }
