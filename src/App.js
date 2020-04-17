@@ -33,7 +33,7 @@ function App() {
                     <Route exact path="/mytasks" component={MyTasksPage} />
                     <Route exact path="/settings" component={SettingsPage} />
                 </div>
-                </div>  
+            </div>  
         </Router>
 
         // <Wrapper>
