@@ -6,6 +6,7 @@ import InviteCard from '../InviteCard/InviteCard';
 import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
+import { v4 as uuidv4 } from 'uuid';
 
 function MainPage(props) {
     const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
@@ -303,17 +304,13 @@ function MainPage(props) {
             <div className="dashboard-header">
                 <div className="header-control">
                     <DashboardControl
-                            dashboards={user.dashboards}
-                            addDashboard={addDashboard}
-                            switchDashboard={switchDashboard}
-                            user={user}
-                            currentDashboard={currentDashboard}
+                        dashboards={user.dashboards}
+                        addDashboard={addDashboard}
+                        switchDashboard={switchDashboard}
+                        user={user}
+                        currentDashboard={currentDashboard}
                     />
                 </div>
-                
-
-
-                
             </div>
             <div className="dashboard-subHeader row">
                 <div className="dash-info col-3">
@@ -324,31 +321,29 @@ function MainPage(props) {
                 <div className="team col-9">
                     ===TEAM GOES HERE===
                     <div className="header-invite">
-                            <InviteCard
-                                uninviteUser={uninviteUser}
-                                inviteUser={inviteUser}
-                                sharedByUser={user.sharedByUser}
-                            />
+                        <InviteCard
+                            uninviteUser={uninviteUser}
+                            inviteUser={inviteUser}
+                            sharedByUser={user.sharedByUser}
+                        />
                     </div>
-                    
-                    
                 </div>
-               
-    
+
                 <div className="dash-delete">
-                    <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                    <button type="button" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
                 </div>
-
             </div>
-            
 
-            {/* <div style={dashboardControlStyle}>
+            <div style={dashboardControlStyle}>
                 <SwitchUser
                     currentUser={currentUser}
                     switchUser={switchUser}
                     shared={allUsers ? allUsers : []}
                 />
-                <DashboardControl
+            </div>
+            {/* <DashboardControl
                     dashboards={user.dashboards}
                     addDashboard={addDashboard}
                     switchDashboard={switchDashboard}
