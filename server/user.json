@@ -11,6 +11,7 @@
     },
     "dashboards": [{
         "name": "Dashboard 1",
+        "id": "",
         "owner": "",
         "shared": [],
         "columns": [{
