@@ -75,9 +75,9 @@ function DashboardControl(props) {
                 }}
             >
                 Add
-            </button> */}
-            
-            <select
+            </button>
+            <br></br>
+            {/* <select
                 ref={dashboardIndex}
                 onChange={() =>
                     props.switchDashboard(dashboardIndex.current.value)
@@ -94,6 +94,27 @@ function DashboardControl(props) {
             >
                 Switch
             </button> */}
+            <div>
+                <h3>Your list of dashboards</h3>
+                {dashboards.map((dash, index) => {
+                    return (
+                        <div>
+                            <a
+                                value={index}
+                                data-index={index}
+                                href="#"
+                                onClick={(e) =>
+                                    props.switchDashboard(
+                                        e.target.dataset.index
+                                    )
+                                }
+                            >
+                                {dash.name}-{dash.owner}
+                            </a>
+                        </div>
+                    );
+                })}
+            </div>
         </>
     );
 }

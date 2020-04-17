@@ -10,7 +10,7 @@ import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboar
 function MainPage(props) {
     const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
     const [sharedToUser, setSharedToUser] = useState([]);
-    const [sharedFromUser, setSharedFromUser] = useState([]);
+    // const [sharedFromUser, setSharedFromUser] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
     // const [loop, setLoop] = useState(0);
     const [currentUser, setCurrentUser] = useState('user@user.com');
@@ -44,6 +44,7 @@ function MainPage(props) {
     function addDashboard(name) {
         const newDashboard = {
             name: name,
+            owner: user.email,
             shared: [],
             columns: [],
         };
