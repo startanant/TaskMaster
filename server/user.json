@@ -2,6 +2,8 @@
 
     "email": "",
     "name": "",
+    "firstname":"",
+    "lastname":"",
     "password": "password_hash",
     "user_settings": {
         "theme": "light",
