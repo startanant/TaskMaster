@@ -232,10 +232,15 @@ function MainPage(props) {
     }
 
     async function updateUserProfile(user) {
+        let updatedUser = { ...user };
+        let filteredDashboards = updatedUser.dashboards.filter(
+            (el) => el.owner == user.email
+        );
+        updatedUser.dashboards = filteredDashboards;
         const url = '/api/updateUserProfile';
         const result = await fetch(url, {
             method: 'POST',
-            body: JSON.stringify(user),
+            body: JSON.stringify(updatedUser),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -244,18 +249,31 @@ function MainPage(props) {
     }
 
     async function getUser(email) {
+        function populateShared() {
+            // console.log('SHARED To USER LENGTH IS:', sharedTo.length);
+            sharedTo.forEach((elem, index) => {
+                elem.sharedByUser[0].dashboards.forEach((el, idx) => {
+                    user.dashboards.push(elem.dashboards[el]);
+                });
+            });
+            // setUser({ ...user });
+        }
         const url = `/api/getUser/${email}`;
         const result = await fetch(url).then((response) => response.json());
         console.log('loggin getUser response from server: ', result);
         const user = result[0][0];
         const sharedTo = result[1];
         // const sharedFrom = result[2];
-        console.log('logging sharedTo', sharedTo);
+        // console.log('logging sharedTo', sharedTo);
         // console.log('logging sharedFrom', sharedFrom);
-        setUser({ ...user });
-        setCurrentDashboard(0);
+        populateShared();
+        await setUser({ ...user });
+        await setCurrentUser(user.email);
+        await setCurrentDashboard(0);
         // setSharedFromUser([...sharedFrom]);
-        setSharedToUser([...sharedTo]);
+        await setSharedToUser([...sharedTo]);
+
+        //adding shared dashboards to user dashboard list
     }
     async function getAllUsers() {
         const url = '/api/getAllUsers';
