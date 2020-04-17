@@ -232,10 +232,15 @@ function MainPage(props) {
     }
 
     async function updateUserProfile(user) {
+        let updatedUser = { ...user };
+        let filteredDashboards = updatedUser.dashboards.filter(
+            (el) => el.owner == user.email
+        );
+        updatedUser.dashboards = filteredDashboards;
         const url = '/api/updateUserProfile';
         const result = await fetch(url, {
             method: 'POST',
-            body: JSON.stringify(user),
+            body: JSON.stringify(updatedUser),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -244,18 +249,31 @@ function MainPage(props) {
     }
 
     async function getUser(email) {
+        function populateShared() {
+            // console.log('SHARED To USER LENGTH IS:', sharedTo.length);
+            sharedTo.forEach((elem, index) => {
+                elem.sharedByUser[0].dashboards.forEach((el, idx) => {
+                    user.dashboards.push(elem.dashboards[el]);
+                });
+            });
+            // setUser({ ...user });
+        }
         const url = `/api/getUser/${email}`;
         const result = await fetch(url).then((response) => response.json());
         console.log('loggin getUser response from server: ', result);
         const user = result[0][0];
         const sharedTo = result[1];
         // const sharedFrom = result[2];
-        console.log('logging sharedTo', sharedTo);
+        // console.log('logging sharedTo', sharedTo);
         // console.log('logging sharedFrom', sharedFrom);
-        setUser({ ...user });
-        setCurrentDashboard(0);
+        populateShared();
+        await setUser({ ...user });
+        await setCurrentUser(user.email);
+        await setCurrentDashboard(0);
         // setSharedFromUser([...sharedFrom]);
-        setSharedToUser([...sharedTo]);
+        await setSharedToUser([...sharedTo]);
+
+        //adding shared dashboards to user dashboard list
     }
     async function getAllUsers() {
         const url = '/api/getAllUsers';
@@ -291,15 +309,37 @@ function MainPage(props) {
                             currentDashboard={currentDashboard}
                     />
                 </div>
-                <div className="header-invite">
-                    <InviteCard 
-                        uninviteUser={uninviteUser}
-                        inviteUser={inviteUser}
-                        sharedByUser={user.sharedByUser}
+                
 
-                    />
+
+                
+            </div>
+            <div className="dashboard-subHeader">
+                <div className="dash-info">
+                    <div className="dash-title">
+                        <h3>Dashboard Title</h3>
+                    </div>
+                    
+                </div>
+                <div className="dash-team">
+                    <div className="dash-spacer"></div>
+                    <div className="dash-teamIcons">
+                        <h4>Team Members</h4>
+                        <div className="header-invite">
+                            <InviteCard
+                                uninviteUser={uninviteUser}
+                                inviteUser={inviteUser}
+                                sharedByUser={user.sharedByUser}
+                            />
+                        </div>
+                    </div>
+                    
                 </div>
                 
+                <div className="dash-delete">
+                        <button type="button" class="btn-sm btn-danger">Delete</button>
+                </div>
+
             </div>
 
             {/* <div style={dashboardControlStyle}>
@@ -312,6 +352,7 @@ function MainPage(props) {
                     dashboards={user.dashboards}
                     addDashboard={addDashboard}
                     switchDashboard={switchDashboard}
+                    sharedDashboardsNum={sharedToUser.length}
                 />
                 <InviteCard
                     uninviteUser={uninviteUser}
@@ -361,11 +402,11 @@ function MainPage(props) {
                     </button>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 {sharedToUser.length > 0 ? (
                     <SharedDashboardInfoPanel sharedDashboards={sharedToUser} />
                 ) : null}
-            </div>
+            </div> */}
         </div>
     );
 }

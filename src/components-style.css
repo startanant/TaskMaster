@@ -78,7 +78,7 @@
   white-space: nowrap;
 }
 .dashboard-header {
-  height: 150px;
+  height: auto;
   background-color: lightgray;
   background-color:#16141c;
   border-bottom: solid grey 1px;
@@ -88,20 +88,45 @@
   width: 220px;
   float: left;
 } */
-.header-control {
+/* .header-control {
   width: 50%;
   height: 100%;
   float: left;
-}
-.dash-control-container {
-  width: 300px;
+} */
+.dash-nav-add {
+  width: 500px;
 }
 
-
-.header-invite {
+/* .header-invite {
   width: 50%;
   height: 100%;
   float: right;
+} */
+
+.dashboard-subHeader {
+  background-color: tomato;
+  height: 150px;
+  padding: 10px 30px 10px 30px;
+  position: relative;
+}
+
+.dash-team {
+  height: 80px;
+}
+.dash-spacer {
+  width: 50%;
+  float: left;
+}
+.dash-teamIcons {
+  width: 50%;
+  float:right;
+  background-color: blue;
+}
+
+.dash-delete {
+  position: absolute;
+  top: 20px;
+  right: 30px;
 }
 
 .invite-form-container {
