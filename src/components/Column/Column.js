@@ -83,10 +83,10 @@ function Column(props) {
         e.preventDefault();
     }
 
-    function addCard() {
-        cards.push({ title: 'new card', duedate: Date.now() });
-        setCard([...cards]);
-    }
+    // function addCard() {
+    //     cards.push({ title: 'new card', duedate: Date.now() });
+    //     setCard([...cards]);
+    // }
 
     // function deleteCard(e) {
     //     console.log('delete card clicked', e.target);
@@ -122,7 +122,7 @@ function Column(props) {
                 Add Card +
             </button>
             {cards.map((element, index) => {
-                let value = Math.random().toString();
+                let value = uuidv4();
                 return (
                     <Draggable
                         id={value}
