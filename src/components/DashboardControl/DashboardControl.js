@@ -94,6 +94,36 @@ function DashboardControl(props) {
             >
                 Switch
             </button> */}
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu">
+                    {dashboards.map((dash, index) => {
+                        return (
+                            <div>
+                                <a
+                                    value={index}
+                                    data-index={index}
+                                    href="#"
+                                    onClick={(e) =>
+                                        props.switchDashboard(
+                                            e.target.dataset.index
+                                        )
+                                    }
+                                >
+                                    {dash.name}-{dash.owner}
+                                </a>
+                            </div>
+                        );
+                    })}
+
+
+                </div>
+
+
+
+            </div>
             <div>
                 <h3>Your list of dashboards</h3>
                 {dashboards.map((dash, index) => {
