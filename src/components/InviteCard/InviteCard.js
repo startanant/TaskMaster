@@ -12,28 +12,61 @@ function InviteCard(props) {
             return <div>You are not sharing any dashboards</div>;
         }
         return (
-            <div>
-                You are sharing your dashbords<br></br>
-                <select ref={select}>
-                    <option></option>
-                    {sharedDashboards.map((dash) => {
-                        return (
-                            <>
-                                <option>{dash.to}</option>
-                            </>
-                        );
-                    })}
-                </select>
-                <button
-                    onClick={() => props.uninviteUser(select.current.value)}
-                >
-                    Del
-                </button>
-            </div>
+
+            <></>
+            
+            // <div>
+            //     You are sharing your dashbords<br></br>
+            //     <select ref={select}>
+            //         <option></option>
+            //         {sharedDashboards.map((dash) => {
+            //             return (
+            //                 <>
+            //                     <option>{dash.to}</option>
+            //                 </>
+            //             );
+            //         })}
+            //     </select>
+            //     <button
+            //         onClick={() => props.uninviteUser(select.current.value)}
+            //     >
+            //         Del
+            //     </button>
+            // </div>
+            
         );
     }
     return (
-        <div style={{ margin: '10px' }}>
+        <>
+        <div className="invite-form-container">
+            <div className="input-group mb-3">
+                <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder="email" 
+                    aria-label="invite email" 
+                    aria-describedby="invite email"
+                    value={email}
+                    onChange={handleInputChange}
+                />
+                <div class="input-group-append">
+                    <button 
+                        className="btn btn-secondary" 
+                        type="button"
+                        onClick={() => {
+                            props.inviteUser(email);
+                            setEmail('');
+                        }}
+                    >
+                    Invite
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        {/* <div style={{ margin: '10px' }}>
             <label>Invite user to Dashboard: </label>
             <br></br>
             <input
@@ -56,7 +89,31 @@ function InviteCard(props) {
             ) : (
                 <RenderList render={false} />
             )}
-        </div>
+        </div> */}
+        
+
+         {/* <div style={{ margin: '10px' }}>
+         <label>Invite user to Dashboard: </label>
+             <br></br>
+             <input
+                 type="text"
+                 placeholder="enter email"
+                value={email}
+                 onChange={handleInputChange}
+             />
+             <button
+                 onClick={() => {
+                     props.inviteUser(email);
+                     setEmail('');
+                 }}
+            >
+                Invite
+             </button>
+        </div> */}
+        
+        
+        </>
+        
     );
 }
 

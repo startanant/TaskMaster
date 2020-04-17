@@ -1,72 +1,106 @@
-
+.taskmaster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
 .header {
-  height: 100px;
+  height: 2px;
   width: 100%;
   background-color: darkgray;
-  padding: 20px; 
+  
 }
 .header-body {
   line-height: 50px;
 }
-.test{
-  color: red;
-}
 
-/* .taskmaster-logo {
-  border: black solid 1px;
-  
-}
-.header-project-title {
-  border: black solid 1px;
-} */
 .header-team-members {
   text-align: center;
 }
 
+.sideNav-container {
+  width: 15%;
+  background-color:#16141c;
+  padding: 10px;
+  border-right: solid grey 1px;
+}
+.taskmaster-logo {
+  padding-top: 30px;
+  margin-bottom: 70px;
+  color: aliceblue;
+}
 
 .sideNav {
   height: 100vh;
-  width: 120px;
-  background-color: lightgrey;
-  padding: 30px;
-  position: fixed;
+
+  background-color:#16141c;
+  padding: 0px 20px 0px 20px;
+  text-align: center; 
   justify-content: center;
-  z-index: 1;
-  text-align: center;
+  /* position: fixed; */
+  /* z-index: 1; */
   /* display: flex;
   flex-direction: column
   align-items: center;
   align-content: flex-end; */
 }
-.icon-project-dashboard {
-  width: 100%;
-  height: 50px;
-  margin-bottom: 20px;
-  background-color: white;
+
+/* .nav-icon {
+  float: left;
+  width: 50%;
 }
-.icon-mytasks {
-  width: 100%;
-  height: 50px;
-  margin-bottom: 20px;
-  background-color: white;
+.nav-heading {
+  width: 50%
+} */
+
+.nav-item {
+  text-align: center;
+  color: grey;
 }
-.icon-settings {
-  width: 100%;
-  height: 50px;
-  margin-bottom: 20px;
-  background-color: white;
+.nav-item:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-heading {
+  margin-bottom: 40px;
 }
 
 .main {
-  margin-left: 120px;
-  padding: 30px;
+  width: 85%;
   height: 100%;  
-}
+  
+} 
 
 .dashboard-main {
   overflow-x: auto;
   overflow-y: scroll;
   white-space: nowrap;
+}
+.dashboard-header {
+  height: 120px;
+  background-color: lightgray;
+  background-color:#16141c;
+  border-bottom: solid grey 1px;
+  padding: 20px 30px 10px 30px;
+}
+/* .dash-add {
+  width: 220px;
+  float: left;
+} */
+.header-control {
+  width: 50%;
+  float: left;
+
+}
+.header-invite {
+  width: 50%;
+  float: right;
+}
+
+.invite-form-container {
+  width: 320px;
+  float: right;
 }
 
 .project-column-wrapper {
@@ -74,6 +108,7 @@
   flex-direction: row;
   overflow-x: auto;
   white-space: nowrap;
+  align-items: flex-start;
 }
 
 .project-column {
@@ -81,7 +116,7 @@
   width: 250px;
   /* min-height: 300px; */
   height: auto;
-  margin-right: 16px;
+  margin-right: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,6 +142,7 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
 
 
 
