@@ -11,14 +11,17 @@
     },
     "dashboards": [{
         "name": "Dashboard 1",
+        "id": "",
         "owner": "",
         "shared": [],
         "columns": [{
             "name": "Column",
+            "id": "1",
             "columnid": "1",
             "cards": [{
                 "title": "Card title",
                 "cardid": "1_1",
+                "id": "1_1",
                 "duedate": "",
                 "lables": [
                     "Important",

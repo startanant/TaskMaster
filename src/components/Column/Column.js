@@ -5,6 +5,7 @@ import Card from '../Card/Card';
 import Draggable from '../Draggable/Draggable';
 import styled from 'styled-components';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
+import { v4 as uuidv4 } from 'uuid';
 
 function Column(props) {
     console.log('showing props.columns from column component', props.cards);
@@ -82,10 +83,10 @@ function Column(props) {
         e.preventDefault();
     }
 
-    function addCard() {
-        cards.push({ title: 'new card', duedate: Date.now() });
-        setCard([...cards]);
-    }
+    // function addCard() {
+    //     cards.push({ title: 'new card', duedate: Date.now() });
+    //     setCard([...cards]);
+    // }
 
     // function deleteCard(e) {
     //     console.log('delete card clicked', e.target);
@@ -101,7 +102,7 @@ function Column(props) {
             onDragOver={allowDrop}
             style={props.style}
             onDragEnd={dragEnd}
-            key={Math.random()}
+            key={uuidv4()}
         >
             <div className="column-header">
                 <button
@@ -121,7 +122,7 @@ function Column(props) {
                 Add Card +
             </button>
             {cards.map((element, index) => {
-                let value = Math.random().toString();
+                let value = uuidv4();
                 return (
                     <Draggable
                         id={value}
@@ -131,7 +132,7 @@ function Column(props) {
                         deleteCard={props.deleteCard}
                         cardid={element.cardid}
                         saveCard={props.saveCard}
-                        key={Math.random()}
+                        key={uuidv4()}
                         show={show}
                         handleModalClose={hideModal}
                         handleModalOpen={showModal}
@@ -143,7 +144,7 @@ function Column(props) {
                             description={element.description}
                             cardid={element.cardid}
                             columnid={props.colid}
-                            key={Math.random()}
+                            key={uuidv4()}
                             shared={props.shared}
                             asignee={element.asignee}
                             deleteCard={props.deleteCard}

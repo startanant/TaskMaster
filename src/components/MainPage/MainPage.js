@@ -6,6 +6,7 @@ import InviteCard from '../InviteCard/InviteCard';
 import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
+import { v4 as uuidv4 } from 'uuid';
 
 function MainPage(props) {
     const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
@@ -24,7 +25,9 @@ function MainPage(props) {
     function addColumn() {
         const newColumn = {
             name: '',
+            id: uuidv4(),
             columnid: user.dashboards[currentDashboard].columns.length + 1,
+            colid: uuidv4(),
             cards: [],
             //     {
             //         title: 'Card1',
@@ -44,6 +47,7 @@ function MainPage(props) {
     function addDashboard(name) {
         const newDashboard = {
             name: name,
+            id: uuidv4(),
             owner: user.email,
             shared: [],
             columns: [],
@@ -67,6 +71,7 @@ function MainPage(props) {
         const newCard = {
             title: '',
             cardid: Math.random(),
+            id: uuidv4(),
             duedate: '',
             lables: ['Important', 'Medium', 'Low'],
             description: '',
@@ -194,7 +199,10 @@ function MainPage(props) {
                 user.dashboards[currentDashboard].columns[columnIndex].cards
             )
         );
-        user.dashboards[0].columns[columnIndex].cards.splice(cardIndex, 1);
+        user.dashboards[currentDashboard].columns[columnIndex].cards.splice(
+            cardIndex,
+            1
+        );
         console.log(
             'displaying user object after deletetion',
             JSON.stringify(
@@ -303,17 +311,13 @@ function MainPage(props) {
             <div className="dashboard-header">
                 <div className="header-control">
                     <DashboardControl
-                            dashboards={user.dashboards}
-                            addDashboard={addDashboard}
-                            switchDashboard={switchDashboard}
-                            user={user}
-                            currentDashboard={currentDashboard}
+                        dashboards={user.dashboards}
+                        addDashboard={addDashboard}
+                        switchDashboard={switchDashboard}
+                        user={user}
+                        currentDashboard={currentDashboard}
                     />
                 </div>
-                
-
-
-                
             </div>
             <div className="dashboard-subHeader row">
                 <div className="dash-info col-3">
@@ -324,31 +328,29 @@ function MainPage(props) {
                 <div className="team col-9">
                     ===TEAM GOES HERE===
                     <div className="header-invite">
-                            <InviteCard
-                                uninviteUser={uninviteUser}
-                                inviteUser={inviteUser}
-                                sharedByUser={user.sharedByUser}
-                            />
+                        <InviteCard
+                            uninviteUser={uninviteUser}
+                            inviteUser={inviteUser}
+                            sharedByUser={user.sharedByUser}
+                        />
                     </div>
-                    
-                    
                 </div>
-               
-    
+
                 <div className="dash-delete">
-                    <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                    <button type="button" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
                 </div>
-
             </div>
-            
-
-            {/* <div style={dashboardControlStyle}>
+            {/*
+            <div style={dashboardControlStyle}>
                 <SwitchUser
                     currentUser={currentUser}
                     switchUser={switchUser}
                     shared={allUsers ? allUsers : []}
                 />
-                <DashboardControl
+            </div>
+             <DashboardControl
                     dashboards={user.dashboards}
                     addDashboard={addDashboard}
                     switchDashboard={switchDashboard}
@@ -365,12 +367,12 @@ function MainPage(props) {
                     (element, index) => {
                         return (
                             <Column
-                                id={Math.random().toString()}
-                                key={Math.random()}
+                                // id={element.id}
+                                key={uuidv4()}
                                 style={columnStyle}
                                 cards={element.cards}
                                 colName={element.name}
-                                colid={element.columnid}
+                                colid={element.id}
                                 addCard={addCard}
                                 deleteCard={deleteCard}
                                 colIndex={index}
