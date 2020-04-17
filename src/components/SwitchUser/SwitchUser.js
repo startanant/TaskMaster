@@ -8,6 +8,9 @@ function SwitchUser(props) {
 
     return (
         <div style={{ margin: '10px' }}>
+            <h4 style={{ color: 'red' }}>
+                Current logged user: {props.currentUser}
+            </h4>
             <select
                 ref={selection}
                 onChange={() => props.switchUser(selection.current.value)}

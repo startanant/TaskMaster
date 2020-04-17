@@ -5,6 +5,7 @@ import ColumnTitle from '../ColumTitle/ColumnTitle';
 import InviteCard from '../InviteCard/InviteCard';
 import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
+import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
 
 function MainPage(props) {
     const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
@@ -119,6 +120,18 @@ function MainPage(props) {
         await setUser({ ...user });
         await updateUserProfile(user);
         // await updateShared(user.email, email, currentDashboard);
+    }
+
+    async function uninviteUser(email) {
+        console.log('uninviteUSer function called with email', email);
+        const userIndex = user.sharedByUser.findIndex(
+            (element) => element.to == `${email}`
+        );
+        if (userIndex > -1) {
+            user.sharedByUser.splice(userIndex, 1);
+            await setUser({ ...user });
+            await updateUserProfile(user);
+        }
     }
 
     async function updateShared(from, to, index) {
@@ -264,6 +277,7 @@ function MainPage(props) {
         width: '80%',
         padding: '32px',
     };
+
     return (
         <div className="dashboard-main">
             <div className="dashboard-header">
@@ -275,18 +289,33 @@ function MainPage(props) {
                     />
                 </div>
                 <div className="header-invite">
-                    <InviteCard inviteUser={inviteUser} />
+                    <InviteCard 
+                        uninviteUser={uninviteUser}
+                        inviteUser={inviteUser}
+                        sharedByUser={user.sharedByUser}
+
+                    />
                 </div>
                 
             </div>
 
-            <div style={dashboardControlStyle}>
+            {/* <div style={dashboardControlStyle}>
                 <SwitchUser
+                    currentUser={currentUser}
                     switchUser={switchUser}
                     shared={allUsers ? allUsers : []}
-                />  
-                
-            </div>
+                />
+                <DashboardControl
+                    dashboards={user.dashboards}
+                    addDashboard={addDashboard}
+                    switchDashboard={switchDashboard}
+                />
+                <InviteCard
+                    uninviteUser={uninviteUser}
+                    inviteUser={inviteUser}
+                    sharedByUser={user.sharedByUser}
+                />
+            </div> */}
             <div id={props.id} className="project-column-wrapper">
                 {user.dashboards[currentDashboard].columns.map(
                     (element, index) => {
@@ -328,6 +357,11 @@ function MainPage(props) {
                         Add column
                     </button>
                 </div>
+            </div>
+            <div>
+                {sharedToUser.length > 0 ? (
+                    <SharedDashboardInfoPanel sharedDashboards={sharedToUser} />
+                ) : null}
             </div>
         </div>
     );
