@@ -287,6 +287,8 @@ function MainPage(props) {
                             dashboards={user.dashboards}
                             addDashboard={addDashboard}
                             switchDashboard={switchDashboard}
+                            user={user}
+                            currentDashboard={currentDashboard}
                     />
                 </div>
                 <div className="header-invite">

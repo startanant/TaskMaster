@@ -78,11 +78,11 @@
   white-space: nowrap;
 }
 .dashboard-header {
-  height: 300px;
+  height: 150px;
   background-color: lightgray;
   background-color:#16141c;
   border-bottom: solid grey 1px;
-  padding: 20px 30px 10px 30px;
+  padding: 20px 30px 20px 30px;
 }
 /* .dash-add {
   width: 220px;
@@ -90,11 +90,17 @@
 } */
 .header-control {
   width: 50%;
+  height: 100%;
   float: left;
-
 }
+.dash-control-container {
+  width: 300px;
+}
+
+
 .header-invite {
   width: 50%;
+  height: 100%;
   float: right;
 }
 
