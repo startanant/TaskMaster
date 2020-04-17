@@ -104,6 +104,7 @@ app.get('/api/getUserPassword/:email', async (req, res) => {
 app.post('/api/addUser', async (req, res) => {
     console.log(req.body);
     user = { ...user, ...req.body };
+    user.dashboards[0].owner = req.body.email;
     try {
         const response = await db.userprofile.create(user);
         res.json(response);
