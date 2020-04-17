@@ -199,7 +199,10 @@ function MainPage(props) {
                 user.dashboards[currentDashboard].columns[columnIndex].cards
             )
         );
-        user.dashboards[0].columns[columnIndex].cards.splice(cardIndex, 1);
+        user.dashboards[currentDashboard].columns[columnIndex].cards.splice(
+            cardIndex,
+            1
+        );
         console.log(
             'displaying user object after deletetion',
             JSON.stringify(
