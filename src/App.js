@@ -12,6 +12,7 @@ import Card from './components/Card/Card';
 import Column from './components/Column/Column';
 import MainPage from './components/MainPage/MainPage';
 import LoginPage from './components/LoginPage/LoginPage';
+import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home from './components/Home/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
@@ -35,6 +36,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={LoginPage} />
+                    <Route exact path="/register" component={RegisterPage} />
                     <PrivateRoute exact path="/projectdashboard" component={MainPage} />
                     <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
                     <PrivateRoute exact path="/settings" component={SettingsPage} />
