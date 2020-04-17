@@ -30,7 +30,7 @@ function App() {
 
         <Router>
             
-            <Header />
+            {/* <Header />
             <SideNav />
             <div className="main">
                 <Switch>
@@ -41,9 +41,25 @@ function App() {
                     <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
                     <PrivateRoute exact path="/settings" component={SettingsPage} />
                 </Switch>
-                {/*<Redirect from="*" to="/" /> */}
-             </div>  
+                <Redirect from="*" to="/" />
+             </div>   */}
             
+            <div className="taskmaster">
+                <div className="sideNav-container">
+                <SideNav />
+                </div>
+                <div className="main">
+                    <Header />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/login" component={LoginPage} />
+                        <Route exact path="/register" component={RegisterPage} />
+                        <PrivateRoute exact path="/projectdashboard" component={MainPage} />
+                        <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
+                        <PrivateRoute exact path="/settings" component={SettingsPage} />
+                    </Switch>
+                </div>
+            </div>  
         </Router>
 
         // <Wrapper>
