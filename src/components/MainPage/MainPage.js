@@ -335,7 +335,7 @@ function MainPage(props) {
                
     
                 <div className="dash-delete">
-                        <button type="button" class="btn-sm btn-danger">Delete</button>
+                    <button type="button" class="btn btn-sm btn-danger">Delete</button>
                 </div>
 
             </div>
