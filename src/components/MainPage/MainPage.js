@@ -342,7 +342,7 @@ function MainPage(props) {
                     </button>
                 </div>
             </div>
-
+            {/*
             <div style={dashboardControlStyle}>
                 <SwitchUser
                     currentUser={currentUser}
@@ -350,7 +350,7 @@ function MainPage(props) {
                     shared={allUsers ? allUsers : []}
                 />
             </div>
-            {/* <DashboardControl
+             <DashboardControl
                     dashboards={user.dashboards}
                     addDashboard={addDashboard}
                     switchDashboard={switchDashboard}
