@@ -44,6 +44,7 @@ function MainPage(props) {
     function addDashboard(name) {
         const newDashboard = {
             name: name,
+            owner: user.email,
             shared: [],
             columns: [],
         };
