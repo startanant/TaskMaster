@@ -1,0 +1,38 @@
+{
+
+    "email": "",
+    "name": "",
+    "firstname": "",
+    "lastname": "",
+    "password": "password_hash",
+    "user_settings": {
+        "theme": "light",
+        "profilePicUrl": "url"
+    },
+    "dashboards": [{
+        "name": "Dashboard 1",
+        "owner": "",
+        "shared": [],
+        "columns": [{
+            "name": "Column",
+            "columnid": "1",
+            "cards": [{
+                "title": "Card title",
+                "cardid": "1_1",
+                "duedate": "",
+                "lables": [
+                    "Important",
+                    "Medium",
+                    "Low"
+                ],
+                "description": "Your task description",
+                "asignee": [
+                    "",
+                    ""
+                ]
+            }]
+        }]
+    }],
+    "sharedToUser": [],
+    "sharedByUser": []
+}
