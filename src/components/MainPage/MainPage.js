@@ -316,7 +316,7 @@ function MainPage(props) {
                 </div>
             </div>
 
-            <div style={dashboardControlStyle}>
+            {/* <div style={dashboardControlStyle}>
                 <SwitchUser
                     currentUser={currentUser}
                     switchUser={switchUser}
@@ -326,13 +326,14 @@ function MainPage(props) {
                     dashboards={user.dashboards}
                     addDashboard={addDashboard}
                     switchDashboard={switchDashboard}
+                    sharedDashboardsNum={sharedToUser.length}
                 />
                 <InviteCard
                     uninviteUser={uninviteUser}
                     inviteUser={inviteUser}
                     sharedByUser={user.sharedByUser}
                 />
-            </div>
+            </div> */}
             <div id={props.id} className="project-column-wrapper">
                 {user.dashboards[currentDashboard].columns.map(
                     (element, index) => {
@@ -375,11 +376,11 @@ function MainPage(props) {
                     </button>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 {sharedToUser.length > 0 ? (
                     <SharedDashboardInfoPanel sharedDashboards={sharedToUser} />
                 ) : null}
-            </div>
+            </div> */}
         </div>
     );
 }
