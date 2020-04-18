@@ -181,6 +181,78 @@
   flex-direction: row-reverse;
 }
 
+.mytasks-header {
+  text-align: center;
+  line-height: 200px;
+  height: 200px;
+  background-color: #16141c;
+  font-size: 48px;
+  color: grey;
+}
+.mytasks-container {
+  background-color: #272727;
+  min-height: 100vh;
+  height: auto;
+  padding: 20px 60px 20px 60px;
+}
+
+.mytasks-dash {
+  background-color: #272727;
+  padding: 20px;
+  
+}
+.mytasks-dash-title {
+  color: whitesmoke;
+  margin-bottom: 20px;
+  padding: 0px;
+  border-bottom: solid black 2px;
+}
+
+.mytasks-column {
+  background-color: #272727;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;;
+}
+.mytasks-column-title {
+  color: whitesmoke;
+  border-bottom: solid black 2px;
+
+}
+.mytasks-card {
+  background-color: #16141c;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 20px 30px 20px 30px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.cardTitle {
+  display: inline-block;
+  padding: 5px;
+  width: 100px;
+  margin-right: 30px;
+  color: whitesmoke;
+}
+.cardDesc {
+  display: inline-block;
+  padding: 5px;
+  width: 300px;
+  height: auto;
+  margin-right: 30px;
+  color: whitesmoke;
+}
+.cardDueDate {
+  display: inline-block;
+  padding: 5px;
+  /* float: right; */
+  width: 100px;
+  color: whitesmoke;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
 
 
 
