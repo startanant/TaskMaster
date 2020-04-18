@@ -246,7 +246,7 @@
   display: inline-block;
   padding: 5px;
   /* float: right; */
-  width: 100px;
+  width: auto;
   color: whitesmoke;
   position: absolute;
   top: 20px;
