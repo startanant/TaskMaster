@@ -57,14 +57,7 @@ function MyTasksPage(){
       <div className="mytasks-header">
         My Tasks
       </div>
-      
-      {/* <h1>{testData[0].user.dashTitle}</h1>
-      <h2>{testData[0].user.columns[0].colTitle}</h2>
-      <h3>{testData[0].user.columns[0].cards[0].cardTitle}</h3>
-      <h3>{testData[0].user.columns[0].cards[0].cardDesc}</h3>
-      <h3>{testData[0].user.columns[0].cards[0].cardDueDate}</h3>
-      <br></br> */}
-
+  
       <div className="mytasks-container">
         <div className="mytasks-dash">
           <div className="mytasks-dash-title"><h4>Dashboard A</h4></div>
