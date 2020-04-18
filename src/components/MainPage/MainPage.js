@@ -9,13 +9,19 @@ import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboar
 
 function MainPage(props) {
     //console.log(props.location.state.email);
+    let email;
     const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
     const [sharedToUser, setSharedToUser] = useState([]);
     // const [sharedFromUser, setSharedFromUser] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
     // const [loop, setLoop] = useState(0);
     //const [currentUser, setCurrentUser] = useState('user@user.com');
-    const [currentUser, setCurrentUser] = useState(props.location.state.email);
+    if (props.location.state.email){
+        email = props.location.state.email;
+    } else {
+        email = localStorage.getItem('email') ? localStorage.getItem('email') : 'user@user.com';
+    }
+    const [currentUser, setCurrentUser] = useState(email);
     const [currentDashboard, setCurrentDashboard] = useState(0);
     const columnStyle = {
         backgroundColor: '#555',

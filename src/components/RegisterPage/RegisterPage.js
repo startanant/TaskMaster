@@ -46,36 +46,45 @@ function RegisterPage (props) {
 
     return (
         <div>
-            <div className="col-lg-8 offset-lg-2">
-                <h2>Register</h2>
-                <form name="form" >
-                    <div className="form-group">
-                        <label>First Name</label>
-                        <input type="text" name="firstName"  />
+            <div class="container">
+                <h1>User Registration</h1>
+                <div class="card">
+                    <div class="card-header">
+                        Register
                     </div>
-                    
-                </form>
-                <form name="form" >
-                    <div className="form-group">
-                        <label>Last Name</label>
-                        <input type="text" name="firstName" />
+                    <div class="card-body">
+                        <form role="form">
+                            <input type='hidden' id='db_id' value='' />
+                            <div class="form-group">
+                                <label for="name">First Name</label>
+                                {/* <input value={userData.name} onChange={handleInputChange} id='name' type="text" class="form-control" /> */}
+                                <input type="text" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                {/* <input
+                                    value={userData.email}
+                                    onChange={handleInputChange}
+                                    ref={inputEmail}
+                                    id="email" type="email" class="form-control" /> */}
+                                <input type="text" />
+                            </div>
+                            <div class="form-group">
+                                <label for="userPassword">Password</label>
+                                {/* <input
+                                    value={userData.password}
+                                    onChange={handleInputChange}
+                                    ref={inputPassword}
+                                    id="password" type="password" class="form-control" /> */}
+                                <input type="text" />
+                            </div>
+                            {/* <button onClick={registerUser} class="btn btn-primary submit" >Register</button> */}
+                            <button onClick={() => handleLogin()}>Register</button>
+                        </form>
                     </div>
-                </form>
-                <form name="form" >
-                    <div className="form-group">
-                        <label>Email</label>
-                        <input type="text" name="firstName" />
-                    </div>
-                </form>
-                <form name="form" >
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input type="text" name="firstName" />
-                    </div>
-                </form>
+                </div>
             </div>
-
-            <button onClick={() => handleLogin()}>Register</button>
+            
         </div>
     );
 

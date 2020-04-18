@@ -41,31 +41,46 @@ function LoginPage (props) {
     function handleLogin(){
         //m_login();
         login();
+        let email = 'justin@trudeau.com';
         // props.history.push('/projectdashboard');
+        localStorage.setItem('email', email);
         props.history.push({
             pathname: '/projectdashboard',
-            state: { email: 'justin@trudeau.com'}
+            state: { email: email}
         });
     }
 
     return (
         <div>
-            <h1>Sign in</h1>
-
-            <form name="form" >
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="text" name="firstName" />
+            <div class="container">
+                <h1>Login</h1>
+                <div class="card">
+                    <div class="card-header">
+                        Login
+                    </div>
+                    <div class="card-body">
+                        <form role="form">
+                            <input type='hidden' id='db_id' value='' />
+                            <div class="form-group">
+                                <label for="name">Email</label>
+                                {/* <input value={userData.name} onChange={handleInputChange} id='name' type="text" class="form-control" /> */}
+                                <input type="text" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Password</label>
+                                {/* <input
+                                    value={userData.email}
+                                    onChange={handleInputChange}
+                                    ref={inputEmail}
+                                    id="email" type="email" class="form-control" /> */}
+                                <input type="text" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
-            <form name="form" >
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="text" name="firstName" />
-                </div>
-            </form>
 
-            <button onClick={() => handleLogin()}>Click here to log in</button>
+                <button onClick={() => handleLogin()}>Click here to log in</button>
+            </div>
         </div>
     );
 
