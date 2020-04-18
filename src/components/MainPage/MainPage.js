@@ -220,6 +220,14 @@ function MainPage(props) {
         updateUserProfile(user);
     }
 
+    function assignToCard(cardid, colIndex, cardIndex) {
+        let asignee = document.getElementById(cardid);
+        user.dashboards[currentDashboard].columns[colIndex].cards[
+            cardIndex
+        ].asignee.push(asignee.value);
+        setUser({ ...user });
+    }
+
     async function updateCardsOnDrop(data) {
         console.log('updateCardsOnDrop function called...', data);
         user.dashboards[currentDashboard].columns[
@@ -365,13 +373,13 @@ function MainPage(props) {
                 </div>
             </div>
             {/**/}
-            {/* <div style={dashboardControlStyle}>
+            <div style={dashboardControlStyle}>
                 <SwitchUser
                     currentUser={currentUser}
                     switchUser={switchUser}
                     shared={allUsers ? allUsers : []}
                 />
-            </div> */}
+            </div>
             {/*
                 <DashboardControl
                     dashboards={user.dashboards}
@@ -403,6 +411,7 @@ function MainPage(props) {
                                 colIndex={index}
                                 deleteColumn={deleteColumn}
                                 saveCard={saveCard}
+                                assignToCard={assignToCard}
                                 updateCardsOnDrop={updateCardsOnDrop}
                                 shared={
                                     user.dashboards[currentDashboard].shared
