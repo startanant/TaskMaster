@@ -28,18 +28,7 @@ function MainPage(props) {
         const newColumn = {
             name: '',
             id: uuidv4(),
-            // columnid: user.dashboards[currentDashboard].columns.length + 1,
-            // colid: uuidv4(),
             cards: [],
-            //     {
-            //         title: 'Card1',
-            //         cardid: Math.random(),
-            //         duedate: '',
-            //         lables: ['Important', 'Medium', 'Low'],
-            //         description: 'some text',
-            //         asignee: ['', ''],
-            //     },
-            // ],
         };
         // columns.push(newColumn);
         user.dashboards[currentDashboard].columns.push(newColumn);
