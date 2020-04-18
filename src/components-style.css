@@ -5,7 +5,7 @@
   flex-direction: row;
 }
 .header {
-  height: 2px;
+  height: 0px;
   width: 100%;
   background-color: darkgray;
   
@@ -90,14 +90,59 @@
   width: 220px;
   float: left;
 } */
-/* .header-control {
-  width: 50%;
-  height: 100%;
-  float: left;
-} */
-.dash-nav-add {
-  width: 500px;
+
+.header-dashAddNav {
+  display: inline-block;
+  margin-right: 200px;
 }
+.header-team {
+  display: inline-block;
+  position: fixed;
+  top: 20px;
+  min-width: auto;
+  min-height: max-content;
+  text-align: center;
+  
+}
+.teamTitle {
+  display: inline-block;
+  margin-right: 10px;
+  color: whitesmoke;
+  font-size: 18px;
+}
+.invite-form {
+  display: inline-block;
+  
+  right: 0px;
+  
+}
+.addedUsers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.user {
+  margin-left: 5px;
+}
+.invite-form-container {
+  width: 320px;
+}
+
+
+
+.dash-nav-add {
+  width: 240px;
+}
+
+.header-control
+
+
+.team-add-container {
+  background-color: teal;
+}
+
+
 
 /* .header-invite {
   width: 50%;
@@ -132,10 +177,7 @@
   right: 30px;
 }
 
-.invite-form-container {
-  width: 320px;
-  /* float: right; */
-}
+
 
 .project-column-wrapper {
   background-color: grey;
@@ -246,7 +288,7 @@
   display: inline-block;
   padding: 5px;
   /* float: right; */
-  width: 100px;
+  width: auto;
   color: whitesmoke;
   position: absolute;
   top: 20px;

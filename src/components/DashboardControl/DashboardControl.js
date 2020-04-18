@@ -9,9 +9,38 @@ function DashboardControl(props) {
     return (
         <>
             <div className="dash-control-container">
-                <div className="dash-nav-add row">
+                <div className="dash-nav-add">
 
-                    <div class="btn-group col-4">
+                   
+                    <div className="input-group mb-3 dashAddInput">
+                        <input
+                            type="text"
+                            className="form-control form-control-sm"
+                            placeholder="new dashboard"
+                            aria-label="dashboard add"
+                            aria-describedby="dashboard add"
+                            ref={dashboardName}
+                        />
+                        <div class="input-group-append">
+                            <button
+                                className="btn btn-sm btn-secondary"
+                                type="button"
+                                onClick={() => {
+                                    if (dashboardName.current.value != '') {
+                                        props.addDashboard(
+                                            dashboardName.current.value
+                                        );
+                                    } else {
+                                        alert('Please add dashboard name');
+                                    }
+                                    console.log(dashboardName.current.value);
+                                }}
+                            >
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="btn-group">
                         <button 
                             type="button" 
                             class="btn btn-success dropdown-toggle" 
@@ -42,34 +71,8 @@ function DashboardControl(props) {
                             })}
                         </div>
                     </div>
-                    <div className="input-group mb-3 col-8 dashAddInput">
-                        <input
-                            type="text"
-                            className="form-control form-control-sm"
-                            placeholder="new dashboard"
-                            aria-label="dashboard add"
-                            aria-describedby="dashboard add"
-                            ref={dashboardName}
-                        />
-                        <div class="input-group-append">
-                            <button
-                                className="btn btn-sm btn-secondary"
-                                type="button"
-                                onClick={() => {
-                                    if (dashboardName.current.value != '') {
-                                        props.addDashboard(
-                                            dashboardName.current.value
-                                        );
-                                    } else {
-                                        alert('Please add dashboard name');
-                                    }
-                                    console.log(dashboardName.current.value);
-                                }}
-                            >
-                                Add
-                            </button>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
 
