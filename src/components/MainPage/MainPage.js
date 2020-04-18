@@ -311,7 +311,7 @@ function MainPage(props) {
     return (
         <div className="dashboard-main">
             <div className="dashboard-header">
-                <div className="header-control">
+                <div className="header-dashAddNav">
                     <DashboardControl
                         dashboards={user.dashboards}
                         addDashboard={addDashboard}
@@ -319,6 +319,25 @@ function MainPage(props) {
                         user={user}
                         currentDashboard={currentDashboard}
                     />
+                </div>
+                
+                <div className="header-team">
+                    <div className="teamTitle">Team Members</div>
+                    <div className="invite-form">
+                        <InviteCard
+                            uninviteUser={uninviteUser}
+                            inviteUser={inviteUser}
+                            sharedByUser={user.sharedByUser}
+                        />
+                    </div>
+                    <div className="addedUsers">
+                        
+                        <button type="button" class="btn btn-sm btn-primary user">James X</button>
+                        <button type="button" class="btn btn-sm btn-primary user">James X</button>
+                       
+                       
+                    </div>
+                    
                 </div>
                 <div className="dash-delete">
                     <button
