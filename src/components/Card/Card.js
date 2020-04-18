@@ -68,7 +68,13 @@ function Card(props) {
             <DueDate id={'date' + props.cardid} value={props.dueDate} />
             {/* <button>Close</button> */}
             <hr></hr>
-            <AssignCard id={'email' + props.cardid} shared={props.shared} />
+            <AssignCard
+                id={'email' + props.cardid}
+                shared={props.shared}
+                colIndex={props.colIndex}
+                cardIndex={props.cardIndex}
+                assignToCard={props.assignToCard}
+            />
         </>
     );
 }
