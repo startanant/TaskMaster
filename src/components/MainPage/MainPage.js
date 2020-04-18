@@ -46,6 +46,17 @@ function MainPage(props) {
         setUser({ ...user });
         updateUserProfile(user);
     }
+    function deleteDashboard() {
+        if (user.dashboards.length === 1) {
+            alert('Last dashboard cannot be deleted!');
+            return;
+        }
+
+        user.dashboards.splice(currentDashboard, 1);
+        setCurrentDashboard(0);
+        setUser({ ...user });
+        updateUserProfile(user);
+    }
     function addDashboard(name) {
         const newDashboard = {
             name: name,
@@ -72,7 +83,6 @@ function MainPage(props) {
     function addCard(columnIndex) {
         const newCard = {
             title: '',
-            cardid: Math.random(),
             id: uuidv4(),
             duedate: '',
             lables: ['Important', 'Medium', 'Low'],
@@ -180,7 +190,7 @@ function MainPage(props) {
         console.log(title.value, description.value, date.value);
         const updatedCard = {
             title: title.value ? title.value : '',
-            cardid: cardid,
+            id: cardid,
             duedate: date.value ? date.value : '',
             lables: ['Important', 'Medium', 'Low'],
             description: description.value ? description.value : '',
@@ -326,7 +336,6 @@ function MainPage(props) {
                 <div className="dash-info col-3">
                     <div className="dash-title">
                         <h3>{user.dashboards[currentDashboard].name}</h3>
-                        
                     </div>
                 </div>
                 <div className="team col-9">
@@ -340,7 +349,6 @@ function MainPage(props) {
                                 )}
                             )}
                         </div> */}
-
 
                         <InviteCard
                             uninviteUser={uninviteUser}
@@ -358,7 +366,11 @@ function MainPage(props) {
                 </div>
 
                 <div className="dash-delete">
-                    <button type="button" class="btn btn-sm btn-danger">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-danger"
+                        onClick={deleteDashboard}
+                    >
                         Delete
                     </button>
                 </div>
