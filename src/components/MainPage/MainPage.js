@@ -10,7 +10,13 @@ import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboar
 import { v4 as uuidv4 } from 'uuid';
 
 function MainPage(props) {
-    const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
+    const [user, setUser] = useState({
+        email: '',
+        name: '',
+        firstname: '',
+        lastname: '',
+        dashboards: [{ columns: [], shared: [] }],
+    });
     const [sharedToUser, setSharedToUser] = useState([]);
     // const [sharedFromUser, setSharedFromUser] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
@@ -328,7 +334,7 @@ function MainPage(props) {
                         currentDashboard={currentDashboard}
                     />
                 </div>
-                
+
                 <div className="header-team">
                     <div className="teamTitle">Team Members</div>
                     <div className="invite-form">
@@ -339,19 +345,43 @@ function MainPage(props) {
                         />
                     </div>
                     <div className="addedUsers">
-                        
-                        <button type="button" class="btn btn-sm btn-primary user">Barrack X</button>
-                        <button type="button" class="btn btn-sm btn-primary user">Donald X</button>
-                        <button type="button" class="btn btn-sm btn-primary user">Hillary X</button>
-                        <button type="button" class="btn btn-sm btn-primary user">Bernie X</button>
-                        {/* {user.dashboards[currentDashboard].shared.map( (element) => {
-                            return (
-                                <button type="button" class="btn btn-sm btn-primary user">{element} X</button>
-                            )
-                        })} */}
-                    
+                        {/* <button
+                            type="button"
+                            class="btn btn-sm btn-primary user"
+                        >
+                            Barrack X
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-sm btn-primary user"
+                        >
+                            Donald X
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-sm btn-primary user"
+                        >
+                            Hillary X
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-sm btn-primary user"
+                        >
+                            Bernie X
+                        </button> */}
+                        {user.dashboards[currentDashboard].shared.map(
+                            (element) => {
+                                return (
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary user"
+                                    >
+                                        {element} X
+                                    </button>
+                                );
+                            }
+                        )}
                     </div>
-                    
                 </div>
                 <div className="dash-delete">
                     <button
@@ -362,11 +392,8 @@ function MainPage(props) {
                         Delete
                     </button>
                 </div>
-
-
-
             </div>
-            
+
             {/**/}
             <div style={dashboardControlStyle}>
                 <SwitchUser
