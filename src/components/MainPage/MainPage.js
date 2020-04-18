@@ -326,7 +326,6 @@ function MainPage(props) {
                     </div>
                 </div>
                 <div className="team col-9">
-                    ===TEAM GOES HERE===
                     <div className="header-invite">
                         <InviteCard
                             uninviteUser={uninviteUser}

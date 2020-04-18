@@ -42,7 +42,7 @@ function InviteCard(props) {
             <div className="input-group mb-3">
                 <input 
                     type="text" 
-                    className="form-control" 
+                    className="form-control form-control-sm" 
                     placeholder="email" 
                     aria-label="invite email" 
                     aria-describedby="invite email"
@@ -51,7 +51,7 @@ function InviteCard(props) {
                 />
                 <div class="input-group-append">
                     <button 
-                        className="btn btn-secondary" 
+                        className="btn btn-sm btn-secondary" 
                         type="button"
                         onClick={() => {
                             props.inviteUser(email);
