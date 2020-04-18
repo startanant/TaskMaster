@@ -72,7 +72,6 @@ function MainPage(props) {
     function addCard(columnIndex) {
         const newCard = {
             title: '',
-            cardid: Math.random(),
             id: uuidv4(),
             duedate: '',
             lables: ['Important', 'Medium', 'Low'],
@@ -180,7 +179,7 @@ function MainPage(props) {
         console.log(title.value, description.value, date.value);
         const updatedCard = {
             title: title.value ? title.value : '',
-            cardid: cardid,
+            id: cardid,
             duedate: date.value ? date.value : '',
             lables: ['Important', 'Medium', 'Low'],
             description: description.value ? description.value : '',
@@ -326,7 +325,6 @@ function MainPage(props) {
                 <div className="dash-info col-3">
                     <div className="dash-title">
                         <h3>{user.dashboards[currentDashboard].name}</h3>
-                        
                     </div>
                 </div>
                 <div className="team col-9">
@@ -340,7 +338,6 @@ function MainPage(props) {
                                 )}
                             )}
                         </div> */}
-
 
                         <InviteCard
                             uninviteUser={uninviteUser}

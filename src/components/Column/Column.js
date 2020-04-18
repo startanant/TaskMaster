@@ -136,7 +136,7 @@ function Column(props) {
                         cardIndex={index}
                         colIndex={props.colIndex}
                         deleteCard={props.deleteCard}
-                        cardid={element.cardid}
+                        cardid={element.id}
                         saveCard={props.saveCard}
                         key={uuidv4()}
                         show={show}
