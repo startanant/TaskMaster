@@ -70,7 +70,7 @@ function MainPage(props) {
 
     function updateDashboard(dashboardIndex) {}
     function deleteColumn(colIndex) {
-        console.log('function deleteColumn called', colIndex);
+        // console.log('function deleteColumn called', colIndex);
         user.dashboards[currentDashboard].columns.splice(colIndex, 1);
         setUser({ ...user });
         updateUserProfile(user);
@@ -124,11 +124,11 @@ function MainPage(props) {
                 dashboards: [currentDashboard.toString()],
             });
         }
-        console.log(
-            'loggin result from fiding user in shared array',
-            userIndex
-        );
-        console.log(user.sharedByUser[userIndex]);
+        // console.log(
+        //     'loggin result from fiding user in shared array',
+        //     userIndex
+        // );
+        // console.log(user.sharedByUser[userIndex]);
 
         await setUser({ ...user });
         await updateUserProfile(user);
@@ -136,7 +136,7 @@ function MainPage(props) {
     }
 
     async function uninviteUser(email) {
-        console.log('uninviteUSer function called with email', email);
+        // console.log('uninviteUSer function called with email', email);
         const userIndex = user.sharedByUser.findIndex(
             (element) => element.to == `${email}`
         );
@@ -199,28 +199,28 @@ function MainPage(props) {
     }
 
     function deleteCard(columnIndex, cardIndex) {
-        console.log('function deleteCard called!', columnIndex, cardIndex);
-        console.log(
-            'displaying user object before deletetion',
-            JSON.stringify(
-                user.dashboards[currentDashboard].columns[columnIndex].cards
-            )
-        );
+        // console.log('function deleteCard called!', columnIndex, cardIndex);
+        // console.log(
+        //     'displaying user object before deletetion',
+        //     JSON.stringify(
+        //         user.dashboards[currentDashboard].columns[columnIndex].cards
+        //     )
+        // );
         user.dashboards[currentDashboard].columns[columnIndex].cards.splice(
             cardIndex,
             1
         );
-        console.log(
-            'displaying user object after deletetion',
-            JSON.stringify(
-                user.dashboards[currentDashboard].columns[columnIndex].cards
-            )
-        );
+        // console.log(
+        //     'displaying user object after deletetion',
+        //     JSON.stringify(
+        //         user.dashboards[currentDashboard].columns[columnIndex].cards
+        //     )
+        // );
         setUser({ ...user });
         updateUserProfile(user);
     }
     function updateColumnTitle(index, title) {
-        console.log('function updateColumnTitle called', index, title);
+        // console.log('function updateColumnTitle called', index, title);
         user.dashboards[currentDashboard].columns[index].name = title;
         setUser({ ...user });
         updateUserProfile(user);
@@ -269,7 +269,7 @@ function MainPage(props) {
                 'Content-Type': 'application/json',
             },
         }).then((response) => response.json());
-        console.log(result);
+        // console.log(result);
     }
 
     async function getUser(email) {
@@ -287,7 +287,7 @@ function MainPage(props) {
         console.log('loggin getUser response from server: ', result);
         const user = result[0][0];
         const sharedTo = result[1];
-        console.log('LOGGING getUSer call sharedTo', sharedTo);
+        // console.log('LOGGING getUSer call sharedTo', sharedTo);
         // const sharedFrom = result[2];
         // console.log('logging sharedTo', sharedTo);
         // console.log('logging sharedFrom', sharedFrom);
@@ -345,30 +345,6 @@ function MainPage(props) {
                         />
                     </div>
                     <div className="addedUsers">
-                        {/* <button
-                            type="button"
-                            class="btn btn-sm btn-primary user"
-                        >
-                            Barrack X
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-sm btn-primary user"
-                        >
-                            Donald X
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-sm btn-primary user"
-                        >
-                            Hillary X
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-sm btn-primary user"
-                        >
-                            Bernie X
-                        </button> */}
                         {user.dashboards[currentDashboard].shared.map(
                             (element) => {
                                 return (
