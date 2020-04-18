@@ -3,7 +3,21 @@ import React from 'react';
 
 function MyTasksPage(){
   return (
-    <>[MY TASKS PAGE]</>
+    <>
+      <div className="mytasks-header">HEADER</div>
+      <div className="mytasks-main">
+        <div className="mytasks-dash">
+          Dashboard
+          <div className="mytasks-column">
+            Column
+            <div className="mytasks-column">
+              Card
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </>
   )
 } 
 

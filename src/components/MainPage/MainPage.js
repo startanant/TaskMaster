@@ -3,6 +3,7 @@ import '../../components-style.css';
 import Column from '../Column/Column';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import InviteCard from '../InviteCard/InviteCard';
+import SharedWith from '../SharedWith/SharedWith';
 import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
@@ -16,6 +17,7 @@ function MainPage(props) {
     // const [loop, setLoop] = useState(0);
     const [currentUser, setCurrentUser] = useState('user@user.com');
     const [currentDashboard, setCurrentDashboard] = useState(0);
+    const shared = user.dashboards[currentDashboard].shared;
     const columnStyle = {
         backgroundColor: '#555',
         width: '250px',
@@ -324,16 +326,34 @@ function MainPage(props) {
                 <div className="dash-info col-3">
                     <div className="dash-title">
                         <h3>{user.dashboards[currentDashboard].name}</h3>
+                        
                     </div>
                 </div>
                 <div className="team col-9">
-                    ===TEAM GOES HERE===
-                    <div className="header-invite">
+                    <div className="team-names row">
+                        {/* <SharedWith shared={user.dashboards[currentDashboard].shared}/>             */}
+                        {/* <h5><span class="badge badge-secondary">{user.dashboards[currentDashboard].shared}</span></h5> */}
+                        {/* <div className="name-badges">
+                            {user.dashboards[currentDashboard].shared.map( 
+                                (email) => {return (
+                                <h5><span class="badge badge-primary">{email}</span></h5>
+                                )}
+                            )}
+                        </div> */}
+
+
                         <InviteCard
                             uninviteUser={uninviteUser}
                             inviteUser={inviteUser}
                             sharedByUser={user.sharedByUser}
                         />
+                    </div>
+                    <div className="header-invite">
+                        {/* <InviteCard
+                            uninviteUser={uninviteUser}
+                            inviteUser={inviteUser}
+                            sharedByUser={user.sharedByUser}
+                        /> */}
                     </div>
                 </div>
 
