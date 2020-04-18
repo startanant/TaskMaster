@@ -1,6 +1,54 @@
 import React, { useState, useEffect } from 'react';
 
-//import './components-style.css';
+const testData = [
+    {
+        user: {
+            dashTitle: 'Dashboard A',
+            columns: [
+                {
+                    colTitle: 'Column X',
+                    cards: [
+                        {
+                            cardTitle: 'Card X 1',
+                            cardDesc: 'This is the description for card X 1',
+                            cardDueDate: 'April 19/20',
+                        },
+                        {
+                            cardTitle: 'Card X 2',
+                            cardDesc: 'This is the description for card X 2',
+                            cardDueDate: 'April 19/20',
+                        },
+                        {
+                            cardTitle: 'Card X 1',
+                            cardDesc: 'This is the description for card X 3',
+                            cardDueDate: 'April 19/20',
+                        },
+                    ],
+                },
+                {
+                    colTitle: 'Column Y',
+                    cards: [
+                        {
+                            cardTitle: 'Card Y 1',
+                            cardDesc: 'This is the description for card Y 1',
+                            cardDueDate: 'April 19/20',
+                        },
+                        {
+                            cardTitle: 'Card X 2',
+                            cardDesc: 'This is the description for card Y 2',
+                            cardDueDate: 'April 19/20',
+                        },
+                        {
+                            cardTitle: 'Card X 1',
+                            cardDesc: 'This is the description for card Y 3',
+                            cardDueDate: 'April 19/20',
+                        },
+                    ],
+                },
+            ],
+        },
+    },
+];
 
 function MyTasksPage() {
     const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
@@ -30,45 +78,109 @@ function MyTasksPage() {
     }, []);
     return (
         <>
-            <div className="mytasks-header">HEADER</div>
-            <div className="mytasks-main">
-                <div className="mytasks-dash">
-                    {user.dashboards.map((dashboard) => {
-                        return (
-                            <>
-                                <div>{dashboard.name}</div>
+            {user.dashboards.map((dashboard) => {
+                return (
+                    <>
+                        <div>{dashboard.name}</div>
+                        {dashboard.columns.map((column) => {
+                            return (
+                                <>
+                                    <div>{column.name}</div>
+                                    {column.cards.map((card) => {
+                                        return (
+                                            <>
+                                                <p>Card Title: {card.title}</p>
+                                                <p>
+                                                    Card description:{' '}
+                                                    {card.description}
+                                                </p>
+                                                <p>
+                                                    Card due date:{' '}
+                                                    {card.duedate}
+                                                </p>
+                                            </>
+                                        );
+                                    })}
+                                </>
+                            );
+                        })}
+                    </>
+                );
+            })}
+            <div className="mytasks-header">My Tasks</div>
+
+            <div className="mytasks-container">
+                {user.dashboards.map((dashboard) => {
+                    return (
+                        <>
+                            <div className="mytasks-dash">
+                                <div className="mytasks-dash-title">
+                                    <h4>{dashboard.name}</h4>
+                                </div>
                                 {dashboard.columns.map((column) => {
                                     return (
-                                        <>
-                                            <div>{column.name}</div>
+                                        <div className="mytasks-column">
+                                            <div className="mytasks-column-title">
+                                                <h6>{column.name}</h6>
+                                            </div>
                                             {column.cards.map((card) => {
                                                 return (
-                                                    <>
-                                                        <p>
-                                                            Card Title:{' '}
+                                                    <div className="mytasks-card">
+                                                        <div className="cardTitle">
                                                             {card.title}
-                                                        </p>
-                                                        <p>
-                                                            Card description:{' '}
-                                                            {card.description}
-                                                        </p>
-                                                        <p>
-                                                            Card due date:{' '}
-                                                            {card.duedate}
-                                                        </p>
-                                                    </>
+                                                        </div>
+                                                    </div>
                                                 );
                                             })}
-                                        </>
+                                        </div>
                                     );
                                 })}
-                            </>
-                        );
-                    })}
+                            </div>
+                        </>
+                    );
+                })}
+                <div className="mytasks-dash">
+                    <div className="mytasks-dash-title">
+                        <h4>Dashboard A</h4>
+                    </div>
+                    <div className="mytasks-column">
+                        <div className="mytasks-column-title">
+                            <h6>Column X</h6>
+                        </div>
+                        <div className="mytasks-card">
+                            <div className="cardTitle">Card 1</div>
+                            <div className="cardDesc">
+                                description description description{' '}
+                            </div>
+                            <div className="cardDueDate">April 20/20</div>
+                        </div>
+                        <div className="mytasks-card">
+                            <div className="cardTitle">Card 2</div>
+                            <div className="cardDesc">
+                                description description description{' '}
+                            </div>
+                            <div className="cardDueDate">April 21/20</div>
+                        </div>
+                    </div>
 
                     <div className="mytasks-column">
-                        Column
-                        <div className="mytasks-column">Card</div>
+                        <div className="mytasks-column-title">
+                            <h6>Column Y</h6>
+                        </div>
+                        <div className="mytasks-card">
+                            <div className="cardTitle">Card 1</div>
+                            <div className="cardDesc">
+                                description description description{' '}
+                            </div>
+                            <div className="cardDueDate">April 20/20</div>
+                        </div>
+                        <div className="mytasks-card">
+                            <div className="cardTitle">Card 2</div>
+                            <div className="cardDesc">
+                                description description description{' '}
+                            </div>
+                            <div className="cardDueDate">April 21/20</div>
+                        </div>
                     </div>
                 </div>
             </div>
