@@ -16,19 +16,18 @@
         "shared": [],
         "columns": [{
             "name": "Column",
-            "id": "1",
+            "id": "",
             "columnid": "1",
             "cards": [{
-                "title": "Card title",
-                "cardid": "1_1",
-                "id": "1_1",
+                "title": "",
+                "id": "",
                 "duedate": "",
                 "lables": [
                     "Important",
                     "Medium",
                     "Low"
                 ],
-                "description": "Your task description",
+                "description": "",
                 "asignee": [
                     "",
                     ""
