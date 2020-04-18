@@ -185,42 +185,46 @@
   text-align: center;
   line-height: 200px;
   height: 200px;
-  background-color: cadetblue;
+  background-color: #16141c;
   font-size: 48px;
+  color: grey;
 }
 .mytasks-container {
-  background-color: cornflowerblue;
-  height: 100vh;
-  padding: 60px;
+  background-color: #272727;
+  min-height: 100vh;
+  height: auto;
+  padding: 20px 60px 20px 60px;
 }
 
 .mytasks-dash {
-  background-color: cornsilk;
-  margin-bottom: 20px;
+  background-color: #272727;
   padding: 20px;
   
 }
 .mytasks-dash-title {
-  background-color: cornsilk;
+  color: whitesmoke;
   margin-bottom: 20px;
   padding: 0px;
   border-bottom: solid black 2px;
 }
 
 .mytasks-column {
-  background-color: tomato;
-  padding: 10px;
+  background-color: #272727;
+  padding: 10px 20px 10px 20px;
   margin-bottom: 10px;;
 }
 .mytasks-column-title {
-  border:  solid black 2px;
+  color: whitesmoke;
+  border-bottom: solid black 2px;
+
 }
 .mytasks-card {
-  background-color: teal;
+  background-color: #16141c;
   margin-top: 10px;
   margin-bottom: 5px;
-  padding: 10px 20px 10px 20px;
+  padding: 20px 30px 20px 30px;
   position: relative;
+  border-radius: 10px;
 }
 
 .cardTitle {
@@ -228,7 +232,7 @@
   padding: 5px;
   width: 100px;
   margin-right: 30px;
-  background-color: burlywood;
+  color: whitesmoke;
 }
 .cardDesc {
   display: inline-block;
@@ -236,16 +240,16 @@
   width: 300px;
   height: auto;
   margin-right: 30px;
-  background-color: burlywood;
+  color: whitesmoke;
 }
 .cardDueDate {
   display: inline-block;
   padding: 5px;
   /* float: right; */
   width: 100px;
-  background-color: burlywood;
+  color: whitesmoke;
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 30px;
 }
 
