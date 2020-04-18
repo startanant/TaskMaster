@@ -41,9 +41,9 @@ function Draggable(props) {
             >
                 <i class="far fa-save"></i>
             </button> */}
-            {/* <button onClick={() => props.handleModalOpen()}>
+            <button onClick={() => props.handleModalOpen()}>
                 <i class="far fa-edit"></i>
-            </button> */}
+            </button>
             {/* <div className={showHideClassName}>{props.children}</div> */}
             {props.children}
         </div>

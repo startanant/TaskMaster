@@ -331,8 +331,8 @@ function MainPage(props) {
                 </div>
                 <div className="team col-9">
                     <div className="team-names row">
-                        <SharedWith shared={user.dashboards[currentDashboard].shared}/>            
-                        <h5><span class="badge badge-secondary">{user.dashboards[currentDashboard].shared}</span></h5>
+                        {/* <SharedWith shared={user.dashboards[currentDashboard].shared}/>             */}
+                        {/* <h5><span class="badge badge-secondary">{user.dashboards[currentDashboard].shared}</span></h5> */}
                         {/* <div className="name-badges">
                             {user.dashboards[currentDashboard].shared.map( 
                                 (email) => {return (
