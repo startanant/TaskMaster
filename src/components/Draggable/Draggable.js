@@ -27,13 +27,13 @@ function Draggable(props) {
                 props.saveCard(props.cardid, props.colIndex, props.cardIndex)
             }
         >
-            <button
+            {/* <button
                 onClick={() =>
                     props.deleteCard(props.colIndex, props.cardIndex)
                 }
             >
                 <i class="far fa-trash-alt"></i>
-            </button>
+            </button> */}
             {/* <button
                 onClick={() =>
                     props.saveCard(props.cardid, props.colIndex, props.index)
