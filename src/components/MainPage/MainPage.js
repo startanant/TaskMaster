@@ -332,10 +332,16 @@ function MainPage(props) {
                     </div>
                     <div className="addedUsers">
                         
-                        <button type="button" class="btn btn-sm btn-primary user">James X</button>
-                        <button type="button" class="btn btn-sm btn-primary user">James X</button>
-                       
-                       
+                        <button type="button" class="btn btn-sm btn-primary user">Barrack X</button>
+                        <button type="button" class="btn btn-sm btn-primary user">Donald X</button>
+                        <button type="button" class="btn btn-sm btn-primary user">Hillary X</button>
+                        <button type="button" class="btn btn-sm btn-primary user">Bernie X</button>
+                        {/* {user.dashboards[currentDashboard].shared.map( (element) => {
+                            return (
+                                <button type="button" class="btn btn-sm btn-primary user">{element} X</button>
+                            )
+                        })} */}
+                    
                     </div>
                     
                 </div>
@@ -352,42 +358,7 @@ function MainPage(props) {
 
 
             </div>
-            <div className="dashboard-subHeader row">
-                <div className="dash-info col-3">
-                    <div className="dash-title">
-                        <h3>{user.dashboards[currentDashboard].name}</h3>
-                        <h5><span class="badge badge-secondary">James X</span></h5>
-                    </div>
-                </div>
-                <div className="team col-9">
-                    <div className="team-names row">
-                        {/* <SharedWith shared={user.dashboards[currentDashboard].shared}/>             */}
-                        {/* <h5><span class="badge badge-secondary">{user.dashboards[currentDashboard].shared}</span></h5> */}
-                        {/* <div className="name-badges">
-                            {user.dashboards[currentDashboard].shared.map( 
-                                (email) => {return (
-                                <h5><span class="badge badge-primary">{email}</span></h5>
-                                )}
-                            )}
-                        </div> */}
-
-                        <InviteCard
-                            uninviteUser={uninviteUser}
-                            inviteUser={inviteUser}
-                            sharedByUser={user.sharedByUser}
-                        />
-                    </div>
-                    <div className="header-invite">
-                        {/* <InviteCard
-                            uninviteUser={uninviteUser}
-                            inviteUser={inviteUser}
-                            sharedByUser={user.sharedByUser}
-                        /> */}
-                    </div>
-                </div>
-
-               
-            </div>
+            
             {/**/}
             {/* <div style={dashboardControlStyle}>
                 <SwitchUser
