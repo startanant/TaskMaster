@@ -311,7 +311,7 @@ function MainPage(props) {
     return (
         <div className="dashboard-main">
             <div className="dashboard-header">
-                <div className="header-control">
+                <div className="header-dashAddNav">
                     <DashboardControl
                         dashboards={user.dashboards}
                         addDashboard={addDashboard}
@@ -320,40 +320,31 @@ function MainPage(props) {
                         currentDashboard={currentDashboard}
                     />
                 </div>
-            </div>
-            <div className="dashboard-subHeader row">
-                <div className="dash-info col-3">
-                    <div className="dash-title">
-                        <h3>{user.dashboards[currentDashboard].name}</h3>
-                    </div>
-                </div>
-                <div className="team col-9">
-                    <div className="team-names row">
-                        {/* <SharedWith shared={user.dashboards[currentDashboard].shared}/>             */}
-                        {/* <h5><span class="badge badge-secondary">{user.dashboards[currentDashboard].shared}</span></h5> */}
-                        {/* <div className="name-badges">
-                            {user.dashboards[currentDashboard].shared.map( 
-                                (email) => {return (
-                                <h5><span class="badge badge-primary">{email}</span></h5>
-                                )}
-                            )}
-                        </div> */}
-
+                
+                <div className="header-team">
+                    <div className="teamTitle">Team Members</div>
+                    <div className="invite-form">
                         <InviteCard
                             uninviteUser={uninviteUser}
                             inviteUser={inviteUser}
                             sharedByUser={user.sharedByUser}
                         />
                     </div>
-                    <div className="header-invite">
-                        {/* <InviteCard
-                            uninviteUser={uninviteUser}
-                            inviteUser={inviteUser}
-                            sharedByUser={user.sharedByUser}
-                        /> */}
+                    <div className="addedUsers">
+                        
+                        <button type="button" class="btn btn-sm btn-primary user">Barrack X</button>
+                        <button type="button" class="btn btn-sm btn-primary user">Donald X</button>
+                        <button type="button" class="btn btn-sm btn-primary user">Hillary X</button>
+                        <button type="button" class="btn btn-sm btn-primary user">Bernie X</button>
+                        {/* {user.dashboards[currentDashboard].shared.map( (element) => {
+                            return (
+                                <button type="button" class="btn btn-sm btn-primary user">{element} X</button>
+                            )
+                        })} */}
+                    
                     </div>
+                    
                 </div>
-
                 <div className="dash-delete">
                     <button
                         type="button"
@@ -363,7 +354,11 @@ function MainPage(props) {
                         Delete
                     </button>
                 </div>
+
+
+
             </div>
+            
             {/**/}
             {/* <div style={dashboardControlStyle}>
                 <SwitchUser
