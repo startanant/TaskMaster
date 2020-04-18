@@ -26,8 +26,8 @@ function MainPage(props) {
         const newColumn = {
             name: '',
             id: uuidv4(),
-            columnid: user.dashboards[currentDashboard].columns.length + 1,
-            colid: uuidv4(),
+            // columnid: user.dashboards[currentDashboard].columns.length + 1,
+            // colid: uuidv4(),
             cards: [],
             //     {
             //         title: 'Card1',
@@ -227,6 +227,7 @@ function MainPage(props) {
         const movedCard = {
             title: data.toAdd.title,
             // cardid: cardid,
+            id: uuidv4(),
             duedate: data.toAdd.duedate,
             lables: ['Important', 'Medium', 'Low'],
             description: data.toAdd.description,

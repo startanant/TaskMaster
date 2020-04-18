@@ -33,6 +33,7 @@ function Column(props) {
         e.target.appendChild(toDrop);
         // console.log('dropped element', document.getElementById(data));
         let droppedCard = document.getElementById(data);
+        console.log('DROPPED CARD:', droppedCard);
         console.log(
             'dropped card dataset',
             'colIndex: ',
@@ -43,15 +44,16 @@ function Column(props) {
         console.log(
             `dropped card content on column ${props.colIndex}`,
             'TITLE',
-            droppedCard.children[1].children[0].value
+            droppedCard.children[1].children[1].children[0].children[0]
+                .children[0].children[0].value
         );
         console.log(
             'dropped card content DESCRIPTION',
-            droppedCard.children[1].children[2].value
+            droppedCard.children[3].children[0].children[0].children[0].value
         );
         console.log(
             'dropped card content DUE DATE',
-            droppedCard.children[1].children[4].value
+            droppedCard.children[5].value
         );
         // console.log('dropped card children', droppedCard.children[1].children);
         // document.removeChild(document.getElementById(data));
@@ -62,9 +64,13 @@ function Column(props) {
         let dataToPass = {
             toAdd: {
                 colIndex: props.colIndex,
-                title: droppedCard.children[1].children[0].value,
-                description: droppedCard.children[1].children[2].value,
-                duedate: droppedCard.children[1].children[4].value,
+                title:
+                    droppedCard.children[1].children[1].children[0].children[0]
+                        .children[0].children[0].value,
+                description:
+                    droppedCard.children[3].children[0].children[0].children[0]
+                        .value,
+                duedate: droppedCard.children[5].value,
             },
             toRemove: {
                 colIndex: droppedCard.dataset.colindex,
@@ -138,11 +144,10 @@ function Column(props) {
                         handleModalOpen={showModal}
                     >
                         <Card
-                            text={value}
                             title={element.title}
                             dueDate={element.duedate}
                             description={element.description}
-                            cardid={element.cardid}
+                            cardid={element.id}
                             columnid={props.colid}
                             key={uuidv4()}
                             shared={props.shared}
