@@ -45,7 +45,7 @@ function DashboardControl(props) {
                     <div className="input-group mb-3 col-8 dashAddInput">
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control form-control-sm"
                             placeholder="new dashboard"
                             aria-label="dashboard add"
                             aria-describedby="dashboard add"
@@ -53,7 +53,7 @@ function DashboardControl(props) {
                         />
                         <div class="input-group-append">
                             <button
-                                className="btn btn-secondary"
+                                className="btn btn-sm btn-secondary"
                                 type="button"
                                 onClick={() => {
                                     if (dashboardName.current.value != '') {
