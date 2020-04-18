@@ -46,6 +46,17 @@ function MainPage(props) {
         setUser({ ...user });
         updateUserProfile(user);
     }
+    function deleteDashboard() {
+        if (user.dashboards.length === 1) {
+            alert('Last dashboard cannot be deleted!');
+            return;
+        }
+
+        user.dashboards.splice(currentDashboard, 1);
+        setCurrentDashboard(0);
+        setUser({ ...user });
+        updateUserProfile(user);
+    }
     function addDashboard(name) {
         const newDashboard = {
             name: name,
@@ -355,7 +366,11 @@ function MainPage(props) {
                 </div>
 
                 <div className="dash-delete">
-                    <button type="button" class="btn btn-sm btn-danger">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-danger"
+                        onClick={deleteDashboard}
+                    >
                         Delete
                     </button>
                 </div>
