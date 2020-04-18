@@ -320,11 +320,24 @@ function MainPage(props) {
                         currentDashboard={currentDashboard}
                     />
                 </div>
+                <div className="dash-delete">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-danger"
+                        onClick={deleteDashboard}
+                    >
+                        Delete
+                    </button>
+                </div>
+
+
+
             </div>
             <div className="dashboard-subHeader row">
                 <div className="dash-info col-3">
                     <div className="dash-title">
                         <h3>{user.dashboards[currentDashboard].name}</h3>
+                        <h5><span class="badge badge-secondary">James X</span></h5>
                     </div>
                 </div>
                 <div className="team col-9">
@@ -354,15 +367,7 @@ function MainPage(props) {
                     </div>
                 </div>
 
-                <div className="dash-delete">
-                    <button
-                        type="button"
-                        class="btn btn-sm btn-danger"
-                        onClick={deleteDashboard}
-                    >
-                        Delete
-                    </button>
-                </div>
+               
             </div>
             {/**/}
             {/* <div style={dashboardControlStyle}>

@@ -5,7 +5,7 @@
   flex-direction: row;
 }
 .header {
-  height: 2px;
+  height: 0px;
   width: 100%;
   background-color: darkgray;
   
@@ -96,7 +96,8 @@
   float: left;
 } */
 .dash-nav-add {
-  width: 500px;
+  width: 240px;
+
 }
 
 /* .header-invite {
