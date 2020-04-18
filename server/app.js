@@ -7,6 +7,8 @@ const mailjet = require('node-mailjet').connect(
 const axios = require('axios');
 const app = express();
 const qs = require('qs');
+const { uuid } = require('uuidv4');
+// import { v4 as uuidv4 } from 'uuid';
 let db = require('./models');
 let user = require('./user.json');
 // let sharedDashboard = require('./shared.json');
@@ -112,6 +114,9 @@ app.post('/api/addUser', async (req, res) => {
     console.log(req.body);
     user = { ...user, ...req.body };
     user.dashboards[0].owner = req.body.email;
+    user.dashboards[0].id = uuid();
+    user.dashboards[0].columns[0].id = uuid();
+    user.dashboards[0].columns[0].cards[0].id = uuid();
     try {
         const response = await db.userprofile.create(user);
         res.json(response);

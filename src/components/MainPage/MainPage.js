@@ -3,6 +3,7 @@ import '../../components-style.css';
 import Column from '../Column/Column';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import InviteCard from '../InviteCard/InviteCard';
+import SharedWith from '../SharedWith/SharedWith';
 import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
@@ -16,6 +17,7 @@ function MainPage(props) {
     // const [loop, setLoop] = useState(0);
     const [currentUser, setCurrentUser] = useState('user@user.com');
     const [currentDashboard, setCurrentDashboard] = useState(0);
+    const shared = user.dashboards[currentDashboard].shared;
     const columnStyle = {
         backgroundColor: '#555',
         width: '250px',
@@ -26,8 +28,8 @@ function MainPage(props) {
         const newColumn = {
             name: '',
             id: uuidv4(),
-            columnid: user.dashboards[currentDashboard].columns.length + 1,
-            colid: uuidv4(),
+            // columnid: user.dashboards[currentDashboard].columns.length + 1,
+            // colid: uuidv4(),
             cards: [],
             //     {
             //         title: 'Card1',
@@ -227,6 +229,7 @@ function MainPage(props) {
         const movedCard = {
             title: data.toAdd.title,
             // cardid: cardid,
+            id: uuidv4(),
             duedate: data.toAdd.duedate,
             lables: ['Important', 'Medium', 'Low'],
             description: data.toAdd.description,
@@ -323,12 +326,22 @@ function MainPage(props) {
                 <div className="dash-info col-3">
                     <div className="dash-title">
                         <h3>{user.dashboards[currentDashboard].name}</h3>
+                        
                     </div>
                 </div>
                 <div className="team col-9">
                     <div className="team-names row">
-                        <h5><span class="badge badge-secondary">James</span></h5>
-                        <h5><span class="badge badge-secondary">Anant</span></h5>
+                        <SharedWith shared={user.dashboards[currentDashboard].shared}/>            
+                        <h5><span class="badge badge-secondary">{user.dashboards[currentDashboard].shared}</span></h5>
+                        {/* <div className="name-badges">
+                            {user.dashboards[currentDashboard].shared.map( 
+                                (email) => {return (
+                                <h5><span class="badge badge-primary">{email}</span></h5>
+                                )}
+                            )}
+                        </div> */}
+
+
                         <InviteCard
                             uninviteUser={uninviteUser}
                             inviteUser={inviteUser}
@@ -350,20 +363,23 @@ function MainPage(props) {
                     </button>
                 </div>
             </div>
-            {/*
-            <div style={dashboardControlStyle}>
+            {/**/}
+            {/* <div style={dashboardControlStyle}>
                 <SwitchUser
                     currentUser={currentUser}
                     switchUser={switchUser}
                     shared={allUsers ? allUsers : []}
                 />
-            </div>
-             <DashboardControl
+            </div> */}
+            {/*
+                <DashboardControl
                     dashboards={user.dashboards}
                     addDashboard={addDashboard}
                     switchDashboard={switchDashboard}
                     sharedDashboardsNum={sharedToUser.length}
                 />
+            
+            
                 <InviteCard
                     uninviteUser={uninviteUser}
                     inviteUser={inviteUser}

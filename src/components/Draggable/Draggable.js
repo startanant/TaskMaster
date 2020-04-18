@@ -27,13 +27,13 @@ function Draggable(props) {
                 props.saveCard(props.cardid, props.colIndex, props.cardIndex)
             }
         >
-            <button
+            {/* <button
                 onClick={() =>
                     props.deleteCard(props.colIndex, props.cardIndex)
                 }
             >
                 <i class="far fa-trash-alt"></i>
-            </button>
+            </button> */}
             {/* <button
                 onClick={() =>
                     props.saveCard(props.cardid, props.colIndex, props.index)
@@ -41,9 +41,9 @@ function Draggable(props) {
             >
                 <i class="far fa-save"></i>
             </button> */}
-            <button onClick={() => props.handleModalOpen()}>
+            {/* <button onClick={() => props.handleModalOpen()}>
                 <i class="far fa-edit"></i>
-            </button>
+            </button> */}
             {/* <div className={showHideClassName}>{props.children}</div> */}
             {props.children}
         </div>

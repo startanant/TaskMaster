@@ -70,12 +70,14 @@
   width: 90%;
   height: 100%;  
   
+  
 } 
 
 .dashboard-main {
   overflow-x: auto;
   overflow-y: scroll;
   white-space: nowrap;
+  background-color: grey;
 }
 .dashboard-header {
   height: auto;
