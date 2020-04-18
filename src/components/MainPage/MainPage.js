@@ -326,12 +326,21 @@ function MainPage(props) {
                     </div>
                 </div>
                 <div className="team col-9">
-                    <div className="header-invite">
+                    <div className="team-names row">
+                        <h5><span class="badge badge-secondary">James</span></h5>
+                        <h5><span class="badge badge-secondary">Anant</span></h5>
                         <InviteCard
                             uninviteUser={uninviteUser}
                             inviteUser={inviteUser}
                             sharedByUser={user.sharedByUser}
                         />
+                    </div>
+                    <div className="header-invite">
+                        {/* <InviteCard
+                            uninviteUser={uninviteUser}
+                            inviteUser={inviteUser}
+                            sharedByUser={user.sharedByUser}
+                        /> */}
                     </div>
                 </div>
 

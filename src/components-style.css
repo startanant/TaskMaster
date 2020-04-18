@@ -19,9 +19,9 @@
 }
 
 .sideNav-container {
-  width: 15%;
+  width: 10%;
   background-color:#16141c;
-  padding: 10px;
+  padding: 5px;
   border-right: solid grey 1px;
 }
 .taskmaster-logo {
@@ -67,7 +67,7 @@
 }
 
 .main {
-  width: 85%;
+  width: 90%;
   height: 100%;  
   
 } 
