@@ -1,18 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 function AssignCard(props) {
     const [email, setEmail] = useState(props.shared);
-    
+    const [shared, setShared] = useState([]);
+    const selected = useRef(null);
+
     return (
-        <div>
-            <select>
-                {email.map(email=>{
-                    return <option value={email}>{email}</option>
-                })}
-                
-            </select>
-            <button>Invite</button>
-        </div>
+        <>
+            <div>
+                <select ref={selected} id={props.id}>
+                    {email.map((email) => {
+                        return <option>{email}</option>;
+                    })}
+                </select>
+                <button
+                    onClick={() =>
+                        props.assignToCard(
+                            props.id,
+                            props.colIndex,
+                            props.cardIndex
+                        )
+                    }
+                >
+                    Assign
+                </button>
+            </div>
+            {shared.map((email) => {
+                return <div>{email}</div>;
+            })}
+        </>
     );
 }
 
