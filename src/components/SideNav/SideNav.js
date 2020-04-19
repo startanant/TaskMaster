@@ -49,7 +49,7 @@ function SideNav(){
           </div>
       </Link>
 
-      <Link onClick={logout} className="nav-item">
+      <Link to="/login" onClick={logout} className="nav-item">
         <div className="nav-icon">
           <i class="fas fa-door-open"></i>
         </div>
