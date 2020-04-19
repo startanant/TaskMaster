@@ -39,6 +39,26 @@ function Card(props) {
                         placeholder="Title"
                     />
                 </div>
+                <div className="card-body">
+                    <TextArea
+                        id={'desc' + props.cardid}
+                        placeholder="Description"
+                        value={props.description}
+                    />
+                    <DueDate id={'date' + props.cardid} value={props.dueDate} />
+                    <AssignCard
+                        id={'email' + props.cardid}
+                        shared={props.shared}
+                        colIndex={props.colIndex}
+                        cardIndex={props.cardIndex}
+                        assignToCard={props.assignToCard}
+                    />
+
+
+                </div>
+
+
+
             </div>
 
             {/* <div style={style} id={props.cardid}> */}
@@ -53,28 +73,16 @@ function Card(props) {
                 value={props.title}
                 placeholder="Title"
             /> */}
-            <hr></hr>
-            <TextArea
-                id={'desc' + props.cardid}
-                placeholder="Description"
-                value={props.description}
-            />
-            <hr></hr>
+            
             {/* <input
                 id={'date' + props.cardid}
                 type="date"
                 value={props.dueDate}
             /> */}
-            <DueDate id={'date' + props.cardid} value={props.dueDate} />
+            
             {/* <button>Close</button> */}
-            <hr></hr>
-            <AssignCard
-                id={'email' + props.cardid}
-                shared={props.shared}
-                colIndex={props.colIndex}
-                cardIndex={props.cardIndex}
-                assignToCard={props.assignToCard}
-            />
+            
+            
         </>
     );
 }
