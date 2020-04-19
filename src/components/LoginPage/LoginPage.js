@@ -103,11 +103,18 @@ function LoginPage (props) {
         // console.log(result);
         // console.log(result[0].email);
         let email = result[0].email;
-        localStorage.setItem('email', email);
-        setTimeout(function () {
-            dispatch({ do: 'clearMessage' });
-            dispatch({ do: 'loginState', loggedIn: true })
-        }, 3000);
+        if(email) {
+            localStorage.setItem('email', email);
+            dispatch({ do: 'setMessage', type: 'success', message: 'Logging in...' });
+            setTimeout(function () {
+                dispatch({ do: 'loginState', loggedIn: true })
+            }, 2000);
+        }
+        
+        // setTimeout(function () {
+        //     dispatch({ do: 'setMessage', type: 'success', message: 'Logging in...' });
+        //     dispatch({ do: 'loginState', loggedIn: true })
+        // }, 2000);
         // props.history.push({
         //     pathname: '/projectdashboard',
         //     state: { email: email }
