@@ -106,7 +106,7 @@ function Column(props) {
             id={props.id}
             onDrop={drop}
             onDragOver={allowDrop}
-            style={props.style}
+            // style={props.style}
             onDragEnd={dragEnd}
             key={uuidv4()}
         >
