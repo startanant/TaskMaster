@@ -8,6 +8,11 @@ import AssignCard from '../AssignCard/AssignCard';
 function Card(props) {
     // console.log('logging props passed to Card', props);
 
+    function setAccordShow(id){
+        console.log("Btn clicked -- card ID:", id)
+        
+    }
+
     return (
         <>
             <div className="card">
@@ -70,9 +75,15 @@ function Card(props) {
                         value={props.title}
                         placeholder="Title"
                     />
-                     <button className="btn btn-link" data-toggle="collapse" data-target={"#collapseBody" + props.cardid} aria-expanded="true" aria-controls={"collapseBody" + props.cardid}>
+                     <button 
+                        className="btn btn-link" data-toggle="collapse" 
+                        data-target={"#collapseBody" + props.cardid} 
+                        aria-expanded="true" aria-controls={"collapseBody" + props.cardid}
+                        onClick={setAccordShow(props.cardid)}
+                        >
                         more
                     </button>
+                    
                 </div>
                 <div id={"collapseBody" + props.cardid} className="collapse" aria-labelledby={"card-header" + props.cardid} data-parent={"#accordion" + props.cardid}>
                     <div className="card-body">
