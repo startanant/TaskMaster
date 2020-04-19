@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useGlobalStore } from "../GlobalStore/GlobalStore";
+import { useGlobalStore } from '../GlobalStore/GlobalStore';
 import { login } from '../../utils';
 
 // const LoginPage = (props) => {
@@ -19,10 +19,10 @@ import { login } from '../../utils';
 //     );
 // };
 
-function LoginPage (props) {
+function LoginPage(props) {
     const isLoggedIn = localStorage.getItem('email') ? true : false;
     const [globalData, dispatch] = useGlobalStore();
-    const [userData, setUserData] = useState({email: "", password: ""});
+    const [userData, setUserData] = useState({ email: '', password: '' });
 
     const inputEmail = useRef();
     const inputPassword = useRef();
@@ -35,11 +35,11 @@ function LoginPage (props) {
 
     async function m_login() {
         let testUser = {
-            "email": "tomcruise2@tom.com",
-            "name": "tommy",
-            "firstname": "Tom",
-            "lastname": "Cruise",
-            "password": "myOwnSecret@1"
+            email: 'tomcruise2@tom.com',
+            name: 'tommy',
+            firstname: 'Tom',
+            lastname: 'Cruise',
+            password: 'myOwnSecret@1',
         };
         const url = '/api/addUser';
         const result = await fetch(url, {
@@ -52,7 +52,7 @@ function LoginPage (props) {
         console.log(result);
     }
 
-    function handleLogin(){
+    function handleLogin() {
         //m_login();
         login();
         let email = 'justin@trudeau.com';
@@ -60,23 +60,31 @@ function LoginPage (props) {
         localStorage.setItem('email', email);
         props.history.push({
             pathname: '/projectdashboard',
-            state: { email: email}
+            state: { email: email },
         });
     }
 
     async function loginUser(e) {
         e.preventDefault();
 
-        if (userData.email === "") {
+        if (userData.email === '') {
             inputEmail.current.focus();
-            dispatch({ do: 'setMessage', type: 'danger', message: 'Please enter your email!' });
+            dispatch({
+                do: 'setMessage',
+                type: 'danger',
+                message: 'Please enter your email!',
+            });
             //alert('Please enter your email!');
             return;
         }
 
-        if (userData.password === "" || userData.password.length < 1) {
+        if (userData.password === '' || userData.password.length < 1) {
             inputPassword.current.focus();
-            dispatch({ do: 'setMessage', type: 'danger', message: 'Please enter your password!' });
+            dispatch({
+                do: 'setMessage',
+                type: 'danger',
+                message: 'Please enter your password!',
+            });
             //alert('Please enter your password!');
             return;
         }
@@ -103,14 +111,18 @@ function LoginPage (props) {
         // console.log(result);
         // console.log(result[0].email);
         let email = result[0].email;
-        if(email) {
+        if (email) {
             localStorage.setItem('email', email);
-            dispatch({ do: 'setMessage', type: 'success', message: 'Logging in...' });
+            dispatch({
+                do: 'setMessage',
+                type: 'success',
+                message: 'Logging in...',
+            });
             setTimeout(function () {
-                dispatch({ do: 'loginState', loggedIn: true })
+                dispatch({ do: 'loginState', loggedIn: true });
             }, 2000);
         }
-        
+
         // setTimeout(function () {
         //     dispatch({ do: 'setMessage', type: 'success', message: 'Logging in...' });
         //     dispatch({ do: 'loginState', loggedIn: true })
@@ -119,30 +131,37 @@ function LoginPage (props) {
         //     pathname: '/projectdashboard',
         //     state: { email: email }
         // });
-        
-
     }
 
     return (
-        <div>
+        <div
+            style={{
+                backgroundImage: "url('./img/login.jpg')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                height: '90vh',
+                opacity: '0.7',
+            }}
+        >
             {/* {isLoggedIn ? <Redirect to='/projectdashboard' /> : ''} */}
-            {globalData.loggedIn ? <Redirect to='/projectdashboard' /> : ''}
+            {globalData.loggedIn ? <Redirect to="/projectdashboard" /> : ''}
             <div class="container">
-                <h1>Login</h1>
+                {/* <h1>Login</h1> */}
                 <div class="card">
-                    <div class="card-header">
-                        Login
-                    </div>
+                    <div class="card-header">Login</div>
                     <div class="card-body">
                         <form role="form">
-                            <input type='hidden' id='db_id' value='' />
+                            <input type="hidden" id="db_id" value="" />
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input
                                     value={userData.email}
                                     onChange={handleInputChange}
                                     ref={inputEmail}
-                                    id="email" type="email" class="form-control" />
+                                    id="email"
+                                    type="email"
+                                    class="form-control"
+                                />
                             </div>
                             <div class="form-group">
                                 <label for="userPassword">Password</label>
@@ -150,9 +169,18 @@ function LoginPage (props) {
                                     value={userData.password}
                                     onChange={handleInputChange}
                                     ref={inputPassword}
-                                    id="password" type="password" class="form-control" />
+                                    id="password"
+                                    type="password"
+                                    class="form-control"
+                                />
                             </div>
-                            <button onClick={loginUser} type="button" class="btn btn-primary submit">Login</button>
+                            <button
+                                onClick={loginUser}
+                                type="button"
+                                class="btn btn-primary submit"
+                            >
+                                Login
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -161,7 +189,6 @@ function LoginPage (props) {
             </div>
         </div>
     );
-
 }
 
 export default LoginPage;
