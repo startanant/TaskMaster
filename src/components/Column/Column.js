@@ -33,6 +33,9 @@ function Column(props) {
         e.target.appendChild(toDrop);
         // console.log('dropped element', document.getElementById(data));
         let droppedCard = document.getElementById(data);
+        let cardTitle = document.getElementById('title' + data);
+        let cardDescription = document.getElementById('desc' + data);
+        let cardDate = document.getElementById('date' + data);
         console.log('DROPPED CARD:', droppedCard);
         console.log(
             'dropped card dataset',
@@ -41,20 +44,20 @@ function Column(props) {
             'cardIndex: ',
             droppedCard.dataset.cardindex
         );
-        console.log(
-            `dropped card content on column ${props.colIndex}`,
-            'TITLE',
-            droppedCard.children[1].children[1].children[0].children[0]
-                .children[0].children[0].value
-        );
-        console.log(
-            'dropped card content DESCRIPTION',
-            droppedCard.children[3].children[0].children[0].children[0].value
-        );
-        console.log(
-            'dropped card content DUE DATE',
-            droppedCard.children[5].value
-        );
+        // console.log(
+        //     `dropped card content on column ${props.colIndex}`,
+        //     'TITLE',
+        //     droppedCard.children[1].children[1].children[0].children[0]
+        //         .children[0].children[0].value
+        // );
+        // console.log(
+        //     'dropped card content DESCRIPTION',
+        //     droppedCard.children[3].children[0].children[0].children[0].value
+        // );
+        // console.log(
+        //     'dropped card content DUE DATE',
+        //     droppedCard.children[5].value
+        // );
         // console.log('dropped card children', droppedCard.children[1].children);
         // document.removeChild(document.getElementById(data));
         let element = document.getElementById(data);
@@ -64,13 +67,9 @@ function Column(props) {
         let dataToPass = {
             toAdd: {
                 colIndex: props.colIndex,
-                title:
-                    droppedCard.children[1].children[1].children[0].children[0]
-                        .children[0].children[0].value,
-                description:
-                    droppedCard.children[3].children[0].children[0].children[0]
-                        .value,
-                duedate: droppedCard.children[5].value,
+                title: cardTitle.value,
+                description: cardDescription.value,
+                duedate: cardDate.value,
             },
             toRemove: {
                 colIndex: droppedCard.dataset.colindex,
@@ -128,10 +127,9 @@ function Column(props) {
                 Add Card +
             </button>
             {cards.map((element, index) => {
-                let value = uuidv4();
                 return (
                     <Draggable
-                        id={value}
+                        id={element.id}
                         style={{ margin: '8px' }}
                         cardIndex={index}
                         colIndex={props.colIndex}

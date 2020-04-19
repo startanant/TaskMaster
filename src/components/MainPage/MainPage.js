@@ -17,11 +17,19 @@ function MainPage(props) {
         lastname: '',
         dashboards: [{ columns: [], shared: [] }],
     });
+    //console.log(props.location.state.email);
     const [sharedToUser, setSharedToUser] = useState([]);
     // const [sharedFromUser, setSharedFromUser] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
     // const [loop, setLoop] = useState(0);
-    const [currentUser, setCurrentUser] = useState('user@user.com');
+    //const [currentUser, setCurrentUser] = useState('user@user.com');
+    let email;
+    if (localStorage.getItem('email') ){
+        email = localStorage.getItem('email') ;
+    } else {
+        email = props.location.state.email ? props.location.state.email : 'user@user.com';
+    }
+    const [currentUser, setCurrentUser] = useState(email);
     const [currentDashboard, setCurrentDashboard] = useState(0);
     //const shared = user.dashboards[currentDashboard].shared;
     

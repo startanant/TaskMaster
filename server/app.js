@@ -125,6 +125,23 @@ app.post('/api/addUser', async (req, res) => {
     }
 });
 
+app.post('/api/login', async (req, res) => {
+    console.log(req.body);
+    user = { ...user, ...req.body };
+    const query = { email: req.body.email };
+    //const response = await db.userauth.find(query);
+    try {
+        const response = await db.userprofile.find(query, { _id: 0, email: 1, password: 1 });
+        res.json(response);
+    } catch (error) {
+        res.json(error);
+    }
+    // const response = await db.userprofile.find(query, { _id: 0, email: 1, password: 1 })
+    // if (response.length > 0) {
+    //     res.json(response[0].email);
+    // } else res.json({ answer: 'nothing found' });
+});
+
 app.post('/api/notify', async (req, res) => {
     console.log(req.body);
     // user = { ...user, ...req.body };

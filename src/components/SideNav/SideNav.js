@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import '../../components-style.css';
 import { Link } from "react-router-dom";
 
 function SideNav(){
+  
+  const [userLogout, setUserLogout] = useState(false);
+
+  function logout() {
+    localStorage.removeItem('email');
+    setUserLogout(true);
+  }
+
   return (
+
     <div className="sideNav">
+
+      {userLogout ? <Redirect to='/login' /> : ''}
       <div className="taskmaster-logo">
           TaskMaster
         </div>
@@ -34,6 +46,15 @@ function SideNav(){
           </div>
           <div className="nav-heading">
             Settings
+          </div>
+      </Link>
+
+      <Link onClick={logout} className="nav-item">
+        <div className="nav-icon">
+          <i class="fas fa-door-open"></i>
+        </div>
+        <div className="nav-heading">
+          Logout
           </div>
       </Link>
       
