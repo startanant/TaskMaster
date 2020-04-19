@@ -31,7 +31,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div class="container">
                 <h1>Welcome To TaskMaster</h1><hr></hr>
                 <h3>The world's #1 task manager to track the progress of your teams and projects.</h3>
 

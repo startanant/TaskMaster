@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useGlobalStore } from "../GlobalStore/GlobalStore";
 import { Redirect } from 'react-router-dom';
 import { login } from '../../utils';
 
@@ -21,6 +22,8 @@ import { login } from '../../utils';
 function RegisterPage (props) {
 
     const [userData, setUserData] = useState({ email: "", name: "", firstname: "", lastname: "",  password: "" });
+    const [globalData, dispatch] = useGlobalStore();
+    const [isRegistered, setIsRegistered] = useState(false);
     const inputEmail = useRef();
     const inputPassword = useRef();
 
@@ -52,24 +55,24 @@ function RegisterPage (props) {
     async function registerUser(e) {
         e.preventDefault();
 
-        // if (userData.email.trim() === "" ||
-        //     !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userData.email))) {
-        //     inputEmail.current.focus();
-        //     dispatch({ do: 'setMessage', type: 'danger', message: 'Please provide a valid email' });
-        //     return;
-        // }
+        if (userData.email.trim() === "" ||
+            !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userData.email))) {
+            inputEmail.current.focus();
+            dispatch({ do: 'setMessage', type: 'danger', message: 'Please provide a valid email' });
+            return;
+        }
 
-        // if (userData.password.trim() === "") {
-        //     inputPassword.current.focus();
-        //     dispatch({ do: 'setMessage', type: 'danger', message: 'Please provide a password' });
-        //     return;
-        // }
+        if (userData.password.trim() === "") {
+            inputPassword.current.focus();
+            dispatch({ do: 'setMessage', type: 'danger', message: 'Please provide a password' });
+            return;
+        }
 
-        // if (userData.password.trim().length < 8) {
-        //     inputPassword.current.focus();
-        //     dispatch({ do: 'setMessage', type: 'danger', message: 'Please provide a longer password (8 characters min)!' });
-        //     return;
-        // }
+        if (userData.password.trim().length < 3) {
+            inputPassword.current.focus();
+            dispatch({ do: 'setMessage', type: 'danger', message: 'Please provide a longer password (3 characters min)!' });
+            return;
+        }
 
         // const apiResult = await API.post('/api/user/register', userData);
         console.log(userData);
@@ -83,6 +86,15 @@ function RegisterPage (props) {
         }).then((response) => response.json());
         console.log(result);
 
+        if(result._id) {
+            dispatch({ do: 'setMessage', type: 'success', message: 'Thank you! Successfully registered!' });
+            // // let the message sit for a bit then redirect to login
+            setTimeout(function () { setIsRegistered(true); }, 5000);
+        } else {
+            dispatch({ do: 'setMessage', type: 'danger', message: result });
+            return;
+        }
+
         // if (apiResult.error) {
         //     dispatch({ do: 'setMessage', type: 'danger', message: apiResult.error });
         //     return;
@@ -95,7 +107,7 @@ function RegisterPage (props) {
 
         // // let the message sit for a bit then redirect to login
         // setTimeout(function () { setIsRegistered(true); }, 5000);
-        props.history.push('/projectdashboard');
+        //props.history.push('/projectdashboard');
     }
 
 
@@ -107,6 +119,7 @@ function RegisterPage (props) {
 
     return (
         <div>
+            {isRegistered ? <Redirect to='/login' /> : ''}
             <div class="container">
                 <h1>User Registration</h1>
                 <div class="card">

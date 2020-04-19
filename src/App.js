@@ -16,9 +16,14 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home from './components/Home/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
+import Message from './components/Message/Message';
+import { GlobalStore, useGlobalStore } from './components/GlobalStore/GlobalStore';
+//import {  } from './components/GlobalStore/GlobalStore';
+
 
 function App() {
     const isLoggedIn = localStorage.getItem('email') ? true : false;
+    //const [globalData, dispatch] = useGlobalStore();
     const [cards, addCard] = useState(0);
     const Wrapper = styled.div`
         width: 80%;
@@ -30,7 +35,7 @@ function App() {
     return (
 
         <Router>
-            
+            <GlobalStore>
             {/* <Header />
             <SideNav />
             <div className="main">
@@ -46,11 +51,12 @@ function App() {
              </div>   */}
             
             <div className="taskmaster">
-                {(isLoggedIn) ?
+                
+                    {isLoggedIn ?
                     <div className="sideNav-container">
                         <SideNav />
                     </div>
-                :<></>}
+                :''}
                 <div className="main">
                     <Header />
                     <Switch>
@@ -61,8 +67,10 @@ function App() {
                         <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
                         <PrivateRoute exact path="/settings" component={SettingsPage} />
                     </Switch>
+                    <Message />
                 </div>
-            </div>  
+            </div> 
+            </GlobalStore> 
         </Router>
 
         // <Wrapper>

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Redirect } from 'react-router-dom';
+import { useGlobalStore } from "../GlobalStore/GlobalStore";
 import { login } from '../../utils';
 
 // const LoginPage = (props) => {
@@ -19,8 +20,10 @@ import { login } from '../../utils';
 // };
 
 function LoginPage (props) {
-
+    const isLoggedIn = localStorage.getItem('email') ? true : false;
+    const [globalData, dispatch] = useGlobalStore();
     const [userData, setUserData] = useState({email: "", password: ""});
+
     const inputEmail = useRef();
     const inputPassword = useRef();
 
@@ -65,16 +68,16 @@ function LoginPage (props) {
         e.preventDefault();
 
         if (userData.email === "") {
-            inputEmail.focus();
-            // dispatch({ do: 'setMessage', type: 'danger', message: 'Please enter your email!' });
-            alert('Please enter your email!');
+            inputEmail.current.focus();
+            dispatch({ do: 'setMessage', type: 'danger', message: 'Please enter your email!' });
+            //alert('Please enter your email!');
             return;
         }
 
         if (userData.password === "" || userData.password.length < 1) {
             inputPassword.current.focus();
-            //dispatch({ do: 'setMessage', type: 'danger', message: 'Please enter your password!' });
-            alert('Please enter your password!');
+            dispatch({ do: 'setMessage', type: 'danger', message: 'Please enter your password!' });
+            //alert('Please enter your password!');
             return;
         }
 
@@ -101,15 +104,22 @@ function LoginPage (props) {
         // console.log(result[0].email);
         let email = result[0].email;
         localStorage.setItem('email', email);
-        props.history.push({
-            pathname: '/projectdashboard',
-            state: { email: email }
-        });
+        setTimeout(function () {
+            dispatch({ do: 'clearMessage' });
+            dispatch({ do: 'loginState', loggedIn: true })
+        }, 3000);
+        // props.history.push({
+        //     pathname: '/projectdashboard',
+        //     state: { email: email }
+        // });
+        
 
     }
 
     return (
         <div>
+            {/* {isLoggedIn ? <Redirect to='/projectdashboard' /> : ''} */}
+            {globalData.loggedIn ? <Redirect to='/projectdashboard' /> : ''}
             <div class="container">
                 <h1>Login</h1>
                 <div class="card">
