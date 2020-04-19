@@ -23,7 +23,7 @@ function MainPage(props) {
     // const [loop, setLoop] = useState(0);
     const [currentUser, setCurrentUser] = useState('user@user.com');
     const [currentDashboard, setCurrentDashboard] = useState(0);
-    const shared = user.dashboards[currentDashboard].shared;
+    //const shared = user.dashboards[currentDashboard].shared;
     
     function addColumn() {
         const newColumn = {
