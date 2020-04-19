@@ -24,12 +24,7 @@ function MainPage(props) {
     const [currentUser, setCurrentUser] = useState('user@user.com');
     const [currentDashboard, setCurrentDashboard] = useState(0);
     const shared = user.dashboards[currentDashboard].shared;
-    // const columnStyle = {
-    //     backgroundColor: '#555',
-    //     width: '250px',
-    //     // height: '400px',
-    //     margin: '32px',
-    // };
+    
     function addColumn() {
         const newColumn = {
             name: '',
@@ -409,7 +404,6 @@ function MainPage(props) {
                             <Column
                                 // id={element.id}
                                 key={uuidv4()}
-                                // style={columnStyle}
                                 cards={element.cards}
                                 colName={element.name}
                                 colid={element.id}

@@ -192,20 +192,20 @@
 }
 
 .project-column {
-  width: 300px;
+  width: 400px;
   /* min-height: 300px; */
   height: auto;
   margin-right: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 10px 10px 10px;
+  padding: 20px 20px 20px 20px;
   border-radius: 10px;
   background-color: grey;
 }
 
 .column-header {
-  width: 220px;
+  width: auto;
   display: flex;
   flex-direction: row-reverse;
   margin-bottom: 8px;
@@ -213,15 +213,15 @@
 
 .card {
   margin-top: 10px;
-  min-width: 220px;
+  width: auto;
   padding: 10px;
-  
 }
 
 .card-utility-header {
-  min-width: 210px;
+  width: auto;
   display: flex;
   flex-direction: row-reverse;
+  float: right;
 }
 
 .mytasks-header {

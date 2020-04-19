@@ -6,18 +6,7 @@ import AssignCard from '../AssignCard/AssignCard';
 
 function Card(props) {
     console.log('logging props passed to Card', props);
-    const style = {
-        backgroundColor: 'grey',
-        color: 'blue',
-        // height: '40px',
-        padding: '5px',
-        textAlign: 'center',
-        // width: '200px',
-        // top: '50%',
-        // left: '50%',
-        // transform: 'translate(-50%, -50%)',
-        // position: 'fixed',
-    };
+    
     return (
         <>
             <div className="card">
