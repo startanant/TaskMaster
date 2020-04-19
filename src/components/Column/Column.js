@@ -155,7 +155,6 @@ function Column(props) {
                             deleteCard={props.deleteCard}
                             cardIndex={index}
                             colIndex={props.colIndex}
-                            assignToCard={props.assignToCard}
                         />
                     </Draggable>
                 );
