@@ -10,7 +10,7 @@ function AssignCard(props) {
             <div>
                 <select ref={selected} id={props.id}>
                     {email.map((email) => {
-                        return <option>{email}</option>;
+                        return <option>{email.email}</option>;
                     })}
                 </select>
                 <button
@@ -26,7 +26,7 @@ function AssignCard(props) {
                 </button>
             </div>
             {shared.map((email) => {
-                return <div>{email}</div>;
+                return <div>{email.email}</div>;
             })}
         </>
     );
