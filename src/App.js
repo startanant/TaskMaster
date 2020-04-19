@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import styled from 'styled-components';
 import './components-style.css';
+import TaskMaster from './components/TaskMaster/TaskMaster';
 import Header from './components/Header/Header';
 import SideNav from './components/SideNav/SideNav';
 import MyTasksPage from './components/MyTasksPage/MyTasksPage';
@@ -50,7 +51,7 @@ function App() {
                 <Redirect from="*" to="/" />
              </div>   */}
             
-            <div className="taskmaster">
+            {/* <div className="taskmaster">
                 
                     {isLoggedIn ?
                     <div className="sideNav-container">
@@ -58,18 +59,21 @@ function App() {
                     </div>
                 :''}
                 <div className="main">
-                    <Header />
+                    <Header /> */}
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/login" component={LoginPage} />
                         <Route exact path="/register" component={RegisterPage} />
-                        <PrivateRoute exact path="/projectdashboard" component={MainPage} />
+                        {/* <PrivateRoute exact path="/projectdashboard" component={MainPage} />
+                        <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
+                        <PrivateRoute exact path="/settings" component={SettingsPage} /> */}
+                        <PrivateRoute exact path="/projectdashboard" component={TaskMaster} />
                         <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
                         <PrivateRoute exact path="/settings" component={SettingsPage} />
                     </Switch>
                     <Message />
-                </div>
-            </div> 
+                {/* </div>
+            </div>  */}
             </GlobalStore> 
         </Router>
 
