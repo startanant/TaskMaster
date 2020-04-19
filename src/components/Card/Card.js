@@ -5,8 +5,8 @@ import DueDate from '../DueDate/DueDate';
 import AssignCard from '../AssignCard/AssignCard';
 
 function Card(props) {
-    console.log('logging props passed to Card', props);
-    
+    // console.log('logging props passed to Card', props);
+
     return (
         <>
             <div className="card">
@@ -42,12 +42,7 @@ function Card(props) {
                         cardIndex={props.cardIndex}
                         assignToCard={props.assignToCard}
                     />
-
-
                 </div>
-
-
-
             </div>
 
             {/* <div style={style} id={props.cardid}> */}
@@ -62,16 +57,14 @@ function Card(props) {
                 value={props.title}
                 placeholder="Title"
             /> */}
-            
+
             {/* <input
                 id={'date' + props.cardid}
                 type="date"
                 value={props.dueDate}
             /> */}
-            
+
             {/* <button>Close</button> */}
-            
-            
         </>
     );
 }

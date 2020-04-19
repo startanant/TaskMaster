@@ -24,15 +24,17 @@ function MainPage(props) {
     // const [loop, setLoop] = useState(0);
     //const [currentUser, setCurrentUser] = useState('user@user.com');
     let email;
-    if (localStorage.getItem('email') ){
-        email = localStorage.getItem('email') ;
+    if (localStorage.getItem('email')) {
+        email = localStorage.getItem('email');
     } else {
-        email = props.location.state.email ? props.location.state.email : 'user@user.com';
+        email = props.location.state.email
+            ? props.location.state.email
+            : 'user@user.com';
     }
     const [currentUser, setCurrentUser] = useState(email);
     const [currentDashboard, setCurrentDashboard] = useState(0);
-    //const shared = user.dashboards[currentDashboard].shared;
-    
+    const shared = user.dashboards[currentDashboard].shared;
+
     function addColumn() {
         const newColumn = {
             name: '',
@@ -101,7 +103,13 @@ function MainPage(props) {
     }
 
     async function inviteUser(email) {
-        user.dashboards[currentDashboard].shared.push(email.toLowerCase());
+        const url = `/api/getUserName/${email}`;
+        const result = await fetch(url).then((response) => response.json());
+        console.log(
+            'loggin response from server for /api/getUserName ',
+            result
+        );
+        user.dashboards[currentDashboard].shared.push(result);
         user.dashboards[currentDashboard].shared = [
             ...new Set(user.dashboards[currentDashboard].shared),
         ];
@@ -140,9 +148,14 @@ function MainPage(props) {
 
     async function uninviteUser(email) {
         // console.log('uninviteUSer function called with email', email);
-        let emailIndex = user.dashboards[currentDashboard].shared.indexOf(
-            email
-        );
+        // let emailIndex = user.dashboards[currentDashboard].shared.indexOf(
+        //     email
+        // );
+        const emailIndex = user.dashboards[currentDashboard].shared
+            .map((el) => {
+                return el.email;
+            })
+            .indexOf(email);
         if (emailIndex > -1) {
             user.dashboards[currentDashboard].shared.splice(emailIndex, 1);
             setUser({ ...user });
@@ -360,11 +373,16 @@ function MainPage(props) {
                             (element) => {
                                 return (
                                     <button
-                                        onClick={() => uninviteUser(element)}
+                                        onClick={() =>
+                                            uninviteUser(element.email)
+                                        }
                                         type="button"
                                         class="btn btn-sm btn-primary user"
                                     >
-                                        {element} X
+                                        {element.name != ''
+                                            ? element.name
+                                            : element.email}{' '}
+                                        X
                                     </button>
                                 );
                             }

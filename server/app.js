@@ -90,8 +90,24 @@ app.get('/api/getUser/:email', async (req, res) => {
     // res.end('ok');
 });
 
+app.get('/api/getUserName/:email', async (req, res) => {
+    const query = { email: req.params.email };
+    const response = await db.userprofile.find(query, {
+        _id: 0,
+        name: 1,
+        firstname: 1,
+        lastname: 1,
+        email: 1,
+    });
+    if (response.length > 0) {
+        res.json(response[0]);
+    } else {
+        res.json({ answer: 'nothing found' });
+    }
+});
+
 app.get('/api/authUser/:email', async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const query = { email: req.params.email };
     const response = await db.userauth.find(query);
     if (response.length > 0) {
@@ -131,7 +147,11 @@ app.post('/api/login', async (req, res) => {
     const query = { email: req.body.email };
     //const response = await db.userauth.find(query);
     try {
-        const response = await db.userprofile.find(query, { _id: 0, email: 1, password: 1 });
+        const response = await db.userprofile.find(query, {
+            _id: 0,
+            email: 1,
+            password: 1,
+        });
         res.json(response);
     } catch (error) {
         res.json(error);
