@@ -258,9 +258,15 @@
   color: white;
 }
 
-.dueDate-cal {
+.dueDate-cal-container {
   margin-bottom: 8px;
 }
+.dueDate-cal {
+  margin-bottom: 8px;
+  background-color:#272727;
+  color: white;
+}
+
 
 .mytasks-header {
   text-align: center;
