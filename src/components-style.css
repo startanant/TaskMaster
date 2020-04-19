@@ -203,13 +203,20 @@
   padding: 20px 20px 20px 20px;
   border-radius: 10px;
   background-color: #16141c;
+  
 }
 
 .column-header {
-  width: auto;
-  display: flex;
-  flex-direction: row-reverse;
+  width: 100%;
+  float: right;
+  
+  left: 0px;
+  /* display: flex;
+  flex-direction: row-reverse; */
   margin-bottom: 8px;
+}
+.colDel {
+  float: right;
 }
 
 .card {
