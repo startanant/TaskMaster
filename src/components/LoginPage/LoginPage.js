@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useRef } from "react";
+import { Redirect } from 'react-router-dom';
 import { login } from '../../utils';
 
 // const LoginPage = (props) => {
@@ -18,6 +19,16 @@ import { login } from '../../utils';
 // };
 
 function LoginPage (props) {
+
+    const [userData, setUserData] = useState({email: "", password: ""});
+    const inputEmail = useRef();
+    const inputPassword = useRef();
+
+    function handleInputChange(e) {
+        const { id, value } = e.target; //
+
+        setUserData({ ...userData, [id]: value });
+    }
 
     async function m_login() {
         let testUser = {
@@ -50,6 +61,53 @@ function LoginPage (props) {
         });
     }
 
+    async function loginUser(e) {
+        e.preventDefault();
+
+        if (userData.email === "") {
+            inputEmail.focus();
+            // dispatch({ do: 'setMessage', type: 'danger', message: 'Please enter your email!' });
+            alert('Please enter your email!');
+            return;
+        }
+
+        if (userData.password === "" || userData.password.length < 1) {
+            inputPassword.current.focus();
+            //dispatch({ do: 'setMessage', type: 'danger', message: 'Please enter your password!' });
+            alert('Please enter your password!');
+            return;
+        }
+
+        //const apiResult = await API.post('/api/user/login', userData);
+
+        // if (apiResult.error) {
+        //     dispatch({ do: 'setMessage', type: 'danger', message: apiResult.error });
+        //     // clear any session
+        //     localStorage.session = '';
+        //     return;
+        // };
+
+        //loginComplete(apiResult);
+        console.log(userData);
+        const url = '/api/login';
+        const result = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(userData),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then((response) => response.json());
+        // console.log(result);
+        // console.log(result[0].email);
+        let email = result[0].email;
+        localStorage.setItem('email', email);
+        props.history.push({
+            pathname: '/projectdashboard',
+            state: { email: email }
+        });
+
+    }
+
     return (
         <div>
             <div class="container">
@@ -62,24 +120,27 @@ function LoginPage (props) {
                         <form role="form">
                             <input type='hidden' id='db_id' value='' />
                             <div class="form-group">
-                                <label for="name">Email</label>
-                                {/* <input value={userData.name} onChange={handleInputChange} id='name' type="text" class="form-control" /> */}
-                                <input type="text" />
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Password</label>
-                                {/* <input
+                                <label for="email">Email</label>
+                                <input
                                     value={userData.email}
                                     onChange={handleInputChange}
                                     ref={inputEmail}
-                                    id="email" type="email" class="form-control" /> */}
-                                <input type="text" />
+                                    id="email" type="email" class="form-control" />
                             </div>
+                            <div class="form-group">
+                                <label for="userPassword">Password</label>
+                                <input
+                                    value={userData.password}
+                                    onChange={handleInputChange}
+                                    ref={inputPassword}
+                                    id="password" type="password" class="form-control" />
+                            </div>
+                            <button onClick={loginUser} type="button" class="btn btn-primary submit">Login</button>
                         </form>
                     </div>
                 </div>
 
-                <button onClick={() => handleLogin()}>Click here to log in</button>
+                {/* <button onClick={() => handleLogin()}>Click here to log in</button> */}
             </div>
         </div>
     );

@@ -18,10 +18,10 @@ function MainPage(props) {
     const [allUsers, setAllUsers] = useState([]);
     // const [loop, setLoop] = useState(0);
     //const [currentUser, setCurrentUser] = useState('user@user.com');
-    if (props.location.state.email){
-        email = props.location.state.email;
+    if (localStorage.getItem('email') ){
+        email = localStorage.getItem('email') ;
     } else {
-        email = localStorage.getItem('email') ? localStorage.getItem('email') : 'user@user.com';
+        email = props.location.state.email ? props.location.state.email : 'user@user.com';
     }
     const [currentUser, setCurrentUser] = useState(email);
     const [currentDashboard, setCurrentDashboard] = useState(0);

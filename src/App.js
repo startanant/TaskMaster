@@ -18,6 +18,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 
 function App() {
+    const isLoggedIn = localStorage.getItem('email') ? true : false;
     const [cards, addCard] = useState(0);
     const Wrapper = styled.div`
         width: 80%;
@@ -45,9 +46,11 @@ function App() {
              </div>   */}
             
             <div className="taskmaster">
-                <div className="sideNav-container">
-                <SideNav />
-                </div>
+                {(isLoggedIn) ?
+                    <div className="sideNav-container">
+                        <SideNav />
+                    </div>
+                :<></>}
                 <div className="main">
                     <Header />
                     <Switch>
