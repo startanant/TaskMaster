@@ -85,6 +85,7 @@
   background-color:#16141c;
   border-bottom: solid grey 1px;
   padding: 20px 30px 20px 30px;
+  position: relative;
 }
 /* .dash-add {
   width: 220px;
@@ -97,7 +98,7 @@
 }
 .header-team {
   display: inline-block;
-  position: fixed;
+  position: absolute;
   top: 20px;
   min-width: auto;
   min-height: max-content;
@@ -112,7 +113,6 @@
 }
 .invite-form {
   display: inline-block;
-  
   right: 0px;
   
 }
