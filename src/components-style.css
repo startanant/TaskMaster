@@ -20,6 +20,7 @@
 
 .sideNav-container {
   width: 10%;
+  min-width: 160px;
   background-color:#16141c;
   padding: 5px;
   border-right: solid grey 1px;
@@ -213,8 +214,10 @@
 
 .card {
   margin-top: 10px;
+  min-width: 340px;
   width: auto;
   padding: 10px;
+  background-color: aqua;
 }
 
 .card-utility-header {
