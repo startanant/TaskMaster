@@ -137,6 +137,14 @@ function MainPage(props) {
 
     async function uninviteUser(email) {
         // console.log('uninviteUSer function called with email', email);
+        let emailIndex = user.dashboards[currentDashboard].shared.indexOf(
+            email
+        );
+        if (emailIndex > -1) {
+            user.dashboards[currentDashboard].shared.splice(emailIndex, 1);
+            setUser({ ...user });
+        }
+
         const userIndex = user.sharedByUser.findIndex(
             (element) => element.to == `${email}`
         );
@@ -349,6 +357,7 @@ function MainPage(props) {
                             (element) => {
                                 return (
                                     <button
+                                        onClick={() => uninviteUser(element)}
                                         type="button"
                                         class="btn btn-sm btn-primary user"
                                     >
