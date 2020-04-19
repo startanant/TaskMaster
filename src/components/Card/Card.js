@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../components-style.css';
 import TextArea from '../TextArea/TextArea';
+import TextAreaDesc from '../TextAreaDesc/TextAreaDesc';
 import DueDate from '../DueDate/DueDate';
 import AssignCard from '../AssignCard/AssignCard';
 
@@ -29,7 +30,12 @@ function Card(props) {
                     />
                 </div>
                 <div className="card-body">
-                    <TextArea
+                    {/* <TextArea
+                        id={'desc' + props.cardid}
+                        placeholder="Description"
+                        value={props.description}
+                    /> */}
+                    <TextAreaDesc 
                         id={'desc' + props.cardid}
                         placeholder="Description"
                         value={props.description}

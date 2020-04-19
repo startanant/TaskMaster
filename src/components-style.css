@@ -225,6 +225,15 @@
   display: flex;
   flex-direction: row-reverse;
   float: right;
+  text-align: center;
+}
+
+.card-header {
+  width: 100%;
+}
+
+.textArea {
+  width: 100%;
 }
 
 .mytasks-header {
