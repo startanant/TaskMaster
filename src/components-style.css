@@ -97,6 +97,11 @@
   display: inline-block;
   margin-right: 200px;
 }
+.dash-input {
+  background-color: #16141c;
+  color: white;
+}
+
 .header-team {
   display: inline-block;
   position: absolute;
@@ -104,7 +109,6 @@
   min-width: auto;
   min-height: max-content;
   text-align: center;
-  
 }
 .teamTitle {
   display: inline-block;
@@ -115,7 +119,10 @@
 .invite-form {
   display: inline-block;
   right: 0px;
-  
+}
+.invite-input{
+  background-color: #16141c;
+  color: white;
 }
 .addedUsers {
   display: flex;
