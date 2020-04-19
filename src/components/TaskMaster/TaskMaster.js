@@ -7,6 +7,8 @@ import SettingsPage from '../SettingsPage/SettingsPage';
 
 
 function TaskMaster(props) {
+    //console.log(props.title);
+    const title = props.title;
     return(
         <>
         <div className="taskmaster">
@@ -15,9 +17,10 @@ function TaskMaster(props) {
             </div>
             <div className="main">
                 <Header />
-                <MainPage />
-                <MyTasksPage />
-                <SettingsPage />
+                {title === 'dashboard' ? <MainPage /> : ''}
+                {title === 'mytasks' ? <MyTasksPage /> : ''}
+                {title === 'settings' ? <SettingsPage /> : ''}
+                
             </div>
         </div>
         </>

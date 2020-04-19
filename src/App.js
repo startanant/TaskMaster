@@ -37,43 +37,15 @@ function App() {
 
         <Router>
             <GlobalStore>
-            {/* <Header />
-            <SideNav />
-            <div className="main">
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/login" component={LoginPage} />
-                    <Route exact path="/register" component={RegisterPage} />
-                    <PrivateRoute exact path="/projectdashboard" component={MainPage} />
-                    <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
-                    <PrivateRoute exact path="/settings" component={SettingsPage} />
-                </Switch>
-                <Redirect from="*" to="/" />
-             </div>   */}
-            
-            {/* <div className="taskmaster">
-                
-                    {isLoggedIn ?
-                    <div className="sideNav-container">
-                        <SideNav />
-                    </div>
-                :''}
-                <div className="main">
-                    <Header /> */}
-                    <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/login" component={LoginPage} />
                         <Route exact path="/register" component={RegisterPage} />
-                        {/* <PrivateRoute exact path="/projectdashboard" component={MainPage} />
-                        <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
-                        <PrivateRoute exact path="/settings" component={SettingsPage} /> */}
-                        <PrivateRoute exact path="/projectdashboard" component={TaskMaster} />
-                        <PrivateRoute exact path="/mytasks" component={MyTasksPage} />
-                        <PrivateRoute exact path="/settings" component={SettingsPage} />
-                    </Switch>
-                    <Message />
-                {/* </div>
-            </div>  */}
+                        <PrivateRoute exact path="/projectdashboard" component={TaskMaster} title={`dashboard`}/>
+                        <PrivateRoute exact path="/mytasks" component={TaskMaster} title={`mytasks`}/>
+                        <PrivateRoute exact path="/settings" component={TaskMaster} title={`settings`}/>
+                </Switch>
+                <Message />
             </GlobalStore> 
         </Router>
 
