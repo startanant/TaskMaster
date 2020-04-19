@@ -8,7 +8,7 @@ import ColumnTitle from '../ColumTitle/ColumnTitle';
 import { v4 as uuidv4 } from 'uuid';
 
 function Column(props) {
-    console.log('showing props.columns from column component', props.cards);
+    // console.log('showing props.columns from column component', props.cards);
     const [cards, setCard] = useState(props.cards ? props.cards : []);
     // const [id, setId] = useState(props.id);
 
@@ -27,7 +27,7 @@ function Column(props) {
     function drop(e) {
         e.preventDefault();
         const data = e.dataTransfer.getData('transfer');
-        console.log('id of transferred element', data);
+        // console.log('id of transferred element', data);
         // console.log(document.getElementById('abc'));
         let toDrop = document.getElementById(data);
         e.target.appendChild(toDrop);
@@ -36,14 +36,14 @@ function Column(props) {
         let cardTitle = document.getElementById('title' + data);
         let cardDescription = document.getElementById('desc' + data);
         let cardDate = document.getElementById('date' + data);
-        console.log('DROPPED CARD:', droppedCard);
-        console.log(
-            'dropped card dataset',
-            'colIndex: ',
-            droppedCard.dataset.colindex,
-            'cardIndex: ',
-            droppedCard.dataset.cardindex
-        );
+        // console.log('DROPPED CARD:', droppedCard);
+        // console.log(
+        //     'dropped card dataset',
+        //     'colIndex: ',
+        //     droppedCard.dataset.colindex,
+        //     'cardIndex: ',
+        //     droppedCard.dataset.cardindex
+        // );
         // console.log(
         //     `dropped card content on column ${props.colIndex}`,
         //     'TITLE',
@@ -97,7 +97,7 @@ function Column(props) {
     //     console.log('delete card clicked', e.target);
     // }
     function dragEnd() {
-        console.log('drag ended');
+        // console.log('drag ended');
     }
     return (
         <div
