@@ -12,7 +12,7 @@ function TextArea(props) {
           <div className="col-auto textArea">
             <input 
               type="text" 
-              className="form-control mb-2" 
+              className="form-control mb-2 textAreaCardTitle" 
               id={props.id}
               onChange={handleInputChange} 
               value={value} 

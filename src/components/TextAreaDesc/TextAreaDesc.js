@@ -12,7 +12,7 @@ function TextAreaDesc(props) {
           <div className="col-auto textArea">
             <textarea 
               type="text" 
-              className="form-control mb-2" 
+              className="form-control mb-2 textAreaDesc" 
               id={props.id}
               onChange={handleInputChange} 
               value={value} 

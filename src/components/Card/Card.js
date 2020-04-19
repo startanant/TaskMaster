@@ -14,7 +14,7 @@ function Card(props) {
                 <div className="card-utility-header">
                     <button
                         type="button"
-                        className="btn-sm btn-outline-secondary"
+                        className="btn-sm btn-outline-secondary cardDelBtn"
                         onClick={() =>
                             props.deleteCard(props.colIndex, props.cardIndex)
                         }
