@@ -8,6 +8,8 @@ const axios = require('axios');
 const app = express();
 const qs = require('qs');
 const { uuid } = require('uuidv4');
+const fs = require('fs');
+const path = require('path');
 // import { v4 as uuidv4 } from 'uuid';
 let db = require('./models');
 let user = require('./user.json');
@@ -224,7 +226,12 @@ app.post('/api/updateUserProfile', async (req, res) => {
     );
     res.json(response);
 });
-
+app.get('/login', (req, res) => {
+    const options = {
+        root: path.join(__dirname, 'public'),
+    };
+    res.sendFile('index.html', options);
+});
 app.use(express.static('./public'));
 
 const PORT = 8080;
