@@ -314,7 +314,7 @@
   padding:40px;
   color: white;
   border-radius: 20px;
-  border: solid white 1px;
+  border: solid grey 1px;
 }
 .container-right {
   height: 100vh;
@@ -334,8 +334,8 @@
   background-color: #272727;
   color: white;
   border-radius: 20px;
-  padding: 30px;
-  border: solid white 1px;
+  padding: 16px;
+  border: solid grey 1px;
 }
 .register-input {
   background-color: #272727;

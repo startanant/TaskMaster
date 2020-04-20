@@ -160,7 +160,7 @@ function RegisterPage(props) {
             <div className="container-left">
                 <div className="title-container">
                     <h1>TaskMaster</h1>
-                    <h4>Keep your projects organized.</h4>
+                    <h4 style={{color: 'grey'}}>Keep your projects organized.</h4>
                 </div>
             </div>
             <div className="container-right">
