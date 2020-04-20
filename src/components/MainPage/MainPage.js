@@ -8,8 +8,13 @@ import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
 import { v4 as uuidv4 } from 'uuid';
+import { useGlobalStore } from '../GlobalStore/GlobalStore';
+
 
 function MainPage(props) {
+    const [globalData, dispatch] = useGlobalStore();
+    console.log("logging globaldata from mainpage");
+    console.log(globalData.loggedIn);
     const [user, setUser] = useState({
         email: '',
         name: '',

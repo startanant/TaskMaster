@@ -8,7 +8,7 @@ import SettingsPage from '../SettingsPage/SettingsPage';
 
 function TaskMaster(props) {
     //console.log(props.title);
-    const title = props.title;
+    const title = props.title || 'dashboard';
     return(
         <>
         <div className="taskmaster">
