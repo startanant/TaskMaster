@@ -17,7 +17,7 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home from './components/Home/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
-import Message from './components/Message/Message';
+// import Message from './components/Message/Message';
 import { GlobalStore, useGlobalStore } from './components/GlobalStore/GlobalStore';
 //import {  } from './components/GlobalStore/GlobalStore';
 
@@ -45,7 +45,7 @@ function App() {
                         <PrivateRoute exact path="/mytasks" component={TaskMaster} title={`mytasks`}/>
                         <PrivateRoute exact path="/settings" component={TaskMaster} title={`settings`}/>
                 </Switch>
-                <Message />
+                {/* <Message /> */}
             </GlobalStore> 
         </Router>
 

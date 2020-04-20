@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useGlobalStore } from '../GlobalStore/GlobalStore';
 import { login } from '../../utils';
+import { Link } from 'react-router-dom';
+import Message from '../Message/Message';
 
 // const LoginPage = (props) => {
 
@@ -19,8 +21,8 @@ import { login } from '../../utils';
 //     );
 // };
 
-function LoginPage(props) {
-    const isLoggedIn = localStorage.getItem('email') ? true : false;
+function LoginPage (props) {
+    // const isLoggedIn = localStorage.getItem('email') ? true : false;
     const [globalData, dispatch] = useGlobalStore();
     const [userData, setUserData] = useState({ email: '', password: '' });
 
@@ -119,6 +121,7 @@ function LoginPage(props) {
                 message: 'Logging in...',
             });
             setTimeout(function () {
+                dispatch({ do: 'clearMessage'});
                 dispatch({ do: 'loginState', loggedIn: true });
             }, 2000);
         }
@@ -134,25 +137,23 @@ function LoginPage(props) {
     }
 
     return (
-        <div
-            style={{
-                backgroundImage: "url('./img/login.jpg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                height: '90vh',
-                opacity: '0.7',
-            }}
-        >
-            {/* {isLoggedIn ? <Redirect to='/projectdashboard' /> : ''} */}
+       
+            
+        <div className="loginPage">
             {globalData.loggedIn ? <Redirect to="/projectdashboard" /> : ''}
-            <div class="container">
-                {/* <h1>Login</h1> */}
-                <div class="card">
-                    <div class="card-header">Login</div>
-                    <div class="card-body">
-                        <form role="form">
+                
+                <div className="card login-card">
+                    <div className="card-header title-header">
+                        <h1>TaskMaster</h1>
+                        <h4 style={{color: 'grey'}}>Keep your projects organized.</h4>
+                    
+                    </div>
+                    <div className="card-header">Login</div>
+                    <Message />
+                    <div className="card-body">
+                    
                             <input type="hidden" id="db_id" value="" />
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="email">Email</label>
                                 <input
                                     value={userData.email}
@@ -160,10 +161,10 @@ function LoginPage(props) {
                                     ref={inputEmail}
                                     id="email"
                                     type="email"
-                                    class="form-control"
+                                    className="form-control login-input"
                                 />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="userPassword">Password</label>
                                 <input
                                     value={userData.password}
@@ -171,23 +172,31 @@ function LoginPage(props) {
                                     ref={inputPassword}
                                     id="password"
                                     type="password"
-                                    class="form-control"
+                                    className="form-control login-input "
                                 />
                             </div>
                             <button
                                 onClick={loginUser}
                                 type="button"
-                                class="btn btn-primary submit"
+                                className="btn btn-outline-light submit"
                             >
                                 Login
                             </button>
-                        </form>
+                            <footer className="footer-card">
+                                Don't have an account?
+                                <Link to="/register" className="loginBtn">
+                                    <button type="button" className="btn btn-sm btn-outline-light">Register</button>
+                                </Link>
+                            </footer>
+                        
                     </div>
                 </div>
 
                 {/* <button onClick={() => handleLogin()}>Click here to log in</button> */}
-            </div>
+            
+        
         </div>
+        
     );
 }
 

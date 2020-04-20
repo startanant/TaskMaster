@@ -8,10 +8,10 @@ function Message() {
     //dispatch({ do: 'setMessage', type: 'danger', message: `Testing Message...` });
 
     return(
-        <div class='container'>
-        <div className={globalData.messageType ? `alert alert-${globalData.messageType}` : 'd-hide'} role="alert">
-            {globalData.message}
-        </div>
+        <div>
+            <div className={globalData.messageType ? `alert alert-${globalData.messageType}` : 'd-hide'} role="alert">
+                {globalData.message}
+            </div>
         </div>
     );
 }
