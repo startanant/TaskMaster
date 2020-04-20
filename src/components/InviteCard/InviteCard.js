@@ -42,7 +42,7 @@ function InviteCard(props) {
             <div className="input-group mb-3">
                 <input 
                     type="text" 
-                    className="form-control form-control-sm" 
+                    className="form-control form-control-sm invite-input" 
                     placeholder="email" 
                     aria-label="invite email" 
                     aria-describedby="invite email"

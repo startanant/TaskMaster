@@ -1,11 +1,17 @@
 import React from 'react';
 import '../../components-style.css';
 import TextArea from '../TextArea/TextArea';
+import TextAreaDesc from '../TextAreaDesc/TextAreaDesc';
 import DueDate from '../DueDate/DueDate';
 import AssignCard from '../AssignCard/AssignCard';
 
 function Card(props) {
     // console.log('logging props passed to Card', props);
+
+    function setAccordShow(id){
+        console.log("Btn clicked -- card ID:", id)
+        
+    }
 
     return (
         <>
@@ -13,7 +19,7 @@ function Card(props) {
                 <div className="card-utility-header">
                     <button
                         type="button"
-                        className="btn-sm btn-outline-secondary"
+                        className="btn-sm btn-outline-secondary cardDelBtn"
                         onClick={() =>
                             props.deleteCard(props.colIndex, props.cardIndex)
                         }
@@ -29,7 +35,12 @@ function Card(props) {
                     />
                 </div>
                 <div className="card-body">
-                    <TextArea
+                    {/* <TextArea
+                        id={'desc' + props.cardid}
+                        placeholder="Description"
+                        value={props.description}
+                    /> */}
+                    <TextAreaDesc 
                         id={'desc' + props.cardid}
                         placeholder="Description"
                         value={props.description}
@@ -45,6 +56,7 @@ function Card(props) {
                 </div>
             </div>
 
+        
             {/* <div style={style} id={props.cardid}> */}
             {/* <textarea
                 id={'title' + props.cardid}

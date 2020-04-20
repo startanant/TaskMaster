@@ -457,7 +457,7 @@ function MainPage(props) {
                 <div style={{ margin: '32px' }}>
                     <button
                         type="button"
-                        className="btn-lg btn-outline-secondary"
+                        className="btn-lg btn-dark"
                         onClick={addColumn}
                     >
                         Add column
