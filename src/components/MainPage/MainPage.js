@@ -104,22 +104,21 @@ function MainPage(props) {
 
     async function inviteUser(email) {
         const url = `/api/getUserName/${email}`;
-        const result = await fetch(url).then((response) => response.json());
+        let result = await fetch(url).then((response) => response.json());
         console.log(
             'loggin response from server for /api/getUserName ',
             result
         );
+        if (result.answer == 'nothing found') {
+            result.name = '';
+            result.firstname = '';
+            result.lastname = '';
+            result.email = email;
+        }
         user.dashboards[currentDashboard].shared.push(result);
         user.dashboards[currentDashboard].shared = [
             ...new Set(user.dashboards[currentDashboard].shared),
         ];
-
-        // const sharedRecord = {
-        //     to: email,
-        //     dashboards: user.sharedByUser.dashboards.push(currentDashboard),
-        // };
-
-        // user.sharedByUser.push(sharedRecord);
 
         const userIndex = user.sharedByUser.findIndex(
             (element) => element.to == `${email}`
@@ -379,8 +378,8 @@ function MainPage(props) {
                                         type="button"
                                         class="btn btn-sm btn-primary user"
                                     >
-                                        {element.name != ''
-                                            ? element.name
+                                        {element.firstname != ''
+                                            ? element.firstname
                                             : element.email}{' '}
                                         X
                                     </button>
