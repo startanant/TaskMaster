@@ -23,7 +23,6 @@ import { Link } from 'react-router-dom';
 function RegisterPage(props) {
     const [userData, setUserData] = useState({
         email: '',
-        name: '',
         firstname: '',
         lastname: '',
         password: '',
@@ -164,6 +163,7 @@ function RegisterPage(props) {
                     <h4 style={{color: 'grey'}}>Keep your projects organized.</h4>
                 </div>
             </div>
+            
             <div className="container-right">
                 <div className="title-mobile">
                     <h1>TaskMaster</h1>
@@ -195,16 +195,7 @@ function RegisterPage(props) {
                                         className="form-control register-input"
                                     />
                                 </div>
-                                <div class="form-group">
-                                    <label for="name">Username</label>
-                                    <input
-                                        value={userData.name}
-                                        onChange={handleInputChange}
-                                        id="name"
-                                        type="text"
-                                        className="form-control register-input"
-                                    />
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="email">Email Address</label>
                                     <input
