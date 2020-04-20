@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useGlobalStore } from '../GlobalStore/GlobalStore';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../utils';
+import { Link } from 'react-router-dom';
+import Message from '../Message/Message';
 
 // const LoginPage = (props) => {
 
@@ -22,7 +24,6 @@ import { login } from '../../utils';
 function RegisterPage(props) {
     const [userData, setUserData] = useState({
         email: '',
-        name: '',
         firstname: '',
         lastname: '',
         password: '',
@@ -144,86 +145,103 @@ function RegisterPage(props) {
     }
 
     return (
-        <div
-            style={{
-                backgroundImage: "url('./img/login.jpg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                height: '90vh',
-                opacity: '0.7',
-            }}
-        >
+        // <div
+        //     style={{
+        //         backgroundImage: "url('./img/login.jpg')",
+        //         backgroundSize: 'cover',
+        //         backgroundPosition: 'center',
+        //         height: '90vh',
+        //         opacity: '0.7',
+        //     }}
+        // >
+        
+        <div className="registerPage">
             {isRegistered ? <Redirect to="/login" /> : ''}
-            <div class="container">
-                {/* <h1>User Registration</h1> */}
-                <div class="card">
-                    <div class="card-header">Register</div>
-                    <div class="card-body">
-                        <form role="form">
-                            <input type="hidden" id="db_id" value="" />
-                            <div class="form-group">
-                                <label for="name">First Name</label>
-                                <input
-                                    value={userData.firstname}
-                                    onChange={handleInputChange}
-                                    id="firstname"
-                                    type="text"
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Last Name</label>
-                                <input
-                                    value={userData.lastname}
-                                    onChange={handleInputChange}
-                                    id="lastname"
-                                    type="text"
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Username</label>
-                                <input
-                                    value={userData.name}
-                                    onChange={handleInputChange}
-                                    id="name"
-                                    type="text"
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input
-                                    value={userData.email}
-                                    onChange={handleInputChange}
-                                    ref={inputEmail}
-                                    id="email"
-                                    type="email"
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="userPassword">Password</label>
-                                <input
-                                    value={userData.password}
-                                    onChange={handleInputChange}
-                                    ref={inputPassword}
-                                    id="password"
-                                    type="password"
-                                    class="form-control"
-                                />
-                            </div>
-                            <button
-                                onClick={registerUser}
-                                class="btn btn-primary submit"
-                            >
-                                Register
-                            </button>
-                            {/* <button onClick={() => handleRegister()}>Register</button> */}
-                        </form>
-                    </div>
+            
+            <div className="container-left">
+                <div className="title-container">
+                    <h1>TaskMaster</h1>
+                    <h4 style={{color: 'grey'}}>Keep your projects organized.</h4>
                 </div>
             </div>
+            
+            <div className="container-right">
+                <div className="title-mobile">
+                    <h1>TaskMaster</h1>
+                </div>
+                <div className="container">
+                    
+                    {/* <h1>User Registration</h1> */}
+                    <div className="card register-card">
+                        <div className="card-header"><h3>Register</h3></div>
+                        <Message />
+                        <div className="card-body">
+                            
+                                <input type="hidden" id="db_id" value="" />
+                                <div className="form-group">
+                                    <label for="name">First Name</label>
+                                    <input
+                                        value={userData.firstname}
+                                        onChange={handleInputChange}
+                                        id="firstname"
+                                        type="text"
+                                        className="form-control register-input"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Last Name</label>
+                                    <input
+                                        value={userData.lastname}
+                                        onChange={handleInputChange}
+                                        id="lastname"
+                                        type="text"
+                                        className="form-control register-input"
+                                    />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input
+                                        value={userData.email}
+                                        onChange={handleInputChange}
+                                        ref={inputEmail}
+                                        id="email"
+                                        type="email"
+                                        className="form-control register-input"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="userPassword">Password</label>
+                                    <input
+                                        value={userData.password}
+                                        onChange={handleInputChange}
+                                        ref={inputPassword}
+                                        id="password"
+                                        type="password"
+                                        className="form-control register-input"
+                                    />
+                                </div>
+                                <button
+                                    onClick={registerUser}
+                                    className="btn btn-outline-light submit"
+                                >
+                                    Register
+                                </button>
+                                {/* <button onClick={() => handleRegister()}>Register</button> */}
+                                <footer className="footer-card">
+                                    Already registerd?
+                                    <Link to="/login" className="loginBtn">
+                                        <button type="button" className="btn btn-sm btn-outline-light">Login</button>
+                                    </Link>
+                                </footer>
+                            
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+            
         </div>
     );
 }

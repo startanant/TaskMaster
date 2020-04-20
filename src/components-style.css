@@ -129,20 +129,15 @@
   width: 320px;
 }
 
-
-
 .dash-nav-add {
   width: 240px;
 }
 
-.header-control
 
 
 .team-add-container {
   background-color: teal;
 }
-
-
 
 /* .header-invite {
   width: 50%;
@@ -295,7 +290,127 @@
   top: 20px;
   right: 30px;
 }
+.registerPage {
+  display: flex;
+  flex-direction: row;
 
+}
+
+.container-left {
+  height: 100vh;
+  width: 50%;
+  background-image: linear-gradient(#232526,#414345);
+  display: flex;
+  flex-direction: initial;
+  justify-content: center;
+}
+
+.title-container {
+  width: 500px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #272727;
+  padding:40px;
+  color: white;
+  border-radius: 20px;
+  border: solid grey 1px;
+}
+.container-right {
+  height: 100vh;
+  width: 50%;
+  background-color: grey;
+  background-image: linear-gradient(#232526,#414345);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-card {
+  max-width: 500px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #272727;
+  color: white;
+  border-radius: 20px;
+  padding: 16px;
+  border: solid grey 1px;
+}
+.register-input {
+  background-color: #272727;
+  color: grey;
+}
+
+.title-mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .container-left {
+    display: none;
+  }
+  .container-right {
+    width: 100%;
+  }
+  .title-mobile {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    text-align: center;
+    color: white;
+  }
+}
+
+.footer-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.loginBtn {
+  margin-left: 20px;
+}
+
+.loginPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(#232526,#414345);
+}
+
+.login-card {
+  margin-top: 500px;
+  width: 500px;
+  margin: auto;
+  background-color: #272727;
+  color: white;
+  border-radius: 20px;
+  padding: 16px;
+  border: solid grey 1px;
+}
+
+.title-header {
+  text-align: center;
+}
+.login-input {
+  background-color: #272727;
+  color: grey;
+}
+
+.footer-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 800px) {
+  .login-card {
+    width: auto;
+  }
+}
 
 
 
