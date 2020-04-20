@@ -3,6 +3,7 @@ import { useGlobalStore } from '../GlobalStore/GlobalStore';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../utils';
 import { Link } from 'react-router-dom';
+import Message from '../Message/Message';
 
 // const LoginPage = (props) => {
 
@@ -169,9 +170,11 @@ function RegisterPage(props) {
                     <h1>TaskMaster</h1>
                 </div>
                 <div className="container">
+                    
                     {/* <h1>User Registration</h1> */}
                     <div className="card register-card">
                         <div className="card-header"><h3>Register</h3></div>
+                        <Message />
                         <div className="card-body">
                             
                                 <input type="hidden" id="db_id" value="" />

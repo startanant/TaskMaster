@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useGlobalStore } from '../GlobalStore/GlobalStore';
 import { login } from '../../utils';
 import { Link } from 'react-router-dom';
+import Message from '../Message/Message';
 
 // const LoginPage = (props) => {
 
@@ -148,6 +149,7 @@ function LoginPage (props) {
                     
                     </div>
                     <div className="card-header">Login</div>
+                    <Message />
                     <div className="card-body">
                     
                             <input type="hidden" id="db_id" value="" />
