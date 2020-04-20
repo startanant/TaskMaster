@@ -246,6 +246,13 @@ app.get('/mytasks', (req, res) => {
     };
     res.sendFile('index.html', options);
 });
+
+app.get('/register', (req, res) => {
+    const options = {
+        root: path.join(__dirname, 'public'),
+    };
+    res.sendFile('index.html', options);
+});
 app.use(express.static('./public'));
 
 const PORT = 8080;
