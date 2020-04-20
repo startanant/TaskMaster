@@ -400,13 +400,13 @@ function MainPage(props) {
             </div>
 
             {/**/}
-            <div style={dashboardControlStyle}>
+            {/* <div style={dashboardControlStyle}>
                 <SwitchUser
                     currentUser={currentUser}
                     switchUser={switchUser}
                     shared={allUsers ? allUsers : []}
                 />
-            </div>
+            </div> */}
             {/*
                 <DashboardControl
                     dashboards={user.dashboards}
