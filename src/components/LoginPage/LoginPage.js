@@ -123,7 +123,7 @@ function LoginPage (props) {
             setTimeout(function () {
                 dispatch({ do: 'clearMessage'});
                 dispatch({ do: 'loginState', loggedIn: true });
-            }, 2000);
+            }, 1000);
         }
 
         // setTimeout(function () {
