@@ -361,7 +361,15 @@
     text-align: center;
     color: white;
   }
+}
 
+.footer-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.loginBtn {
+  margin-left: 20px;
 }
 
 

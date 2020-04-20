@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useGlobalStore } from '../GlobalStore/GlobalStore';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../utils';
+import { Link } from 'react-router-dom';
 
 // const LoginPage = (props) => {
 
@@ -228,11 +229,17 @@ function RegisterPage(props) {
                                 </div>
                                 <button
                                     onClick={registerUser}
-                                    class="btn btn-outline-light submit"
+                                    className="btn btn-outline-light submit"
                                 >
                                     Register
                                 </button>
                                 {/* <button onClick={() => handleRegister()}>Register</button> */}
+                                <footer className="footer-login">
+                                    Already registerd?
+                                    <Link to="/login" className="loginBtn">
+                                    <button type="button" className="btn btn-sm btn-outline-light">Login</button>
+                                    </Link>
+                                </footer>
                             
                         </div>
                     </div>
