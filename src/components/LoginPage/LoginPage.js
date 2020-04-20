@@ -20,7 +20,7 @@ import { login } from '../../utils';
 // };
 
 function LoginPage (props) {
-    const isLoggedIn = localStorage.getItem('email') ? true : false;
+    // const isLoggedIn = localStorage.getItem('email') ? true : false;
     const [globalData, dispatch] = useGlobalStore();
     const [userData, setUserData] = useState({email: "", password: ""});
 
@@ -107,7 +107,8 @@ function LoginPage (props) {
             localStorage.setItem('email', email);
             dispatch({ do: 'setMessage', type: 'success', message: 'Logging in...' });
             setTimeout(function () {
-                dispatch({ do: 'loginState', loggedIn: true })
+                dispatch({ do: 'clearMessage'});
+                dispatch({ do: 'loginState', loggedIn: true });
             }, 2000);
         }
         

@@ -2,21 +2,22 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import '../../components-style.css';
 import { Link } from "react-router-dom";
+import { useGlobalStore } from "../GlobalStore/GlobalStore";
 
 function SideNav(){
-  
-  const [userLogout, setUserLogout] = useState(false);
+  const [globalData, dispatch] = useGlobalStore();
+  // const [userLogout, setUserLogout] = useState(false);
 
   function logout() {
+    dispatch({ do: 'loginState', loggedIn: false })
     localStorage.removeItem('email');
-    setUserLogout(true);
   }
 
   return (
 
     <div className="sideNav">
 
-      {userLogout ? <Redirect to='/login' /> : ''}
+      {globalData.loggedIn ? '' : <Redirect to='/' />}
       <div className="taskmaster-logo">
           TaskMaster
         </div>
