@@ -392,7 +392,9 @@
   border: solid grey 1px;
 }
 
-
+.title-header {
+  text-align: center;
+}
 .login-input {
   background-color: #272727;
   color: grey;

@@ -139,10 +139,14 @@ function LoginPage(props) {
             
         <div className="loginPage">
             {globalData.loggedIn ? <Redirect to="/projectdashboard" /> : ''}
-            
-            
+                
                 <div className="card login-card">
-                    <div className="card-header"><h3>Login</h3></div>
+                    <div className="card-header title-header">
+                        <h1>TaskMaster</h1>
+                        <h4 style={{color: 'grey'}}>Keep your projects organized.</h4>
+                    
+                    </div>
+                    <div className="card-header">Login</div>
                     <div className="card-body">
                     
                             <input type="hidden" id="db_id" value="" />
