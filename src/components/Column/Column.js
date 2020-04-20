@@ -112,7 +112,7 @@ function Column(props) {
             <div className="column-header">
                 <button
                     type="button"
-                    className="btn-sm btn-dark"
+                    className="btn-sm btn-dark colDel"
                     onClick={() => props.deleteColumn(props.colIndex)}
                 >
                     <i class="far fa-trash-alt"></i>

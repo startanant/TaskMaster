@@ -6,12 +6,15 @@ function DueDate(props) {
         setValue(e.target.value);
     }
     return (
-        <input
-            id={props.id}
-            type="date"
-            value={value}
-            onChange={handleInputChange}
-        />
+        <div className="dueDate-cal-container">
+            <input
+                id={props.id}
+                type="date"
+                value={value}
+                onChange={handleInputChange}
+                className="dueDate-cal"
+            />
+        </div>
     );
 }
 

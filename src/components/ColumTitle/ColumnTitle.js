@@ -7,7 +7,7 @@ function ColumnTitle(props) {
     }
     return (
         <form>
-            <div className="form-row align-items-center">
+            <div className="form-row align-items-center col-title">
                 <div className="col-auto">
                     <input 
                         type="text" 

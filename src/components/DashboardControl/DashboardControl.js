@@ -15,7 +15,7 @@ function DashboardControl(props) {
                     <div className="input-group mb-3 dashAddInput">
                         <input
                             type="text"
-                            className="form-control form-control-sm"
+                            className="form-control form-control-sm dash-input"
                             placeholder="new dashboard"
                             aria-label="dashboard add"
                             aria-describedby="dashboard add"

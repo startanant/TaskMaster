@@ -20,10 +20,12 @@
 
 .sideNav-container {
   width: 10%;
+  min-width: 160px;
   background-color:#16141c;
   padding: 5px;
   border-right: solid grey 1px;
 }
+
 .taskmaster-logo {
   padding-top: 30px;
   margin-bottom: 70px;
@@ -32,26 +34,11 @@
 
 .sideNav {
   height: 100vh;
-
   background-color:#16141c;
   padding: 0px 20px 0px 20px;
   text-align: center; 
   justify-content: center;
-  /* position: fixed; */
-  /* z-index: 1; */
-  /* display: flex;
-  flex-direction: column
-  align-items: center;
-  align-content: flex-end; */
 }
-
-/* .nav-icon {
-  float: left;
-  width: 50%;
-}
-.nav-heading {
-  width: 50%
-} */
 
 .nav-item {
   text-align: center;
@@ -69,8 +56,6 @@
 .main {
   width: 90%;
   height: 100%;  
-  
-  
 } 
 
 .dashboard-main {
@@ -87,15 +72,16 @@
   padding: 20px 30px 20px 30px;
   position: relative;
 }
-/* .dash-add {
-  width: 220px;
-  float: left;
-} */
 
 .header-dashAddNav {
   display: inline-block;
   margin-right: 200px;
 }
+.dash-input {
+  background-color: #16141c;
+  color: white;
+}
+
 .header-team {
   display: inline-block;
   position: absolute;
@@ -103,7 +89,6 @@
   min-width: auto;
   min-height: max-content;
   text-align: center;
-  
 }
 .teamTitle {
   display: inline-block;
@@ -114,7 +99,10 @@
 .invite-form {
   display: inline-block;
   right: 0px;
-  
+}
+.invite-input{
+  background-color: #16141c;
+  color: white;
 }
 .addedUsers {
   display: flex;
@@ -133,17 +121,9 @@
   width: 240px;
 }
 
-
-
 .team-add-container {
   background-color: teal;
 }
-
-/* .header-invite {
-  width: 50%;
-  height: 100%;
-  float: right;
-} */
 
 .dashboard-subHeader {
   background-color: #272727;
@@ -172,11 +152,9 @@
   right: 30px;
 }
 
-
-
 .project-column-wrapper {
-  background-color: grey;
   background-color: #16141c;
+  background-color: #272727;
   height: 100vh;
   padding: 20px;
   display: flex;
@@ -187,7 +165,7 @@
 }
 
 .project-column {
-  width: 400px;
+  width: 350px;
   /* min-height: 300px; */
   height: auto;
   margin-right: 32px;
@@ -196,20 +174,28 @@
   align-items: center;
   padding: 20px 20px 20px 20px;
   border-radius: 10px;
-  background-color: grey;
+  background-color: #16141c;
 }
 
 .column-header {
-  width: auto;
-  display: flex;
-  flex-direction: row-reverse;
+  width: 100%;
+  float: right;
+  left: 0px;
   margin-bottom: 8px;
 }
+.colDel {
+  float: right;
+}
+
 
 .card {
   margin-top: 10px;
+  min-width: 300px;
   width: auto;
   padding: 10px;
+  background-color: grey;
+  background-color: #272727;
+  border: grey solid 1px;
 }
 
 .card-utility-header {
@@ -217,7 +203,40 @@
   display: flex;
   flex-direction: row-reverse;
   float: right;
+  text-align: center;
 }
+
+.card-header {
+  width: 100%;
+}
+
+.textArea {
+  width: 100%;
+}
+.cardDelBtn {
+  background-color: #272727;
+  color: white;
+}
+
+.textAreaCardTitle {
+  background-color: #272727;
+  color: white;
+}
+
+.textAreaDesc {
+  background-color: #272727;
+  color: white;
+}
+
+.dueDate-cal-container {
+  margin-bottom: 8px;
+}
+.dueDate-cal {
+  margin-bottom: 8px;
+  background-color:#272727;
+  color: white;
+}
+
 
 .mytasks-header {
   text-align: center;
