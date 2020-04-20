@@ -158,24 +158,30 @@ function RegisterPage(props) {
             {isRegistered ? <Redirect to="/login" /> : ''}
             
             <div className="container-left">
-                
+                <div className="title-container">
+                    <h1>TaskMaster</h1>
+                    <h4>Keep your projects organized.</h4>
+                </div>
             </div>
             <div className="container-right">
-                <div class="container">
+                <div className="title-mobile">
+                    <h1>TaskMaster</h1>
+                </div>
+                <div className="container">
                     {/* <h1>User Registration</h1> */}
-                    <div class="card register-card">
-                        <div class="card-header">Register</div>
-                        <div class="card-body">
+                    <div className="card register-card">
+                        <div className="card-header"><h3>Register</h3></div>
+                        <div className="card-body">
                             
                                 <input type="hidden" id="db_id" value="" />
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label for="name">First Name</label>
                                     <input
                                         value={userData.firstname}
                                         onChange={handleInputChange}
                                         id="firstname"
                                         type="text"
-                                        class="form-control"
+                                        className="form-control register-input"
                                     />
                                 </div>
                                 <div class="form-group">
@@ -185,7 +191,7 @@ function RegisterPage(props) {
                                         onChange={handleInputChange}
                                         id="lastname"
                                         type="text"
-                                        class="form-control"
+                                        className="form-control register-input"
                                     />
                                 </div>
                                 <div class="form-group">
@@ -195,7 +201,7 @@ function RegisterPage(props) {
                                         onChange={handleInputChange}
                                         id="name"
                                         type="text"
-                                        class="form-control"
+                                        className="form-control register-input"
                                     />
                                 </div>
                                 <div class="form-group">
@@ -206,7 +212,7 @@ function RegisterPage(props) {
                                         ref={inputEmail}
                                         id="email"
                                         type="email"
-                                        class="form-control"
+                                        className="form-control register-input"
                                     />
                                 </div>
                                 <div class="form-group">
@@ -217,12 +223,12 @@ function RegisterPage(props) {
                                         ref={inputPassword}
                                         id="password"
                                         type="password"
-                                        class="form-control"
+                                        className="form-control register-input"
                                     />
                                 </div>
                                 <button
                                     onClick={registerUser}
-                                    class="btn btn-primary submit"
+                                    class="btn btn-outline-light submit"
                                 >
                                     Register
                                 </button>

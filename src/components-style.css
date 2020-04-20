@@ -299,27 +299,69 @@
 .container-left {
   height: 100vh;
   width: 50%;
-  background-color: violet;
+  background-image: linear-gradient(#232526,#414345);
+  display: flex;
+  flex-direction: initial;
+  justify-content: center;
+}
+
+.title-container {
+  width: 500px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #272727;
+  padding:40px;
+  color: white;
+  border-radius: 20px;
+  border: solid white 1px;
 }
 .container-right {
   height: 100vh;
   width: 50%;
-  background-color: blue;
-  /* position: relative; */
+  background-color: grey;
+  background-image: linear-gradient(#232526,#414345);
   display: flex;
-  flex-direction: initial;
+  flex-direction: column;
   justify-content: center;
-  
-
 }
+
 .register-card {
-  width: 400px;
+  max-width: 500px;
   margin: auto;
-  /* position: absolute; */
   top: 50%;
   transform: translateY(-50%);
+  background-color: #272727;
+  color: white;
+  border-radius: 20px;
+  padding: 30px;
+  border: solid white 1px;
+}
+.register-input {
+  background-color: #272727;
+  color: grey;
+}
 
-  
+.title-mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .container-left {
+    display: none;
+  }
+  .container-right {
+    width: 100%;
+  }
+  .title-mobile {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    text-align: center;
+    color: white;
+  }
+
 }
 
 
