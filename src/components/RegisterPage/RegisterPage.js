@@ -144,86 +144,97 @@ function RegisterPage(props) {
     }
 
     return (
-        <div
-            style={{
-                backgroundImage: "url('./img/login.jpg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                height: '90vh',
-                opacity: '0.7',
-            }}
-        >
+        // <div
+        //     style={{
+        //         backgroundImage: "url('./img/login.jpg')",
+        //         backgroundSize: 'cover',
+        //         backgroundPosition: 'center',
+        //         height: '90vh',
+        //         opacity: '0.7',
+        //     }}
+        // >
+        
+        <div className="registerPage">
             {isRegistered ? <Redirect to="/login" /> : ''}
-            <div class="container">
-                {/* <h1>User Registration</h1> */}
-                <div class="card">
-                    <div class="card-header">Register</div>
-                    <div class="card-body">
-                        <form role="form">
-                            <input type="hidden" id="db_id" value="" />
-                            <div class="form-group">
-                                <label for="name">First Name</label>
-                                <input
-                                    value={userData.firstname}
-                                    onChange={handleInputChange}
-                                    id="firstname"
-                                    type="text"
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Last Name</label>
-                                <input
-                                    value={userData.lastname}
-                                    onChange={handleInputChange}
-                                    id="lastname"
-                                    type="text"
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Username</label>
-                                <input
-                                    value={userData.name}
-                                    onChange={handleInputChange}
-                                    id="name"
-                                    type="text"
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input
-                                    value={userData.email}
-                                    onChange={handleInputChange}
-                                    ref={inputEmail}
-                                    id="email"
-                                    type="email"
-                                    class="form-control"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="userPassword">Password</label>
-                                <input
-                                    value={userData.password}
-                                    onChange={handleInputChange}
-                                    ref={inputPassword}
-                                    id="password"
-                                    type="password"
-                                    class="form-control"
-                                />
-                            </div>
-                            <button
-                                onClick={registerUser}
-                                class="btn btn-primary submit"
-                            >
-                                Register
-                            </button>
-                            {/* <button onClick={() => handleRegister()}>Register</button> */}
-                        </form>
+            
+            <div className="container-left">
+                
+            </div>
+            <div className="container-right">
+                <div class="container">
+                    {/* <h1>User Registration</h1> */}
+                    <div class="card register-card">
+                        <div class="card-header">Register</div>
+                        <div class="card-body">
+                            
+                                <input type="hidden" id="db_id" value="" />
+                                <div class="form-group">
+                                    <label for="name">First Name</label>
+                                    <input
+                                        value={userData.firstname}
+                                        onChange={handleInputChange}
+                                        id="firstname"
+                                        type="text"
+                                        class="form-control"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Last Name</label>
+                                    <input
+                                        value={userData.lastname}
+                                        onChange={handleInputChange}
+                                        id="lastname"
+                                        type="text"
+                                        class="form-control"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Username</label>
+                                    <input
+                                        value={userData.name}
+                                        onChange={handleInputChange}
+                                        id="name"
+                                        type="text"
+                                        class="form-control"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input
+                                        value={userData.email}
+                                        onChange={handleInputChange}
+                                        ref={inputEmail}
+                                        id="email"
+                                        type="email"
+                                        class="form-control"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="userPassword">Password</label>
+                                    <input
+                                        value={userData.password}
+                                        onChange={handleInputChange}
+                                        ref={inputPassword}
+                                        id="password"
+                                        type="password"
+                                        class="form-control"
+                                    />
+                                </div>
+                                <button
+                                    onClick={registerUser}
+                                    class="btn btn-primary submit"
+                                >
+                                    Register
+                                </button>
+                                {/* <button onClick={() => handleRegister()}>Register</button> */}
+                            
+                        </div>
                     </div>
+                
                 </div>
             </div>
+
+            
         </div>
     );
 }
