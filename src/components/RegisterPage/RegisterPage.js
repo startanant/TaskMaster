@@ -234,10 +234,10 @@ function RegisterPage(props) {
                                     Register
                                 </button>
                                 {/* <button onClick={() => handleRegister()}>Register</button> */}
-                                <footer className="footer-login">
+                                <footer className="footer-card">
                                     Already registerd?
                                     <Link to="/login" className="loginBtn">
-                                    <button type="button" className="btn btn-sm btn-outline-light">Login</button>
+                                        <button type="button" className="btn btn-sm btn-outline-light">Login</button>
                                     </Link>
                                 </footer>
                             
