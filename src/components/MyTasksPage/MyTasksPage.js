@@ -23,8 +23,11 @@ function MyTasksPage() {
 
         //adding shared dashboards to user dashboard list
     }
+    let userEmail = localStorage.getItem('email')
+        ? localStorage.getItem('email')
+        : 'user@user.com';
     useEffect(function () {
-        getUser('user@user.com');
+        getUser(userEmail);
     }, []);
     return (
         <>
