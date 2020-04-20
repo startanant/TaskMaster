@@ -117,7 +117,7 @@ function RegisterPage(props) {
             // // let the message sit for a bit then redirect to login
             setTimeout(function () {
                 setIsRegistered(true);
-            }, 5000);
+            }, 1000);
         } else {
             dispatch({ do: 'setMessage', type: 'danger', message: result });
             return;
@@ -154,94 +154,97 @@ function RegisterPage(props) {
         //         opacity: '0.7',
         //     }}
         // >
-        
+
         <div className="registerPage">
             {isRegistered ? <Redirect to="/login" /> : ''}
-            
+
             <div className="container-left">
                 <div className="title-container">
                     <h1>TaskMaster</h1>
-                    <h4 style={{color: 'grey'}}>Keep your projects organized.</h4>
+                    <h4 style={{ color: 'grey' }}>
+                        Keep your projects organized.
+                    </h4>
                 </div>
             </div>
-            
+
             <div className="container-right">
                 <div className="title-mobile">
                     <h1>TaskMaster</h1>
                 </div>
                 <div className="container">
-                    
                     {/* <h1>User Registration</h1> */}
                     <div className="card register-card">
-                        <div className="card-header"><h3>Register</h3></div>
+                        <div className="card-header">
+                            <h3>Register</h3>
+                        </div>
                         <Message />
                         <div className="card-body">
-                            
-                                <input type="hidden" id="db_id" value="" />
-                                <div className="form-group">
-                                    <label for="name">First Name</label>
-                                    <input
-                                        value={userData.firstname}
-                                        onChange={handleInputChange}
-                                        id="firstname"
-                                        type="text"
-                                        className="form-control register-input"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Last Name</label>
-                                    <input
-                                        value={userData.lastname}
-                                        onChange={handleInputChange}
-                                        id="lastname"
-                                        type="text"
-                                        className="form-control register-input"
-                                    />
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input
-                                        value={userData.email}
-                                        onChange={handleInputChange}
-                                        ref={inputEmail}
-                                        id="email"
-                                        type="email"
-                                        className="form-control register-input"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label for="userPassword">Password</label>
-                                    <input
-                                        value={userData.password}
-                                        onChange={handleInputChange}
-                                        ref={inputPassword}
-                                        id="password"
-                                        type="password"
-                                        className="form-control register-input"
-                                    />
-                                </div>
-                                <button
-                                    onClick={registerUser}
-                                    className="btn btn-outline-light submit"
-                                >
-                                    Register
-                                </button>
-                                {/* <button onClick={() => handleRegister()}>Register</button> */}
-                                <footer className="footer-card">
-                                    Already registerd?
-                                    <Link to="/login" className="loginBtn">
-                                        <button type="button" className="btn btn-sm btn-outline-light">Login</button>
-                                    </Link>
-                                </footer>
-                            
+                            <input type="hidden" id="db_id" value="" />
+                            <div className="form-group">
+                                <label for="name">First Name</label>
+                                <input
+                                    value={userData.firstname}
+                                    onChange={handleInputChange}
+                                    id="firstname"
+                                    type="text"
+                                    className="form-control register-input"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Last Name</label>
+                                <input
+                                    value={userData.lastname}
+                                    onChange={handleInputChange}
+                                    id="lastname"
+                                    type="text"
+                                    className="form-control register-input"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input
+                                    value={userData.email}
+                                    onChange={handleInputChange}
+                                    ref={inputEmail}
+                                    id="email"
+                                    type="email"
+                                    className="form-control register-input"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="userPassword">Password</label>
+                                <input
+                                    value={userData.password}
+                                    onChange={handleInputChange}
+                                    ref={inputPassword}
+                                    id="password"
+                                    type="password"
+                                    className="form-control register-input"
+                                />
+                            </div>
+                            <button
+                                onClick={registerUser}
+                                className="btn btn-outline-light submit"
+                            >
+                                Register
+                            </button>
+                            {/* <button onClick={() => handleRegister()}>Register</button> */}
+                            <footer className="footer-card">
+                                Already registerd?
+                                <Link to="/login" className="loginBtn">
+                                    <button
+                                        type="button"
+                                        className="btn btn-sm btn-outline-light"
+                                    >
+                                        Login
+                                    </button>
+                                </Link>
+                            </footer>
                         </div>
                     </div>
-                
                 </div>
             </div>
-
-            
         </div>
     );
 }
