@@ -19,8 +19,8 @@ import { login } from '../../utils';
 //     );
 // };
 
-function LoginPage(props) {
-    const isLoggedIn = localStorage.getItem('email') ? true : false;
+function LoginPage (props) {
+    // const isLoggedIn = localStorage.getItem('email') ? true : false;
     const [globalData, dispatch] = useGlobalStore();
     const [userData, setUserData] = useState({ email: '', password: '' });
 
@@ -119,6 +119,7 @@ function LoginPage(props) {
                 message: 'Logging in...',
             });
             setTimeout(function () {
+                dispatch({ do: 'clearMessage'});
                 dispatch({ do: 'loginState', loggedIn: true });
             }, 2000);
         }
