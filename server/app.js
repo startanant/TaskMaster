@@ -20,7 +20,7 @@ let user = require('./user.json');
 
 async function getUsers() {
     const result = await db.find({}, { email: 1 });
-    console.log('function getUsers called', result);
+    // console.log('function getUsers called', result);
 }
 
 // parse application/x-www-form-urlencoded
@@ -32,36 +32,36 @@ app.use(express.json());
 // getUsers();
 //route to get all users
 app.get('/api/getAllUsers', async (req, res) => {
-    console.log('api getAllUsers called');
+    // console.log('api getAllUsers called');
     const response = await db.userprofile.find({}, 'email');
     if (response.length > 0) {
         res.json(response);
     } else res.json({ answer: 'empty set!' });
 });
 app.post('/api/insertShared', async (req, res) => {
-    console.log('insertShared api called', req.body);
+    // console.log('insertShared api called', req.body);
     let sharedDashboard = {
         sharedFrom: req.body.sharedFrom,
         sharedTo: req.body.sharedTo,
         sharedDashboards: req.body.dashboards.toString(),
     };
-    console.log(sharedDashboard);
+    // console.log(sharedDashboard);
     const filter = {
         sharedFrom: req.body.sharedFrom,
         sharedTo: req.body.sharedTo,
     };
-    console.log('filter:', filter);
+    // console.log('filter:', filter);
     const result = await db.shared
         .findOneAndReplace(filter, sharedDashboard, {
             upsert: true,
             returnNewDocument: true,
         })
         .then((response) => response);
-    console.log(result);
+    // console.log(result);
     res.json(result);
 });
 app.get('/api/getUser/:email', async (req, res) => {
-    console.log('getUser called for email:', req.params);
+    // console.log('getUser called for email:', req.params);
     const query = { email: req.params.email };
     const response = await db.userprofile.find(query);
     const sharedDashboardsTo = await db.userprofile.find(
@@ -84,7 +84,7 @@ app.get('/api/getUser/:email', async (req, res) => {
     reply.push(response);
     reply.push(sharedDashboardsTo);
     // reply.push(sharedDashboardsFrom);
-    console.log(reply);
+    // console.log(reply);
 
     if (response.length > 0) {
         res.json(reply);
@@ -119,7 +119,7 @@ app.get('/api/authUser/:email', async (req, res) => {
 });
 
 app.get('/api/getUserPassword/:email', async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     const query = { email: req.params.email };
     const response = await db.userprofile.find(query, 'password');
     if (response.length > 0) {
@@ -129,7 +129,7 @@ app.get('/api/getUserPassword/:email', async (req, res) => {
 });
 
 app.post('/api/addUser', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     user = { ...user, ...req.body };
     user.dashboards[0].owner = req.body.email;
     user.dashboards[0].id = uuid();
@@ -207,10 +207,10 @@ app.post('/api/notify', async (req, res) => {
     });
     request
         .then((result) => {
-            console.log(result.body);
+            // console.log(result.body);
         })
         .catch((err) => {
-            console.log(err.statusCode);
+            // console.log(err.statusCode);
         });
 
     res.json({
@@ -218,7 +218,7 @@ app.post('/api/notify', async (req, res) => {
     });
 });
 app.post('/api/updateUserProfile', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     // user = { ...user, ...req.body };
     const response = await db.userprofile.findOneAndReplace(
         { email: req.body.email },
