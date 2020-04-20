@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Route,
+    Redirect,
+    Switch,
+} from 'react-router-dom';
 import styled from 'styled-components';
 import './components-style.css';
 import TaskMaster from './components/TaskMaster/TaskMaster';
@@ -18,9 +23,11 @@ import Home from './components/Home/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 // import Message from './components/Message/Message';
-import { GlobalStore, useGlobalStore } from './components/GlobalStore/GlobalStore';
+import {
+    GlobalStore,
+    useGlobalStore,
+} from './components/GlobalStore/GlobalStore';
 //import {  } from './components/GlobalStore/GlobalStore';
-
 
 function App() {
     const isLoggedIn = localStorage.getItem('email') ? true : false;
@@ -34,19 +41,33 @@ function App() {
     `;
 
     return (
-
         <Router>
             <GlobalStore>
                 <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/login" component={LoginPage} />
-                        <Route exact path="/register" component={RegisterPage} />
-                        <PrivateRoute exact path="/projectdashboard" component={TaskMaster} title={`dashboard`}/>
-                        <PrivateRoute exact path="/mytasks" component={TaskMaster} title={`mytasks`}/>
-                        <PrivateRoute exact path="/settings" component={TaskMaster} title={`settings`}/>
+                    <Route exact path="/" component={LoginPage} />
+                    <Route exact path="/login" component={LoginPage} />
+                    <Route exact path="/register" component={RegisterPage} />
+                    <PrivateRoute
+                        exact
+                        path="/projectdashboard"
+                        component={TaskMaster}
+                        title={`dashboard`}
+                    />
+                    <PrivateRoute
+                        exact
+                        path="/mytasks"
+                        component={TaskMaster}
+                        title={`mytasks`}
+                    />
+                    <PrivateRoute
+                        exact
+                        path="/settings"
+                        component={TaskMaster}
+                        title={`settings`}
+                    />
                 </Switch>
                 {/* <Message /> */}
-            </GlobalStore> 
+            </GlobalStore>
         </Router>
 
         // <Wrapper>
@@ -55,9 +76,6 @@ function App() {
         //     <SideNav />
         //     <MainPage id="qaz" />
         // </Wrapper>
-
-
-        
     );
 }
 
