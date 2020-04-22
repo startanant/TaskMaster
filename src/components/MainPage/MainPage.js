@@ -8,6 +8,7 @@ import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
 import { v4 as uuidv4 } from 'uuid';
+import Modal from '../Modal/Modal';
 
 function MainPage(props) {
     const [user, setUser] = useState({
@@ -422,6 +423,7 @@ function MainPage(props) {
                     sharedByUser={user.sharedByUser}
                 />
             </div> */}
+            <Modal />
             <div id={props.id} className="project-column-wrapper">
                 {user.dashboards[currentDashboard].columns.map(
                     (element, index) => {
