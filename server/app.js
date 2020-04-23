@@ -10,6 +10,7 @@ const qs = require('qs');
 const { uuid } = require('uuidv4');
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcrypt');
 // import { v4 as uuidv4 } from 'uuid';
 let db = require('./models');
 let user = require('./user.json');
@@ -135,6 +136,12 @@ app.post('/api/addUser', async (req, res) => {
     user.dashboards[0].id = uuid();
     user.dashboards[0].columns[0].id = uuid();
     user.dashboards[0].columns[0].cards[0].id = uuid();
+    let passwordHash = '';
+    const saltRounds = 10;
+    passwordHash = await bcrypt.hash(req.body.password, saltRounds);
+    console.log(`[addUser] (hash=${passwordHash}) req.body:`, user);
+    user.password = passwordHash;
+
     try {
         const response = await db.userprofile.create(user);
         res.json(response);
