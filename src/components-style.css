@@ -431,6 +431,16 @@
   }
 }
 
+/* Modal ==================== */
 
+.modal-content {
+  width: auto;
+  padding: 30px;
+}
+
+.modal{
+  width: 400px;
+  height: 400px;
+}
 
 

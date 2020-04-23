@@ -5,6 +5,7 @@ import TextAreaDesc from '../TextAreaDesc/TextAreaDesc';
 import DueDate from '../DueDate/DueDate';
 import AssignCard from '../AssignCard/AssignCard';
 import Modal from '../Modal/Modal';
+import ModalTest from '../ModalTest/ModalTest';
 
 function Card(props) {
     // console.log('logging props passed to Card', props);
@@ -47,21 +48,21 @@ function Card(props) {
                         value={props.description}
                     />
                     <DueDate id={'date' + props.cardid} value={props.dueDate} />
-                    <AssignCard
+                    {/* <AssignCard
                         id={'email' + props.cardid}
                         shared={props.shared}
                         colIndex={props.colIndex}
                         cardIndex={props.cardIndex}
                         assignToCard={props.assignToCard}
-                    />
+                    /> */}
                 </div>
                 <Modal 
                     colNum={props.colIndex} 
                     cardNum={props.cardIndex}
-                    id={'title' + props.cardid}
-                    value={props.title}
-                    placeholder="Title"
+                    id={'modal' + props.cardid}
+                    modalTitle={props.title}
                 />
+                <ModalTest />
             </div>
 
         

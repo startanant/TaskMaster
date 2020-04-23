@@ -6,27 +6,31 @@ function Modal(props){
     function handleInputChange(e) {
         setValue(e.target.value);
     }
-
+    function handleClick(){
+        console.log("button click", props.id)
+    }
     const colNum = props.colNum;
     const cardNum = props.cardNum;
 
-    useEffect( function(){
-        setValue(props.value);
-        console.log("modal value >>>>", value)    
-        console.log(`Button CLICKED === COL: ${colNum} CARD: ${cardNum}`)
-    }, [])
+    // useEffect( function(){
+    //     setValue(props.value);
+    //     console.log("modal value >>>>", value)    
+    //     console.log(`Button CLICKED === COL: ${colNum} CARD: ${cardNum}`)
+    // }, [])
     
     return (
 
         <>
     
-            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button id={props.id} onClick={handleClick}type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
             Modal
             </button>
 
             <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
+
+    <h1>Title: {props.modalTitle}{value}</h1>
                     
 
                     <div className="modal-header">
@@ -41,11 +45,13 @@ function Modal(props){
                         <div className="row">
                             <div className="col-md-12">
                                 <h4 className="modal-title">Kickoff Meeting</h4>
+                                {props.ModalTitle}
                             </div>
+
                             <div className="col-md-12">
                                 <h6 className="modal-title">This meeting is to kick off the upcoming development project with the client.</h6>
                             </div>
-            
+        
                             <div className="col-md-12">
                                 Priority:
                                 <div className="btn-group">
@@ -62,6 +68,41 @@ function Modal(props){
             
                         </div>
                     </div> 
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="assign col-md-6">
+                            <div class="row">
+                                <div class="assigned-title col-md-6">
+                                <h5>Assigned</h5>
+                                {props.assignTeam}
+                                </div>
+                                <div class="plus-icon col-md-6">
+                                <i class="fas fa-plus fa-1x"></i>
+                                </div>
+                            </div>
+                            <div class="assignees-container">
+                                <div class="assignee-icon">JC</div>
+                                <div class="assignee-icon">PR</div>
+                            </div>
+                            </div>
+            
+                            <div class="dueDate col-md-6">
+                            <div class="row">
+                                <div class="date-title col-md-6">
+                                <h5>Due Date</h5>
+                                </div>
+                                <div class="calendar-icon col-md-6">
+                                <i class="far fa-calendar-times fa-2x"></i>
+                                </div>
+                            </div>
+                            <div class="date-container">
+                                <h5>April 15/20</h5>  
+                            </div>
+                            </div>
+                        </div>
+                        
+                    </div>
 
 
 
