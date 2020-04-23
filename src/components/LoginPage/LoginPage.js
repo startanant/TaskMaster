@@ -113,11 +113,11 @@ function LoginPage(props) {
                 'Content-Type': 'application/json',
             },
         }).then((response) => response.json());
-        // console.log(result);
+        console.log(result);
         // console.log(result[0].email);
-        let email = result[0].email;
-        if (email) {
-            localStorage.setItem('email', email);
+        //let email = result.email;
+        if (result.email) {
+            localStorage.setItem('email', result.email);
             dispatch({
                 do: 'setMessage',
                 type: 'success',
@@ -127,6 +127,12 @@ function LoginPage(props) {
                 dispatch({ do: 'clearMessage' });
                 dispatch({ do: 'loginState', loggedIn: true });
             }, 1000);
+        } else {
+            dispatch({
+                do: 'setMessage',
+                type: 'danger',
+                message: result.message
+            });
         }
 
         // setTimeout(function () {

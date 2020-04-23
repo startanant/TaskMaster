@@ -10,6 +10,7 @@ const qs = require('qs');
 const { uuid } = require('uuidv4');
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcrypt');
 // import { v4 as uuidv4 } from 'uuid';
 let db = require('./models');
 let user = require('./user.json');
@@ -135,6 +136,12 @@ app.post('/api/addUser', async (req, res) => {
     user.dashboards[0].id = uuid();
     user.dashboards[0].columns[0].id = uuid();
     user.dashboards[0].columns[0].cards[0].id = uuid();
+    let passwordHash = '';
+    const saltRounds = 10;
+    passwordHash = await bcrypt.hash(req.body.password, saltRounds);
+    console.log(`[addUser] (hash=${passwordHash}) req.body:`, user);
+    user.password = passwordHash;
+
     try {
         const response = await db.userprofile.create(user);
         res.json(response);
@@ -147,21 +154,39 @@ app.post('/api/login', async (req, res) => {
     console.log(req.body);
     user = { ...user, ...req.body };
     const query = { email: req.body.email };
-    //const response = await db.userauth.find(query);
-    try {
-        const response = await db.userprofile.find(query, {
-            _id: 0,
-            email: 1,
-            password: 1,
-        });
-        res.json(response);
-    } catch (error) {
-        res.json(error);
+    //const userProfile = await db.userprofile.findOne(query);
+    let userProfile = await db.userprofile.find(query, { _id: 0, email: 1, password: 1 });
+    // userProfile = JSON.stringify(userProfile);
+    // userProfile = JSON.parse(userProfile);
+    // console.log(b[0].password);
+
+    // let userProfile = JSON.stringify(userProfile1);
+    // userProfile = JSON.parse(userProfile);
+    console.log(typeof userProfile);
+    let response;
+    if (userProfile) {
+        userProfile = JSON.stringify(userProfile);
+        userProfile = JSON.parse(userProfile);
+        console.log(typeof userProfile);
+        console.log(req.body.password);
+        if (userProfile[0]) {
+            console.log(userProfile[0].password);
+            const isValidPassword = await bcrypt.compare(req.body.password, userProfile[0].password);
+            if (isValidPassword) {
+                response = {
+                    message: 'OK',
+                    email: userProfile[0].email
+                };
+            } else {
+                response = { message: 'Invalid username/password' };
+            }
+        } else {
+            response = { message: 'Invalid username/password' };
+        }
+    } else {
+        response = { message: 'Database error' };
     }
-    // const response = await db.userprofile.find(query, { _id: 0, email: 1, password: 1 })
-    // if (response.length > 0) {
-    //     res.json(response[0].email);
-    // } else res.json({ answer: 'nothing found' });
+    res.json(response);
 });
 
 app.post('/api/notify', async (req, res) => {
