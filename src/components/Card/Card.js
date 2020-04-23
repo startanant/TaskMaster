@@ -1,19 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ReactDOM from "react-dom";
 import '../../components-style.css';
 import TextArea from '../TextArea/TextArea';
 import TextAreaDesc from '../TextAreaDesc/TextAreaDesc';
 import DueDate from '../DueDate/DueDate';
 import AssignCard from '../AssignCard/AssignCard';
-import Modal from '../Modal/Modal';
+
 import ModalTest from '../ModalTest/ModalTest';
+// import Modal from "react-bootstrap/Modal";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Card(props) {
     // console.log('logging props passed to Card', props);
 
-    function setAccordShow(id){
-        console.log("Btn clicked -- card ID:", id)
-        
-    }
+    const [ modal, setModal ] = useState(false);
+
+    const showModal = () => {
+        setModal(true);
+      };
+
+    // function showModal(){
+    //     console.log("setting modal", modal)
+    //     setModal(true)
+    //     console.log("modal set", modal)
+    // }
 
     return (
         <>
@@ -56,13 +66,18 @@ function Card(props) {
                         assignToCard={props.assignToCard}
                     /> */}
                 </div>
-                <Modal 
+                <ModalTest 
                     colNum={props.colIndex} 
                     cardNum={props.cardIndex}
                     id={'modal' + props.cardid}
-                    modalTitle={props.title}
+                    titleValue={props.title}
                 />
-                <ModalTest />
+                <button onClick={showModal}type="button" className="btn btn-success">Show Modal</button>
+                {/* <Modal show={modal}>
+                    <h1>Here is the modal</h1>
+                </Modal> */}
+
+                
             </div>
 
         
