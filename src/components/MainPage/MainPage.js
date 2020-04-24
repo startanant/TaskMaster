@@ -8,6 +8,8 @@ import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
 import { v4 as uuidv4 } from 'uuid';
+import Modal from "react-bootstrap/Modal";
+
 
 function MainPage(props) {
     const [user, setUser] = useState({
@@ -33,7 +35,22 @@ function MainPage(props) {
     }
     const [currentUser, setCurrentUser] = useState(email);
     const [currentDashboard, setCurrentDashboard] = useState(0);
-    const shared = user.dashboards[currentDashboard].shared;
+    
+
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    function showModal(){
+        setIsOpen(true);
+    };
+
+    function hideModal(){
+        setIsOpen(false);
+    };
+    function handleDeleteConfirm(){
+        deleteDashboard();
+        hideModal();
+    };
+    
 
     function addColumn() {
         const newColumn = {
@@ -392,11 +409,43 @@ function MainPage(props) {
                     <button
                         type="button"
                         class="btn btn-sm btn-danger"
+                        onClick={showModal}
+                    >
+                         Delete
+                    </button>
+                    
+                    {/* <button
+                        type="button"
+                        class="btn btn-sm btn-danger"
                         onClick={deleteDashboard}
                     >
                         Delete
-                    </button>
+                    </button> */}
+
                 </div>
+
+                <Modal show={isOpen} onHide={hideModal}>
+                    <Modal.Header>
+                        <Modal.Title>Are you sure you want to delete the dashboard?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <button 
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            onClick={hideModal}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            onClick={handleDeleteConfirm}       
+                        >
+                            Delete
+                        </button>
+                    </Modal.Body>
+                    
+                </Modal>
             </div>
 
             {/**/}
