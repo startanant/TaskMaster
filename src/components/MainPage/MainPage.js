@@ -35,7 +35,7 @@ function MainPage(props) {
     }
     const [currentUser, setCurrentUser] = useState(email);
     const [currentDashboard, setCurrentDashboard] = useState(0);
-    const shared = user.dashboards[currentDashboard].shared;
+    
 
     const [isOpen, setIsOpen] = React.useState(false);
 
