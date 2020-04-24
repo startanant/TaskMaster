@@ -8,7 +8,7 @@ import AssignCard from '../AssignCard/AssignCard';
 
 import ModalTest from '../ModalTest/ModalTest';
 // import Modal from "react-bootstrap/Modal";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 function Card(props) {
     // console.log('logging props passed to Card', props);
