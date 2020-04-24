@@ -45,7 +45,7 @@ function MainView(props) {
                 </div>
             </Route>
             <Route exact path="/login">
-                <LoginPage />
+                <Redirect to="/" />
             </Route>
         </Router>
     );
