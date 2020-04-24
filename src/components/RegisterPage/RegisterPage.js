@@ -145,16 +145,6 @@ function RegisterPage(props) {
     }
 
     return (
-        // <div
-        //     style={{
-        //         backgroundImage: "url('./img/login.jpg')",
-        //         backgroundSize: 'cover',
-        //         backgroundPosition: 'center',
-        //         height: '90vh',
-        //         opacity: '0.7',
-        //     }}
-        // >
-
         <div className="registerPage">
             {isRegistered ? <Redirect to="/login" /> : ''}
 
