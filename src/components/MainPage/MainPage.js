@@ -411,16 +411,16 @@ function MainPage(props) {
                         class="btn btn-sm btn-danger"
                         onClick={showModal}
                     >
-                         Delete (Modal)
+                         Delete
                     </button>
                     
-                    <button
+                    {/* <button
                         type="button"
                         class="btn btn-sm btn-danger"
                         onClick={deleteDashboard}
                     >
                         Delete
-                    </button>
+                    </button> */}
 
                 </div>
 
