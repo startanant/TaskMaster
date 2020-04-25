@@ -163,8 +163,8 @@ function Column(props) {
                             <Modal.Header>
                                 <Modal.Title>{element.title}
                                 <TextArea
-                                    id={'title' + props.cardid}
-                                    value={props.title}
+                                    id={'title' + element.id}
+                                    value={element.title}
                                     placeholder="Title"
                                 />
                                 </Modal.Title>
