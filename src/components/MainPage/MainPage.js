@@ -9,8 +9,10 @@ import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
 import { v4 as uuidv4 } from 'uuid';
 import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:8080');
 import { secureStorage } from '../../utils';
+
+const query = { query: `user=${secureStorage.getItem('email')}` };
+const socket = openSocket('http://localhost:8080', query);
 
 function MainPage(props) {
     const [user, setUser] = useState({
@@ -20,6 +22,18 @@ function MainPage(props) {
         lastname: '',
         dashboards: [{ columns: [], shared: [] }],
     });
+    // const [socket, setSocket] = useState(null);
+
+    // async function socketOpen() {
+    //     console.log('opening socket');
+
+    //     if (!socket) {
+    //         socket = openSocket('http://localhost:8080', {
+    //             query: `user=${secureStorage.getItem('email')}`,
+    //         });
+    //     }
+    // }
+
     //console.log(props.location.state.email);
     const [sharedToUser, setSharedToUser] = useState([]);
     // const [sharedFromUser, setSharedFromUser] = useState([]);
@@ -298,7 +312,12 @@ function MainPage(props) {
             },
         }).then((response) => response.json());
         // console.log(result);
-        socket.emit('update', `user:${user.email}`);
+        const toEmit = {
+            user: user.email,
+            shared: user.sharedByUser,
+        };
+        console.log(toEmit);
+        socket.emit('update', JSON.stringify(toEmit));
     }
 
     async function getUser(email) {
@@ -323,11 +342,12 @@ function MainPage(props) {
         populateShared();
         await setUser({ ...user });
         await setCurrentUser(user.email);
-        await setCurrentDashboard(0);
+        // await setCurrentDashboard(0);
         // setSharedFromUser([...sharedFrom]);
         await setSharedToUser([...sharedTo]);
-
+        // socket.emit('username', user.email);
         //adding shared dashboards to user dashboard list
+        // await socketOpen();
     }
     async function getAllUsers() {
         const url = '/api/getAllUsers';
@@ -338,8 +358,18 @@ function MainPage(props) {
 
     useEffect(function () {
         getUser(currentUser);
-        getAllUsers();
+
+        // getAllUsers();
+
+        // socket.emit('username', user.email);
     }, []);
+    useEffect(() => {
+        socket.on('update', (msg) => {
+            console.log('msg received:', msg);
+            getUser(currentUser);
+        });
+    }, []);
+
     const mainPageStyle = {
         width: '80%',
         padding: '32px',
