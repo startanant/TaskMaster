@@ -10,6 +10,7 @@ import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboar
 import { v4 as uuidv4 } from 'uuid';
 import Modal from "react-bootstrap/Modal";
 
+import { secureStorage } from '../../utils';
 
 function MainPage(props) {
     const [user, setUser] = useState({
@@ -26,8 +27,9 @@ function MainPage(props) {
     // const [loop, setLoop] = useState(0);
     //const [currentUser, setCurrentUser] = useState('user@user.com');
     let email;
-    if (localStorage.getItem('email')) {
-        email = localStorage.getItem('email');
+    if (secureStorage.getItem('email')) {
+        //email = localStorage.getItem('email');
+        email = secureStorage.getItem('email');
     } else {
         email = props.location.state.email
             ? props.location.state.email
