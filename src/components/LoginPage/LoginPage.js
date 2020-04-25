@@ -28,9 +28,9 @@ function LoginPage(props) {
 
     const inputEmail = useRef();
     const inputPassword = useRef();
-    if (localStorage.getItem('email')) {
-        dispatch({ do: 'loginState', loggedIn: true });
-    }
+    // if (localStorage.getItem('email')) {
+    //     dispatch({ do: 'loginState', loggedIn: true });
+    // }
 
     function handleInputChange(e) {
         const { id, value } = e.target; //
