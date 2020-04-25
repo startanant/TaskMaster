@@ -155,6 +155,8 @@ function Column(props) {
                             cardIndex={index}
                             colIndex={props.colIndex}
                             assignToCard={props.assignToCard}
+                            handleModalClose={hideModal}
+                            handleModalOpen={showModal}
                             
                         />
                     </Draggable>

@@ -62,7 +62,7 @@ function Card(props) {
                         cardIndex={props.cardIndex}
                         assignToCard={props.assignToCard}
                     />
-                    <button onClick={showCardModal} type="button" className="btn btn-warning">MODAL</button>
+                    <button onClick={props.handleModalOpen} type="button" className="btn btn-warning">MODAL</button>
                 </div>
             </div>
 
