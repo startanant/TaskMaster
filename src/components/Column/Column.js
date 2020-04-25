@@ -139,8 +139,8 @@ function Column(props) {
                         saveCard={props.saveCard}
                         key={uuidv4()}
                         show={show}
-                        handleModalClose={hideModal}
-                        handleModalOpen={showModal}
+                        // handleModalClose={hideModal}
+                        // handleModalOpen={showModal}
                     >
                         <Card
                             title={element.title}
