@@ -14,16 +14,14 @@ function Column(props) {
     const [cards, setCard] = useState(props.cards ? props.cards : []);
     // const [id, setId] = useState(props.id);
 
-    const [show, setShow] = useState(false);
+    const [cardModal, setCardModal] = useState(false);
 
     function showModal() {
-        console.log('showModal function called...');
-        setShow(true);
+        setCardModal(true);
     }
 
     function hideModal() {
-        console.log('hideModal function called...');
-        setShow(false);
+        setCardModal(false);
     }
 
     function drop(e) {
@@ -139,9 +137,9 @@ function Column(props) {
                         cardid={element.id}
                         saveCard={props.saveCard}
                         key={uuidv4()}
-                        show={show}
-                        handleModalClose={hideModal}
-                        handleModalOpen={showModal}
+                        //show={show}
+                        // handleModalClose={hideModal}
+                        // handleModalOpen={showModal}
                     >
                         <Card
                             title={element.title}
@@ -156,12 +154,13 @@ function Column(props) {
                             cardIndex={index}
                             colIndex={props.colIndex}
                             assignToCard={props.assignToCard}
+                            openCardModal={showModal}
                         />
-                        <Modal show={isOpen} onHide={hideModal}>
+                        <Modal show={cardModal} onHide={hideModal}>
                             <Modal.Header>
-                            <Modal.Title>{title}</Modal.Title>
+                                <Modal.Title>{element.title}</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>The body</Modal.Body>
+                            <Modal.Body>{element.description}</Modal.Body>
                             <Modal.Footer>
                             <button onClick={hideModal}>Cancel</button>
                             <button>Save</button>

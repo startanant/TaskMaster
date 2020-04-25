@@ -53,6 +53,7 @@ function Card(props) {
                         cardIndex={props.cardIndex}
                         assignToCard={props.assignToCard}
                     />
+                    <button onClick={props.openCardModal} type="button" className="btn btn-primary">Edit</button>
                 </div>
             </div>
 
