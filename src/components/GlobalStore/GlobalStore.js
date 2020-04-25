@@ -1,5 +1,33 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useReducer, useEffect } from "react";
+import * as SecureStorage from "secure-web-storage";
+import * as CryptoJS from 'crypto-js';
+
+var SECRET_KEY = 'S3cr@7!';
+
+var secureStorage = new SecureStorage(localStorage, {
+    hash: function hash(key) {
+        key = CryptoJS.SHA256(key, SECRET_KEY);
+
+        return key.toString();
+    },
+    encrypt: function encrypt(data) {
+        data = CryptoJS.AES.encrypt(data, SECRET_KEY);
+
+        data = data.toString();
+
+        return data;
+    },
+    decrypt: function decrypt(data) {
+        data = CryptoJS.AES.decrypt(data, SECRET_KEY);
+
+        data = data.toString(CryptoJS.enc.Utf8);
+
+        return data;
+    }
+});
+
 const GlobalData = React.createContext();
+const localState = JSON.parse(secureStorage.getItem("info"));
 
 function dispatcher(state, action) {
     let newState = { ...state };
@@ -28,9 +56,19 @@ function dispatcher(state, action) {
     }
 }
 
+
+
 function GlobalStore(props) {
+    const initialState = { messageType: '', message: '', loggedIn: false };
+    // const [globalData, dispatch] = useReducer(dispatcher,
+    //     { messageType: '', message: '', loggedIn: false});
     const [globalData, dispatch] = useReducer(dispatcher,
-        { messageType: '', message: '', loggedIn: false});
+        localState || initialState);
+    
+    useEffect(() => {
+        secureStorage.setItem("info", JSON.stringify(globalData));
+    }, [globalData]);
+    
 
     return (
         <GlobalData.Provider value={[globalData, dispatch]} {...props} />
