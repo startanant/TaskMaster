@@ -8,6 +8,7 @@ import ColumnTitle from '../ColumTitle/ColumnTitle';
 import { v4 as uuidv4 } from 'uuid';
 import Modal from 'react-bootstrap/Modal';
 import TextArea from '../TextArea/TextArea';
+import CardModal from '../CardModal/CardModal';
 
 
 function Column(props) {
@@ -157,7 +158,14 @@ function Column(props) {
                             assignToCard={props.assignToCard}
                             openCardModal={showModal}
                         />
-                        <Modal show={cardModal} onHide={hideModal}>
+                        <CardModal 
+                            cardid={element.id}
+                            cardModal={cardModal}
+                            hideModal={hideModal}
+                            title={element.title}  
+                            description={element.description}  
+                        />
+                        {/* <Modal show={cardModal} onHide={hideModal}>
                             <Modal.Header>
                                 <Modal.Title>
                                     {element.title}
@@ -173,7 +181,7 @@ function Column(props) {
                             <button onClick={hideModal}>Cancel</button>
                             <button>Save</button>
                             </Modal.Footer>
-                        </Modal>
+                        </Modal> */}
 
 
 
