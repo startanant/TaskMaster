@@ -6,6 +6,7 @@ import Draggable from '../Draggable/Draggable';
 import styled from 'styled-components';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import { v4 as uuidv4 } from 'uuid';
+import Modal from "react-bootstrap/Modal";
 
 function Column(props) {
     // console.log('showing props.columns from column component', props.cards);
@@ -160,6 +161,14 @@ function Column(props) {
                 );
             })}
             {props.children}
+            <Modal show={show} onHide={hideModal}>
+                <Modal.Header>
+                    <Modal.Title>Card Modal</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    This is the modal body.
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }
