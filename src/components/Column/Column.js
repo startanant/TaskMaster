@@ -6,6 +6,8 @@ import Draggable from '../Draggable/Draggable';
 import styled from 'styled-components';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import { v4 as uuidv4 } from 'uuid';
+import Modal from "react-bootstrap/Modal";
+
 
 function Column(props) {
     // console.log('showing props.columns from column component', props.cards);
@@ -155,6 +157,19 @@ function Column(props) {
                             colIndex={props.colIndex}
                             assignToCard={props.assignToCard}
                         />
+                        <Modal show={isOpen} onHide={hideModal}>
+                            <Modal.Header>
+                            <Modal.Title>{title}</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>The body</Modal.Body>
+                            <Modal.Footer>
+                            <button onClick={hideModal}>Cancel</button>
+                            <button>Save</button>
+                            </Modal.Footer>
+                        </Modal>
+
+
+
                     </Draggable>
                 );
             })}
