@@ -6,7 +6,8 @@ import Draggable from '../Draggable/Draggable';
 import styled from 'styled-components';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import { v4 as uuidv4 } from 'uuid';
-import Modal from "react-bootstrap/Modal";
+import Modal from 'react-bootstrap/Modal';
+import TextArea from '../TextArea/TextArea';
 
 
 function Column(props) {
@@ -158,7 +159,14 @@ function Column(props) {
                         />
                         <Modal show={cardModal} onHide={hideModal}>
                             <Modal.Header>
-                                <Modal.Title>{element.title}</Modal.Title>
+                                <Modal.Title>
+                                    {element.title}
+                                    <TextArea
+                                        id={'title' + element.id}
+                                        value={element.title}
+                                        placeholder="Title"
+                                    />
+                                </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>{element.description}</Modal.Body>
                             <Modal.Footer>

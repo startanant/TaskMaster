@@ -8,10 +8,7 @@ import AssignCard from '../AssignCard/AssignCard';
 function Card(props) {
     // console.log('logging props passed to Card', props);
 
-    function setAccordShow(id){
-        console.log("Btn clicked -- card ID:", id)
-        
-    }
+    
 
     return (
         <>
