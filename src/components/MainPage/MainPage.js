@@ -37,14 +37,14 @@ function MainPage(props) {
     const [currentDashboard, setCurrentDashboard] = useState(0);
     
 
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [deleteModal, setDeleteModal] = React.useState(false);
 
     function showModal(){
-        setIsOpen(true);
+        setDeleteModal(true);
     };
 
     function hideModal(){
-        setIsOpen(false);
+        setDeleteModal(false);
     };
     function handleDeleteConfirm(){
         deleteDashboard();
@@ -424,7 +424,7 @@ function MainPage(props) {
 
                 </div>
 
-                <Modal show={isOpen} onHide={hideModal}>
+                <Modal show={deleteModal} onHide={hideModal}>
                     <Modal.Header>
                         <Modal.Title>Are you sure you want to delete the dashboard?</Modal.Title>
                     </Modal.Header>
