@@ -16,6 +16,7 @@ const bcrypt = require('bcrypt');
 // import { v4 as uuidv4 } from 'uuid';
 let db = require('./models');
 let user = require('./user.json');
+let usersSockets = new Map();
 // let sharedDashboard = require('./shared.json');
 
 // const db_host = process.env.DB_HOST;
@@ -289,12 +290,38 @@ app.get('/register', (req, res) => {
 });
 app.use(express.static('./public'));
 
-io.on('connection', (socket) => {
-    console.log('a user connected');
-    socket.on('update', (msg, msg2) => {
-        console.log('update:', msg, msg2);
-        socket.broadcast.emit('update', Math.floor(Math.random() * 1000));
+io.on('connect', (socket) => {
+    socket.on('disconnect', () => {
+        // console.log('a user disconnected', socket.id);
+        usersSockets.forEach((value, key) => {
+            if (value == socket.id) {
+                // console.log('FOUND!');
+                usersSockets.delete(key);
+            }
+        });
+        // console.log(usersSockets);
     });
+    console.log('a user connected', socket.id, socket.handshake.query.user);
+    usersSockets.set(socket.handshake.query.user, socket.id);
+    socket.on('update', (msg) => {
+        console.log('update:', msg, socket.id);
+        const obj = JSON.parse(msg);
+        obj.shared.map((el) => {
+            if (usersSockets.has(el.to)) {
+                console.log('can emit!');
+                socket.broadcast
+                    .to(usersSockets.get(el.to))
+                    .emit('update', 'update coming!');
+            }
+        });
+
+        // socket.emit('update', `user updated:${msg.user}`);
+    });
+    socket.on('username', (msg) => {
+        console.log('username:', msg, socket.id);
+    });
+
+    console.log(usersSockets);
 });
 
 const PORT = 8080;
