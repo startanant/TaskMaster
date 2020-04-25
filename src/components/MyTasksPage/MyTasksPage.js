@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { secureStorage } from '../../utils';
 
 function MyTasksPage() {
     const [user, setUser] = useState({ dashboards: [{ columns: [] }] });
@@ -23,8 +24,8 @@ function MyTasksPage() {
 
         //adding shared dashboards to user dashboard list
     }
-    let userEmail = localStorage.getItem('email')
-        ? localStorage.getItem('email')
+    let userEmail = secureStorage.getItem('email')
+        ? secureStorage.getItem('email')
         : 'user@user.com';
     useEffect(function () {
         getUser(userEmail);
