@@ -1,17 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../components-style.css';
 import TextArea from '../TextArea/TextArea';
 import TextAreaDesc from '../TextAreaDesc/TextAreaDesc';
 import DueDate from '../DueDate/DueDate';
 import AssignCard from '../AssignCard/AssignCard';
+import Modal from "react-bootstrap/Modal";
 
 function Card(props) {
     // console.log('logging props passed to Card', props);
 
     function setAccordShow(id){
-        console.log("Btn clicked -- card ID:", id)
-        
+        console.log("Btn clicked -- card ID:", id) 
     }
+
+    const [cardModal, setCardModal ] = useState(false);
+
+    function showCardModal(){
+        setCardModal(true);
+    };
+    function hideCardModal(){
+        setCardModal(false);
+    };
 
     return (
         <>
@@ -53,8 +62,19 @@ function Card(props) {
                         cardIndex={props.cardIndex}
                         assignToCard={props.assignToCard}
                     />
+                    <button onClick={showCardModal} type="button" className="btn btn-warning">MODAL</button>
                 </div>
             </div>
+
+
+            <Modal show={cardModal} onHide={hideCardModal}>
+                <Modal.Header>
+                    <Modal.Title>Card Modal</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    This is the modal body.
+                </Modal.Body>
+            </Modal>
 
         
             {/* <div style={style} id={props.cardid}> */}

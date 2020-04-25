@@ -154,6 +154,7 @@ function Column(props) {
                             cardIndex={index}
                             colIndex={props.colIndex}
                             assignToCard={props.assignToCard}
+                            
                         />
                     </Draggable>
                 );

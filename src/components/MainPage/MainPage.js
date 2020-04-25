@@ -36,21 +36,19 @@ function MainPage(props) {
     const [currentUser, setCurrentUser] = useState(email);
     const [currentDashboard, setCurrentDashboard] = useState(0);
     
-
-    const [deleteModal, setDeleteModal] = React.useState(false);
-
-    function showModal(){
+    const [deleteModal, setDeleteModal] = useState(false);
+    
+    function showDelModal(){
         setDeleteModal(true);
     };
 
-    function hideModal(){
+    function hideDelModal(){
         setDeleteModal(false);
     };
     function handleDeleteConfirm(){
         deleteDashboard();
-        hideModal();
+        hideDelModal();
     };
-    
 
     function addColumn() {
         const newColumn = {
@@ -409,7 +407,7 @@ function MainPage(props) {
                     <button
                         type="button"
                         class="btn btn-sm btn-danger"
-                        onClick={showModal}
+                        onClick={showDelModal}
                     >
                          Delete
                     </button>
@@ -424,7 +422,7 @@ function MainPage(props) {
 
                 </div>
 
-                <Modal show={deleteModal} onHide={hideModal}>
+                <Modal show={deleteModal} onHide={hideDelModal}>
                     <Modal.Header>
                         <Modal.Title>Are you sure you want to delete the dashboard?</Modal.Title>
                     </Modal.Header>
@@ -432,7 +430,7 @@ function MainPage(props) {
                         <button 
                             type="button"
                             class="btn btn-outline-secondary"
-                            onClick={hideModal}
+                            onClick={hideDelModal}
                         >
                             Cancel
                         </button>
@@ -444,8 +442,9 @@ function MainPage(props) {
                             Delete
                         </button>
                     </Modal.Body>
-                    
                 </Modal>
+
+                
             </div>
 
             {/**/}
@@ -471,6 +470,8 @@ function MainPage(props) {
                     sharedByUser={user.sharedByUser}
                 />
             </div> */}
+
+        
             <div id={props.id} className="project-column-wrapper">
                 {user.dashboards[currentDashboard].columns.map(
                     (element, index) => {
@@ -511,6 +512,7 @@ function MainPage(props) {
                     >
                         Add column
                     </button>
+                    
                 </div>
             </div>
             {/* <div>
