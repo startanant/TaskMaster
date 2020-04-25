@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import { v4 as uuidv4 } from 'uuid';
 import Modal from "react-bootstrap/Modal";
+import TextArea from '../TextArea/TextArea';
 
 function Column(props) {
     // console.log('showing props.columns from column component', props.cards);
@@ -160,7 +161,13 @@ function Column(props) {
                         />
                         <Modal show={show} onHide={hideModal}>
                             <Modal.Header>
-                                <Modal.Title>{element.title}</Modal.Title>
+                                <Modal.Title>{element.title}
+                                <TextArea
+                                    id={'title' + props.cardid}
+                                    value={props.title}
+                                    placeholder="Title"
+                                />
+                                </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 {element.description}

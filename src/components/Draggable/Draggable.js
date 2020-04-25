@@ -23,9 +23,9 @@ function Draggable(props) {
             onDragStart={drag}
             onDragOver={noAllowDrop}
             style={props.style}
-            onBlur={() =>
-                props.saveCard(props.cardid, props.colIndex, props.cardIndex)
-            }
+            // onBlur={() =>
+            //     props.saveCard(props.cardid, props.colIndex, props.cardIndex)
+            // }
         >
             {/* <button
                 onClick={() =>
