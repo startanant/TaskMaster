@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useGlobalStore } from '../GlobalStore/GlobalStore';
-import { login } from '../../utils';
+import { login, secureStorage } from '../../utils';
 import { Link } from 'react-router-dom';
 import Message from '../Message/Message';
 
@@ -28,9 +28,9 @@ function LoginPage(props) {
 
     const inputEmail = useRef();
     const inputPassword = useRef();
-    if (localStorage.getItem('email')) {
-        dispatch({ do: 'loginState', loggedIn: true });
-    }
+    // if (localStorage.getItem('email')) {
+    //     dispatch({ do: 'loginState', loggedIn: true });
+    // }
 
     function handleInputChange(e) {
         const { id, value } = e.target; //
@@ -117,7 +117,10 @@ function LoginPage(props) {
         // console.log(result[0].email);
         //let email = result.email;
         if (result.email) {
-            localStorage.setItem('email', result.email);
+            //secureStorage.setItem('email', result.email);
+            //localStorage.setItem('email', result.email);
+            secureStorage.setItem('email', result.email);
+            console.log(secureStorage.getItem('email'));
             dispatch({
                 do: 'setMessage',
                 type: 'success',
