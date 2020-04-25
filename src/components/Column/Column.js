@@ -156,21 +156,21 @@ function Column(props) {
                             colIndex={props.colIndex}
                             assignToCard={props.assignToCard}
                             handleModalClose={hideModal}
-                            handleModalOpen={showModal}
-                            
+                            handleModalOpen={showModal} 
                         />
+                        <Modal show={show} onHide={hideModal}>
+                            <Modal.Header>
+                                <Modal.Title>{element.title}</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                {element.description}
+                            </Modal.Body>
+                        </Modal>
                     </Draggable>
                 );
             })}
             {props.children}
-            <Modal show={show} onHide={hideModal}>
-                <Modal.Header>
-                    <Modal.Title>Card Modal</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    This is the modal body.
-                </Modal.Body>
-            </Modal>
+            
         </div>
     );
 }
