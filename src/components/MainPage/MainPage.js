@@ -8,6 +8,8 @@ import SwitchUser from '../SwitchUser/SwitchUser';
 import DashboardControl from '../DashboardControl/DashboardControl';
 import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboardInfoPanel';
 import { v4 as uuidv4 } from 'uuid';
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:8080');
 
 function MainPage(props) {
     const [user, setUser] = useState({
@@ -45,6 +47,7 @@ function MainPage(props) {
         user.dashboards[currentDashboard].columns.push(newColumn);
         setUser({ ...user });
         updateUserProfile(user);
+        // socket.emit('update', 'column added', newColumn.id);
     }
     function deleteDashboard() {
         if (user.dashboards.length === 1) {
@@ -293,6 +296,7 @@ function MainPage(props) {
             },
         }).then((response) => response.json());
         // console.log(result);
+        socket.emit('update', `user:${user.email}`);
     }
 
     async function getUser(email) {

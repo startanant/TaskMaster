@@ -6,6 +6,8 @@ const mailjet = require('node-mailjet').connect(
 );
 const axios = require('axios');
 const app = express();
+const http = require('http').createServer(app);
+var io = require('socket.io')(http);
 const qs = require('qs');
 const { uuid } = require('uuidv4');
 const fs = require('fs');
@@ -155,7 +157,11 @@ app.post('/api/login', async (req, res) => {
     user = { ...user, ...req.body };
     const query = { email: req.body.email };
     //const userProfile = await db.userprofile.findOne(query);
-    let userProfile = await db.userprofile.find(query, { _id: 0, email: 1, password: 1 });
+    let userProfile = await db.userprofile.find(query, {
+        _id: 0,
+        email: 1,
+        password: 1,
+    });
     // userProfile = JSON.stringify(userProfile);
     // userProfile = JSON.parse(userProfile);
     // console.log(b[0].password);
@@ -171,11 +177,14 @@ app.post('/api/login', async (req, res) => {
         console.log(req.body.password);
         if (userProfile[0]) {
             console.log(userProfile[0].password);
-            const isValidPassword = await bcrypt.compare(req.body.password, userProfile[0].password);
+            const isValidPassword = await bcrypt.compare(
+                req.body.password,
+                userProfile[0].password
+            );
             if (isValidPassword) {
                 response = {
                     message: 'OK',
-                    email: userProfile[0].email
+                    email: userProfile[0].email,
                 };
             } else {
                 response = { message: 'Invalid username/password' };
@@ -280,7 +289,15 @@ app.get('/register', (req, res) => {
 });
 app.use(express.static('./public'));
 
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('update', (msg, msg2) => {
+        console.log('update:', msg, msg2);
+        socket.broadcast.emit('update', Math.floor(Math.random() * 1000));
+    });
+});
+
 const PORT = 8080;
-app.listen(PORT, (req, res) => {
+http.listen(PORT, (req, res) => {
     console.log(`server started on ${PORT}`);
 });

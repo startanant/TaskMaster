@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import '../../components-style.css';
 import { Link } from 'react-router-dom';
 import { useGlobalStore } from '../GlobalStore/GlobalStore';
+import Chat from '../Chat/Chat';
 
 function SideNav() {
     const [globalData, dispatch] = useGlobalStore();
@@ -47,6 +48,7 @@ function SideNav() {
                 </div>
                 <div className="nav-heading">Logout</div>
             </Link>
+            <Chat />
         </div>
     );
 }
