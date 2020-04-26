@@ -280,7 +280,7 @@ app.get('/register', (req, res) => {
 });
 app.use(express.static('./public'));
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, (req, res) => {
     console.log(`server started on ${PORT}`);
 });
