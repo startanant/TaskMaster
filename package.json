@@ -19,7 +19,8 @@
         "secure-web-storage": "^1.0.2",
         "styled": "^1.0.0",
         "styled-components": "^5.1.0",
-        "uuid": "^7.0.3"
+        "uuid": "^7.0.3",
+        "uuidv4": "^6.0.7"
     },
     "scripts": {
         "start": "react-scripts start",
