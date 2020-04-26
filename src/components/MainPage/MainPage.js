@@ -333,9 +333,15 @@ function MainPage(props) {
                     'Content-Type': 'application/json',
                 },
             }).then((response) => response.json());
+            let toInform = [];
+            filteredDashboardsOther.forEach((el) => {
+                toInform.push(el.owner);
+                el.shared.forEach((el1) => toInform.push(el1.email));
+            });
+            toInform = [...new Set(toInform)];
             const toEmit = {
                 user: user.email,
-                sharedOther: filteredDashboardsOther,
+                sharedOther: toInform,
             };
             socket.emit('updateother', JSON.stringify(toEmit));
         }

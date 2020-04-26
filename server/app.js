@@ -341,12 +341,13 @@ io.on('connect', (socket) => {
         console.log('username:', msg, socket.id);
     });
     socket.on('updateother', (msg) => {
-        // console.log('update other triggered', msg, socket.id);
+        console.log('update other triggered', msg, socket.id);
         const obj = JSON.parse(msg);
         obj.sharedOther.forEach((el) => {
-            if (usersSockets.has(el.owner)) {
+            if (usersSockets.has(el)) {
+                console.log('found it! can emit update shered!');
                 socket.broadcast
-                    .to(usersSockets.get(el.owner))
+                    .to(usersSockets.get(el))
                     .emit('update', 'update coming!');
             }
         });
