@@ -1,5 +1,6 @@
 // require('dotenv').config();
 const express = require('express');
+const async = require('async');
 const mailjet = require('node-mailjet').connect(
     '9bbf027ee6279e41c94fe9415814fe62',
     'e7ad8b61eb1ba86f544198bb47a52f0d'
@@ -288,11 +289,30 @@ app.get('/register', (req, res) => {
     };
     res.sendFile('index.html', options);
 });
+
+app.put('/api/updateSharedDashboards', async (req, res) => {
+    console.log('loggin content for updating shared dashboards', req.body);
+
+    let queries = [];
+    req.body.forEach((el) => {
+        let search = { 'dashboards.id': el.id };
+        let query = { $set: { 'dashboards.$': el } };
+        queries.push([search, query]);
+    });
+    async function sendQuery(param) {
+        console.log('async sendQuery called:', param);
+        await db.userprofile.update(param[0], param[1]);
+    }
+    console.log('logging queries array:', queries);
+    async.map(queries, sendQuery, function (err, result) {
+        res.json('ok');
+    });
+});
 app.use(express.static('./public'));
 
 io.on('connect', (socket) => {
     socket.on('disconnect', () => {
-        // console.log('a user disconnected', socket.id);
+        console.log('a user disconnected', socket.id);
         usersSockets.forEach((value, key) => {
             if (value == socket.id) {
                 // console.log('FOUND!');
@@ -304,11 +324,11 @@ io.on('connect', (socket) => {
     console.log('a user connected', socket.id, socket.handshake.query.user);
     usersSockets.set(socket.handshake.query.user, socket.id);
     socket.on('update', (msg) => {
-        console.log('update:', msg, socket.id);
+        // console.log('update:', msg, socket.id);
         const obj = JSON.parse(msg);
-        obj.shared.map((el) => {
+        obj.shared.forEach((el) => {
             if (usersSockets.has(el.to)) {
-                console.log('can emit!');
+                // console.log('can emit!');
                 socket.broadcast
                     .to(usersSockets.get(el.to))
                     .emit('update', 'update coming!');
@@ -319,6 +339,17 @@ io.on('connect', (socket) => {
     });
     socket.on('username', (msg) => {
         console.log('username:', msg, socket.id);
+    });
+    socket.on('updateother', (msg) => {
+        // console.log('update other triggered', msg, socket.id);
+        const obj = JSON.parse(msg);
+        obj.sharedOther.forEach((el) => {
+            if (usersSockets.has(el.owner)) {
+                socket.broadcast
+                    .to(usersSockets.get(el.owner))
+                    .emit('update', 'update coming!');
+            }
+        });
     });
 
     console.log(usersSockets);
