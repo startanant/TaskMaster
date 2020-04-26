@@ -159,11 +159,14 @@ function Column(props) {
                             openCardModal={showModal}
                         />
                         <CardModal 
-                            cardid={element.id}
                             cardModal={cardModal}
                             hideModal={hideModal}
                             title={element.title}  
                             description={element.description}  
+                            saveCard={props.saveCard}
+                            modalid={element.id}
+                            cardIndex={index}
+                            colIndex={props.colIndex}
                         />
                         {/* <Modal show={cardModal} onHide={hideModal}>
                             <Modal.Header>

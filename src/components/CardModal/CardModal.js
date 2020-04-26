@@ -13,16 +13,24 @@ function CardModal(props){
     // function hideModal() {
     //     setCardModal(false);
     // }
-
+    function modalSave(){
+        console.log("saving modal card")
+        console.log("cardid, colIndex, cardIndex", props.cardid, props.colIndex, props.cardIndex)
+        props.saveCard(props.cardid, props.colIndex, props.cardIndex)
+    }
 
     return (
-        <>
-        <Modal show={props.cardModal} onHide={props.hideModal}>
+        
+        <Modal 
+            show={props.cardModal} 
+            onHide={props.hideModal}
+            id={'modal' + props.modalid}
+            >
             <Modal.Header>
                 <Modal.Title>
                     {props.title}
                     <TextArea
-                        id={'title' + props.cardid}
+                        id={'title' + props.modalid}
                         value={props.title}
                         placeholder="Title"
                     />
@@ -30,11 +38,16 @@ function CardModal(props){
             </Modal.Header>
             <Modal.Body>{props.description}</Modal.Body>
             <Modal.Footer>
-            <button onClick={props.hideModal}>Cancel</button>
-            <button>Save</button>
+                <button
+                    onClick={modalSave}
+                    type="button"
+                    className="btn btn-primary"
+                    >
+                    Save
+                </button>
             </Modal.Footer>
         </Modal>
-        </>
+        
     );
 };
 

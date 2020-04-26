@@ -14,6 +14,10 @@ function Draggable(props) {
     function noAllowDrop(e) {
         e.stopPropagation();
     }
+
+    function saveCardModal(){
+        props.saveCard(props.cardid, props.colIndex, props.cardIndex)
+    }
     return (
         <div
             data-colIndex={props.colIndex}
