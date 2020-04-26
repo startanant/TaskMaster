@@ -13,6 +13,7 @@ import { secureStorage } from '../../utils';
 
 const query = { query: `user=${secureStorage.getItem('email')}` };
 const socket = openSocket('http://localhost:8080', query);
+// const socket = openSocket('https://taskmaster.kiterunner.usermd.net', query);
 
 function MainPage(props) {
     const [user, setUser] = useState({
@@ -299,10 +300,13 @@ function MainPage(props) {
 
     async function updateUserProfile(user) {
         let updatedUser = { ...user };
-        let filteredDashboards = updatedUser.dashboards.filter(
+        let filteredDashboardsOwner = updatedUser.dashboards.filter(
             (el) => el.owner == user.email
         );
-        updatedUser.dashboards = filteredDashboards;
+        let filteredDashboardsOther = updatedUser.dashboards.filter(
+            (dashboard) => dashboard.owner !== user.email
+        );
+        updatedUser.dashboards = filteredDashboardsOwner;
         const url = '/api/updateUserProfile';
         const result = await fetch(url, {
             method: 'POST',
@@ -312,12 +316,30 @@ function MainPage(props) {
             },
         }).then((response) => response.json());
         // console.log(result);
-        const toEmit = {
-            user: user.email,
-            shared: user.sharedByUser,
-        };
-        console.log(toEmit);
-        socket.emit('update', JSON.stringify(toEmit));
+        if (user.sharedByUser.length > 0) {
+            const toEmit = {
+                user: user.email,
+                shared: user.sharedByUser,
+            };
+            console.log(toEmit);
+            socket.emit('update', JSON.stringify(toEmit));
+        }
+        if (filteredDashboardsOther.length > 0) {
+            const url = '/api/updateSharedDashboards';
+            const result = await fetch(url, {
+                method: 'PUT',
+                body: JSON.stringify(filteredDashboardsOther),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then((response) => response.json());
+            const toEmit = {
+                user: user.email,
+                sharedOther: filteredDashboardsOther,
+            };
+            socket.emit('updateother', JSON.stringify(toEmit));
+        }
+        console.log('filtered OTHER dashboards:', filteredDashboardsOther);
     }
 
     async function getUser(email) {
