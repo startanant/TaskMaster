@@ -30,6 +30,12 @@ app.use(express.urlencoded({ extended: false }));
 // parse application/json
 app.use(express.json());
 
+// Serve the static files from the React app
+if (process.env.PORT) {
+    app.use(express.static(path.join(__dirname, 'build')));
+}
+
+
 // getUsers();
 //route to get all users
 app.get('/api/getAllUsers', async (req, res) => {
