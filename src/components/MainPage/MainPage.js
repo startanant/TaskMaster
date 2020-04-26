@@ -424,6 +424,9 @@ function MainPage(props) {
                         )}
                     </div>
                 </div>
+                <div className="addedUsers">
+                    Logged in as: {user.name == '' ? user.email : user.name}
+                </div>
                 <div className="dash-delete">
                     <button
                         type="button"
