@@ -49,19 +49,26 @@ function MyTasksPage() {
                                                 <h6>{column.name}</h6>
                                             </div>
                                             {column.cards.map((card) => {
-                                                return (
-                                                    <div className="mytasks-card">
-                                                        <div className="cardTitle">
-                                                            {card.title}
+                                                if (
+                                                    card.title !== '' &&
+                                                    card.description !== ''
+                                                ) {
+                                                    return (
+                                                        <div className="mytasks-card">
+                                                            <div className="cardTitle">
+                                                                {card.title}
+                                                            </div>
+                                                            <div className="cardDesc">
+                                                                {
+                                                                    card.description
+                                                                }{' '}
+                                                            </div>
+                                                            <div className="cardDueDate">
+                                                                {card.duedate}
+                                                            </div>
                                                         </div>
-                                                        <div className="cardDesc">
-                                                            {card.description}{' '}
-                                                        </div>
-                                                        <div className="cardDueDate">
-                                                            {card.duedate}
-                                                        </div>
-                                                    </div>
-                                                );
+                                                    );
+                                                }
                                             })}
                                         </div>
                                     );
