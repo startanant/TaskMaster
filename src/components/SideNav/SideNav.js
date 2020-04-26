@@ -48,7 +48,7 @@ function SideNav() {
                 </div>
                 <div className="nav-heading">Logout</div>
             </Link>
-            <Chat />
+            {/* <Chat /> */}
         </div>
     );
 }
