@@ -10,9 +10,11 @@ import SharedDashboardInfoPanel from '../sharedDashboardInfoPanel/sharedDashboar
 import { v4 as uuidv4 } from 'uuid';
 import openSocket from 'socket.io-client';
 import { secureStorage } from '../../utils';
+import Chat from '../Chat/Chat';
 
 const query = { query: `user=${secureStorage.getItem('email')}` };
 const socket = openSocket('http://localhost:8080', query);
+console.log('opening socket on main page');
 // const socket = openSocket('https://taskmaster.kiterunner.usermd.net', query);
 
 function MainPage(props) {
@@ -452,7 +454,7 @@ function MainPage(props) {
                         )}
                     </div>
                 </div>
-                <div className="addedUsers">
+                <div className="addedUsers" style={{ color: 'white' }}>
                     Logged in as: {user.name == '' ? user.email : user.name}
                 </div>
                 <div className="dash-delete">
@@ -536,6 +538,10 @@ function MainPage(props) {
                     <SharedDashboardInfoPanel sharedDashboards={sharedToUser} />
                 ) : null}
             </div> */}
+            <Chat
+                dashid={user.dashboards[currentDashboard].id}
+                user={user.email}
+            />
         </div>
     );
 }
