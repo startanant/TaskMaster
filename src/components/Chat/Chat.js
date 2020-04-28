@@ -23,15 +23,18 @@ function Chat(props) {
             socket = openSocket(`http://localhost:8080`, {
                 query: `chatuser=chat_${props.user}&dash=${props.dashid}`,
             });
+            // socket = openSocket(`https://taskmaster.kiterunner.usermd.net`, {
+            //     query: `chatuser=chat_${props.user}&dash=${props.dashid}`,
+            // });
             if (socket) {
                 socket.emit('chatchange', props.user, oldDashID);
                 console.log('sending chat message to:', props.dashid);
                 socket.emit('chatopen', props.user, props.dashid);
             }
             // setSocket(socket);
-            socket.on('chat', (msg) => {
-                console.log('receiving chat message');
-                receiveMessage(msg);
+            socket.on('chat', (user, msg) => {
+                console.log('receiving chat message', user, msg);
+                receiveMessage(user, msg);
             });
         }
         return false;
@@ -57,41 +60,73 @@ function Chat(props) {
         if (value == '') {
             return;
         }
-        // const ul = document.getElementById('messages');
-        // let li = document.createElement('li');
-        // li.innerText = value;
-        // ul.appendChild(li);
+
         if (socket) {
             console.log('sending chat message to:', props.dashid);
             socket.emit('chat', props.user, value, props.dashid);
         }
     }
-    function receiveMessage(msg) {
+    function receiveMessage(user, msg) {
+        if (!msg) {
+            msg = '';
+        }
         console.log('receive message called');
         const ul = document.getElementById('messages');
         let li = document.createElement('li');
-        li.innerText = msg;
-        ul.appendChild(li);
+        li.innerHTML =
+            `${user}:</br>` + `<span style="color:white">${msg}</span>`;
+        li.style = 'font-size:0.9rem;color:grey;padding:2px';
+        // ul.appendChild(li);
+        ul.insertBefore(li, ul.childNodes[0]);
     }
-    // useEffect(() => {
-    //     if (socket) {
-    //         socket.on('chat', (msg) => receiveMessage(msg));
-    //     }
-    // }, []);
+
     return (
-        <div
-            style={{
-                color: 'white',
-                position: 'absolute',
-                bottom: '10px',
-                left: '10px',
-                border: '1px solid white',
-            }}
-        >
-            <ul id="messages" style={{}}></ul>
-            <input onChange={handleInputChange} type="text" value={value} />
-            <button onClick={handleNewMessage}>Send</button>
-        </div>
+        <>
+            <div
+                style={{
+                    color: 'white',
+                    position: 'fixed',
+                    bottom: '50px',
+                    left: '10px',
+                    border: '1px solid white',
+                    height: '100px',
+                    width: '200px',
+                    overflow: 'hidden',
+                    overflowY: 'scroll',
+                }}
+            >
+                <ul
+                    id="messages"
+                    style={{
+                        listStyle: 'none',
+                        paddingLeft: '0.5rem',
+                        margin: 0,
+                        wordWrap: 'break-word',
+                    }}
+                ></ul>
+            </div>
+            <div
+                style={{
+                    position: 'fixed',
+                    bottom: '30px',
+                    left: '10px',
+                    width: '200px',
+                    height: '20px',
+                    paddingLeft: '0px',
+                    paddingTop: '5px',
+                }}
+            >
+                <input
+                    style={{ width: '70%' }}
+                    onChange={handleInputChange}
+                    type="text"
+                    value={value}
+                />
+                <button style={{ width: '30%' }} onClick={handleNewMessage}>
+                    Send
+                </button>
+            </div>
+        </>
     );
 }
 export default Chat;
