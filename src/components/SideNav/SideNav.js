@@ -3,11 +3,8 @@ import { Redirect, Route } from 'react-router-dom';
 import '../../components-style.css';
 import { Link } from 'react-router-dom';
 import { useGlobalStore } from '../GlobalStore/GlobalStore';
-<<<<<<< HEAD
 import { PromiseProvider } from 'mongoose';
-=======
 import Chat from '../Chat/Chat';
->>>>>>> dev
 
 function SideNav(props) {
     const [globalData, dispatch] = useGlobalStore();
