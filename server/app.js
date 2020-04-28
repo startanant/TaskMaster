@@ -30,10 +30,15 @@ app.use(express.urlencoded({ extended: false }));
 // parse application/json
 app.use(express.json());
 
-// Serve the static files from the React app
-if (process.env.PORT) {
-    app.use(express.static(path.join(__dirname, 'build')));
-}
+// // Serve the static files from the React app
+// // if (process.env.PORT) {
+//     app.use(express.static(path.join(__dirname, 'build')));
+// // }
+// app.get('/', (req, res) => {
+//     //res.sendFile(path.join(__dirname + '../build/index.html'));
+//     //res.sendFile(path.join('../build/index.html'));
+//     res.sendFile(path.resolve("..","build", "index.html"));
+// });
 
 
 // getUsers();
@@ -257,34 +262,36 @@ app.post('/api/updateUserProfile', async (req, res) => {
     );
     res.json(response);
 });
+
+let static_folder = (process.env.PORT) ? 'build' : 'public';
 app.get('/login', (req, res) => {
     const options = {
-        root: path.join(__dirname, 'public'),
+        root: path.join(__dirname, static_folder),
     };
     res.sendFile('index.html', options);
 });
 
 app.get('/projectdashboard', (req, res) => {
     const options = {
-        root: path.join(__dirname, 'public'),
+        root: path.join(__dirname, static_folder),
     };
     res.sendFile('index.html', options);
 });
 
 app.get('/mytasks', (req, res) => {
     const options = {
-        root: path.join(__dirname, 'public'),
+        root: path.join(__dirname, static_folder),
     };
     res.sendFile('index.html', options);
 });
 
 app.get('/register', (req, res) => {
     const options = {
-        root: path.join(__dirname, 'public'),
+        root: path.join(__dirname, static_folder),
     };
     res.sendFile('index.html', options);
 });
-app.use(express.static('./public'));
+app.use(express.static('./' + static_folder));
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, (req, res) => {
