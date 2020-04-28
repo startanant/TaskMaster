@@ -165,7 +165,7 @@
 }
 
 .project-column {
-  width: 350px;
+  min-width: 350px;
   /* min-height: 300px; */
   height: auto;
   margin-right: 32px;
@@ -192,7 +192,7 @@
   margin-top: 10px;
   min-width: 300px;
   width: auto;
-  padding: 10px;
+  padding: 8px;
   background-color: grey;
   background-color: #272727;
   border: grey solid 1px;
@@ -208,6 +208,10 @@
 
 .card-header {
   width: 100%;
+  padding: 10px;
+}
+.card-body {
+  padding: 0px 10px 10px 10px;
 }
 
 .textArea {
@@ -229,7 +233,9 @@
 }
 
 .dueDate-cal-container {
+  margin-top: 6px;
   margin-bottom: 8px;
+
 }
 .dueDate-cal {
   margin-bottom: 8px;
