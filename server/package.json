@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/KiteRunner2/TaskMaster#readme",
   "dependencies": {
+    "async": "^3.2.0",
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "dotenv": "^8.2.0",
@@ -24,6 +25,7 @@
     "mongoose": "^5.9.9",
     "node-mailjet": "^3.3.1",
     "qs": "^6.9.3",
+    "socket.io": "^2.3.0",
     "uuid": "^7.0.3",
     "uuidv4": "^6.0.7"
   }

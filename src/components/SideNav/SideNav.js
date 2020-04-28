@@ -3,7 +3,11 @@ import { Redirect, Route } from 'react-router-dom';
 import '../../components-style.css';
 import { Link } from 'react-router-dom';
 import { useGlobalStore } from '../GlobalStore/GlobalStore';
+<<<<<<< HEAD
 import { PromiseProvider } from 'mongoose';
+=======
+import Chat from '../Chat/Chat';
+>>>>>>> dev
 
 function SideNav(props) {
     const [globalData, dispatch] = useGlobalStore();
@@ -43,6 +47,7 @@ function SideNav(props) {
           </div>
       </Link> */}
 
+<<<<<<< HEAD
                 <Link onClick={() => props.login(false)} className="nav-item">
                     <div className="nav-icon">
                         <i className="fas fa-door-open"></i>
@@ -51,6 +56,16 @@ function SideNav(props) {
                 </Link>
             </div>
         </>
+=======
+            <Link onClick={logout} className="nav-item">
+                <div className="nav-icon">
+                    <i class="fas fa-door-open"></i>
+                </div>
+                <div className="nav-heading">Logout</div>
+            </Link>
+            {/* <Chat /> */}
+        </div>
+>>>>>>> dev
     );
 }
 
