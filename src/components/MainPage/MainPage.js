@@ -11,6 +11,8 @@ import { v4 as uuidv4 } from 'uuid';
 import openSocket from 'socket.io-client';
 import { secureStorage } from '../../utils';
 import Chat from '../Chat/Chat';
+import Modal from 'react-bootstrap/Modal'
+
 
 const query = { query: `user=${secureStorage.getItem('email')}` };
 const socket = openSocket('http://localhost:8080', query);
@@ -57,6 +59,20 @@ function MainPage(props) {
         updateUserProfile(user);
         // socket.emit('update', 'column added', newColumn.id);
     }
+
+    const [deleteModal, setDeleteModal] = useState(false);
+    function modalShow(){
+        setDeleteModal(true)
+    }
+    function modalHide(){
+        setDeleteModal(false)
+    }
+    function handleDelete(){
+        deleteDashboard();
+        modalHide();
+    }
+
+
     function deleteDashboard() {
         if (user.dashboards.length === 1) {
             alert('Last dashboard cannot be deleted!');
@@ -447,13 +463,43 @@ function MainPage(props) {
                     Logged in as: {user.name == '' ? user.email : user.name}
                 </div>
                 <div className="dash-delete">
-                    <button
+                    {/* <button
                         type="button"
                         class="btn btn-sm btn-danger"
                         onClick={deleteDashboard}
                     >
                         Delete
+                    </button> */}
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-danger"
+                        onClick={modalShow}
+                    >
+                        Delete
                     </button>
+                    <Modal show={deleteModal} onHide={modalHide}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>Are you sure you want to delete the dashboard?</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Footer>
+                            <button
+                                type="button"
+                                class="btn btn-outline-dark"
+                                onClick={modalHide}
+                            >
+                            Cancel
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                onClick={handleDelete}
+                            >
+                            Delete
+                            </button>
+                        </Modal.Footer>
+                    </Modal>
+                        
+
                 </div>
             </div>
 
