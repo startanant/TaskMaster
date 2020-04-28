@@ -11,8 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import openSocket from 'socket.io-client';
 import { secureStorage } from '../../utils';
 import Chat from '../Chat/Chat';
-import Modal from 'react-bootstrap/Modal'
-
+import Modal from 'react-bootstrap/Modal';
 
 const query = { query: `user=${secureStorage.getItem('email')}` };
 const socket = openSocket('http://localhost:8080', query);
@@ -61,17 +60,16 @@ function MainPage(props) {
     }
 
     const [deleteModal, setDeleteModal] = useState(false);
-    function modalShow(){
-        setDeleteModal(true)
+    function modalShow() {
+        setDeleteModal(true);
     }
-    function modalHide(){
-        setDeleteModal(false)
+    function modalHide() {
+        setDeleteModal(false);
     }
-    function handleDelete(){
+    function handleDelete() {
         deleteDashboard();
         modalHide();
     }
-
 
     function deleteDashboard() {
         if (user.dashboards.length === 1) {
@@ -439,6 +437,12 @@ function MainPage(props) {
                         />
                     </div>
                     <div className="addedUsers">
+                        <button
+                            type="button"
+                            className="btn btn-sm btn-secondary user"
+                        >
+                            {user.dashboards[currentDashboard].owner}
+                        </button>
                         {user.dashboards[currentDashboard].shared.map(
                             (element) => {
                                 return (
@@ -479,7 +483,9 @@ function MainPage(props) {
                     </button>
                     <Modal show={deleteModal} onHide={modalHide}>
                         <Modal.Header closeButton>
-                        <Modal.Title>Are you sure you want to delete the dashboard?</Modal.Title>
+                            <Modal.Title>
+                                Are you sure you want to delete the dashboard?
+                            </Modal.Title>
                         </Modal.Header>
                         <Modal.Footer>
                             <button
@@ -487,19 +493,17 @@ function MainPage(props) {
                                 class="btn btn-outline-dark"
                                 onClick={modalHide}
                             >
-                            Cancel
+                                Cancel
                             </button>
                             <button
                                 type="button"
                                 class="btn btn-danger"
                                 onClick={handleDelete}
                             >
-                            Delete
+                                Delete
                             </button>
                         </Modal.Footer>
                     </Modal>
-                        
-
                 </div>
             </div>
 
