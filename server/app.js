@@ -18,6 +18,7 @@ const bcrypt = require('bcrypt');
 let db = require('./models');
 let user = require('./user.json');
 let usersSockets = new Map();
+let userRooms = new Map();
 // let sharedDashboard = require('./shared.json');
 
 // const db_host = process.env.DB_HOST;
@@ -319,10 +320,50 @@ io.on('connect', (socket) => {
                 usersSockets.delete(key);
             }
         });
+        userRooms.delete(socket.id);
         // console.log(usersSockets);
     });
-    console.log('a user connected', socket.id, socket.handshake.query.user);
-    usersSockets.set(socket.handshake.query.user, socket.id);
+    console.log('a user connected', socket.id, socket.handshake.query.dash);
+    if (socket.handshake.query.user) {
+        usersSockets.set(socket.handshake.query.user, socket.id);
+    }
+    // if (
+    //     socket.handshake.query.chatuser &&
+    //     socket.handshake.query.chatuser.indexOf('@') > -1 &&
+    //     socket.handshake.query.dash.length > 0
+    // ) {
+    //     usersSockets.set(socket.handshake.query.chatuser, socket.id);
+    //     let user = socket.handshake.query.chatuser;
+    //     let room = socket.handshake.query.dash;
+    //     socket.join('abc', (err) => {
+    //         if (err) {
+    //             console.log('error');
+    //         }
+    //         console.log(user + ' joined room:' + room);
+    //     });
+    // }
+    socket.on('chatopen', (user, dash) => {
+        console.log('user joining chat room', user, dash);
+        socket.join(dash);
+        io.to(dash).emit('chat', `${user} joined`);
+        userRooms.set(socket.id, dash);
+        console.log(userRooms);
+    });
+    socket.on('chatchange', (user, dash) => {
+        console.log('user leaving dashboard room', user, dash);
+        io.to(dash).emit('chat', `${user} left room`);
+        socket.leave(dash, (err) => {
+            userRooms.delete(socket.id);
+            if (err) console.log('ERROR LEAVING ROOM');
+        });
+    });
+    socket.on('chat', (user, msg, dash) => {
+        // socket.join(dash);
+        console.log(`received chat message from ${user}`, msg, dash);
+        let room = dash;
+        console.log('room is: ', room);
+        io.to(dash).emit('chat', user + ':' + msg);
+    });
     socket.on('update', (msg) => {
         // console.log('update:', msg, socket.id);
         const obj = JSON.parse(msg);
@@ -353,7 +394,7 @@ io.on('connect', (socket) => {
         });
     });
 
-    console.log(usersSockets);
+    // console.log(usersSockets);
 });
 
 const PORT = 8080;
