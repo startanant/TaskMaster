@@ -25,17 +25,6 @@ function MainPage(props) {
         lastname: '',
         dashboards: [{ columns: [], shared: [] }],
     });
-    // const [socket, setSocket] = useState(null);
-
-    // async function socketOpen() {
-    //     console.log('opening socket');
-
-    //     if (!socket) {
-    //         socket = openSocket('http://localhost:8080', {
-    //             query: `user=${secureStorage.getItem('email')}`,
-    //         });
-    //     }
-    // }
 
     //console.log(props.location.state.email);
     const [sharedToUser, setSharedToUser] = useState([]);
