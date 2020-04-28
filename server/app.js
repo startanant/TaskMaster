@@ -362,7 +362,7 @@ io.on('connect', (socket) => {
         console.log(`received chat message from ${user}`, msg, dash);
         let room = dash;
         console.log('room is: ', room);
-        io.to(dash).emit('chat', user + ':' + msg);
+        io.to(dash).emit('chat', user, msg);
     });
     socket.on('update', (msg) => {
         // console.log('update:', msg, socket.id);
