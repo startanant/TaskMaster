@@ -64,6 +64,7 @@ function Chat(props) {
         if (socket) {
             console.log('sending chat message to:', props.dashid);
             socket.emit('chat', props.user, value, props.dashid);
+            setValue('');
         }
     }
     function receiveMessage(user, msg) {
@@ -75,7 +76,8 @@ function Chat(props) {
         let li = document.createElement('li');
         li.innerHTML =
             `${user}:</br>` + `<span style="color:white">${msg}</span>`;
-        li.style = 'font-size:0.9rem;color:grey;padding:2px';
+        li.style =
+            'font-size:0.9rem;color:grey;padding:2px;word-Wrap:break-word;word-break:break-all;white-space:normal';
         // ul.appendChild(li);
         ul.insertBefore(li, ul.childNodes[0]);
     }
@@ -98,10 +100,12 @@ function Chat(props) {
                 <ul
                     id="messages"
                     style={{
+                        width: '240px',
                         listStyle: 'none',
                         paddingLeft: '0.5rem',
                         margin: 0,
                         wordWrap: 'break-word',
+                        wordBreak: 'break-all',
                     }}
                 ></ul>
             </div>
