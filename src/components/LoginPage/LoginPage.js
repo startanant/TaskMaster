@@ -153,6 +153,7 @@ function LoginPage(props) {
     }
 
     function loginComplete(result) {
+        console.log(result);
         secureStorage.setItem('email', result.email);
         console.log(secureStorage.getItem('email'));
         dispatch({
