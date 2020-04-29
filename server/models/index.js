@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const db_user = process.env.DB_USER || '';
 const db_pass = process.env.DB_PASS || '';
-const db_name = process.env.DB_NAME || '';
-const db_host = process.env.DB_HOST || '';
+//const db_name = process.env.DB_NAME || '';
+const db_name = process.env.MLAB ? process.env.DB_NAME2 : process.env.DB_NAME;
+const db_host = process.env.MLAB ? process.env.DB_HOST2 : process.env.DB_HOST;
 console.log(db_host);
 mongoose.connect(db_host, {
     useNewUrlParser: true,
