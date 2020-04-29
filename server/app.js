@@ -102,8 +102,10 @@ async function registerUser(userData, session = '') {
         duplicateUser = await db.userprofile.findOne({ authId: userData.authId });
 
         if (duplicateUser && duplicateUser._id) {
-            const saveUser = await db.userprofile.findByIdAndUpdate({ _id: duplicateUser._id }, { session });
+            let saveUser = await db.userprofile.findByIdAndUpdate({ _id: duplicateUser._id }, { session });
             console.log(`   -> duplicate user (ie they've logged in before via oAuth), just update session: ${session}`, saveUser);
+            saveUser = JSON.stringify(saveUser);
+            saveUser = JSON.parse(saveUser);
             return {
                 message: `Welcome back ${saveUser.name}`,
                 id: saveUser._id,
