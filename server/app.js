@@ -52,7 +52,7 @@ async function createOAuthSession(userData) {
     console.log('[createOAuthSession]', userData);
 
     // register user in system (if they aren't there, and get the associated session)
-    const session = uuid.v4();
+    const session = uuid();
     const authUserData = await registerUser(userData, session);
 
     // returns the logged-in user info to javascript
