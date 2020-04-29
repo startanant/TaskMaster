@@ -178,13 +178,14 @@ function LoginPage(props) {
                         Keep your projects organized.
                     </h4>
                 </div>
-                <div>
+                
                     {/* <p style={{ color: 'white' }}>
-                        Skip registration. Start working on your tasks right now!<br/> 
-                        Login using your Google account.
+                         Skip registration. Start working on your tasks right now!<br/>  
+                        Login with your Google account.
                     </p> */}
+                    <div className="card-header">Login with your Google account.</div>
                 <OAuth providers={['google']} loginComplete={loginComplete} />
-                </div>
+                
                 <div className="card-header">Login</div>
                 <Message />
                 <div className="card-body">
