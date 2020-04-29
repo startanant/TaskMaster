@@ -125,6 +125,7 @@ async function registerUser(userData, session = '') {
         authId: userData.authId || '',
         password: passwordHash,
         type: userData.type,
+        dashboards:[{}],
         session
     };
 
