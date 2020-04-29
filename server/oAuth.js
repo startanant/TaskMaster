@@ -78,7 +78,7 @@ function oAuth( app, API_URL, providers, createOAuthSession ){
    async function( req,res ){
       const provider = req.params.provider;
       console.log( `[/oauth/${provider}/callback] writing result to DB & passing back opener` );
-      console.log(req);
+      console.log(req._json);
 
       // make the returned user structure consistent
       let user = { type: provider };
@@ -92,6 +92,7 @@ function oAuth( app, API_URL, providers, createOAuthSession ){
          user.name = req.user.displayName;
          user.thumbnail = req.user.photos[0].value.replace(/sz=50/gi, 'sz=250');
          user.authId = `googleid:${req.user.id}`;
+         user.email = req._json.email;
          break;
       case 'facebook':
          user.name = `${req.user.name.givenName} ${req.user.name.familyName}`;
