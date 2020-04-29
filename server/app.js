@@ -118,7 +118,7 @@ async function registerUser(userData, session = '') {
 
     
 
-    let saveData = {
+    let userSave = {
         name: userData.name,
         firstname: userData.name,
         lastname: userData.name,
@@ -127,27 +127,27 @@ async function registerUser(userData, session = '') {
         authId: userData.authId || '',
         password: passwordHash,
         type: userData.type,
-        dashboards:[{}],
         session
     };
+    user = { ...user, ...userSave}
 
-    saveData.user_settings= {
+    user.user_settings= {
         "theme" : "light",
             "profilePicUrl" : "url"
     };
 
-    saveData.dashboards[0].owner = userData.email;
-    saveData.dashboards[0].id = uuid();
-    saveData.dashboards[0].columns = [{}];
-    saveData.dashboards[0].columns[0].id = uuid();
-    saveData.dashboards[0].columns[0].cards = [{}];
-    saveData.dashboards[0].columns[0].cards[0].id = uuid();
+    user.dashboards[0].owner = userData.email;
+    user.dashboards[0].id = uuid();
+    //saveData.dashboards[0].columns = [{}];
+    user.dashboards[0].columns[0].id = uuid();
+    //saveData.dashboards[0].columns[0].cards = [{}];
+    user.dashboards[0].columns[0].cards[0].id = uuid();
 
-    saveData.sharedToUser = [];
-    saveData.sharedByUser = [];
+    // saveData.sharedToUser = [];
+    // saveData.sharedByUser = [];
     
 
-    const dbUser = new db.userprofile(saveData);
+    const dbUser = new db.userprofile(user);
     const saveUser = await dbUser.save();
     return {
         message: `Success! ${saveUser.name} was successfully registered`,
