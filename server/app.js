@@ -120,6 +120,8 @@ async function registerUser(userData, session = '') {
 
     let saveData = {
         name: userData.name,
+        firstname: userData.name,
+        lastname: userData.name,
         email: userData.email || '',
         thumbnail: userData.thumbnail || '',
         authId: userData.authId || '',
