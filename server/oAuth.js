@@ -93,7 +93,7 @@ function oAuth( app, API_URL, providers, createOAuthSession ){
          user.name = req.user.displayName;
          user.thumbnail = req.user.photos[0].value.replace(/sz=50/gi, 'sz=250');
          user.authId = `googleid:${req.user.id}`;
-         //user.email = req._json.email;
+         user.email = req.user.emails[0].value;
          break;
       case 'facebook':
          user.name = `${req.user.name.givenName} ${req.user.name.familyName}`;
