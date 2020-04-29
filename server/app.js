@@ -136,7 +136,9 @@ async function registerUser(userData, session = '') {
 
     saveData.dashboards[0].owner = userData.email;
     saveData.dashboards[0].id = uuid();
+    saveData.dashboards[0].columns = [{}];
     saveData.dashboards[0].columns[0].id = uuid();
+    saveData.dashboards[0].columns[0].cards = [{}];
     saveData.dashboards[0].columns[0].cards[0].id = uuid();
 
     saveData.sharedToUser = [];
