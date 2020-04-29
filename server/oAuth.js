@@ -65,19 +65,20 @@ function oAuth( app, API_URL, providers, createOAuthSession ){
    app.get( '/oauth/:provider', function( req,res,next ){
       const provider = req.params.provider;
       // we are running this, as it will generate code an actual function
-      passport.authenticate(provider, (provider==='google'?{ scope: ['profile'] }:undefined))(req,res,next);
+      passport.authenticate(provider, (provider==='google'?{ scope: ['profile', 'email'] }:undefined))(req,res,next);
    });
 
    // this is called BY the provider with the auth-token + access-token + user-info for us
    app.get('/oauth/:provider/callback', function( req,res,next ){
       const provider = req.params.provider;
       // we are running this, as it will generate code an actual function
-      passport.authenticate(provider, (provider==='google'?{ scope: ['profile'] }:undefined))(req,res,next);
+      passport.authenticate(provider, (provider==='google'?{ scope: ['profile', 'email'] }:undefined))(req,res,next);
    },
    // chain a SECOND function on that handles the call-back result
    async function( req,res ){
       const provider = req.params.provider;
       console.log( `[/oauth/${provider}/callback] writing result to DB & passing back opener` );
+      console.log(req);
 
       // make the returned user structure consistent
       let user = { type: provider };
