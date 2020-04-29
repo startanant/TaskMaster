@@ -116,8 +116,9 @@ async function registerUser(userData, session = '') {
         }
     }
 
+    
 
-    const saveData = {
+    let saveData = {
         name: userData.name,
         email: userData.email || '',
         thumbnail: userData.thumbnail || '',
@@ -126,6 +127,20 @@ async function registerUser(userData, session = '') {
         type: userData.type,
         session
     };
+
+    saveData.user_settings= {
+        "theme" : "light",
+            "profilePicUrl" : "url"
+    };
+
+    saveData.dashboards[0].owner = userData.email;
+    saveData.dashboards[0].id = uuid();
+    saveData.dashboards[0].columns[0].id = uuid();
+    saveData.dashboards[0].columns[0].cards[0].id = uuid();
+
+    saveData.sharedToUser = [];
+    saveData.sharedByUser = [];
+    
 
     const dbUser = new db.userprofile(saveData);
     const saveUser = await dbUser.save();
