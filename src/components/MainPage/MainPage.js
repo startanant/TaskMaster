@@ -140,10 +140,18 @@ function MainPage(props) {
             result.lastname = '';
             result.email = email;
         }
-        user.dashboards[currentDashboard].shared.push(result);
-        user.dashboards[currentDashboard].shared = [
-            ...new Set(user.dashboards[currentDashboard].shared),
-        ];
+        if (user.email != user.dashboards[currentDashboard].owner) {
+            alert(
+                'you cannot add user to dashboard. You are not dashboard owner'
+            );
+            return;
+        }
+        let findResult = user.dashboards[currentDashboard].shared.find(
+            (el) => el.email == result.email
+        );
+        if (!findResult) {
+            user.dashboards[currentDashboard].shared.push(result);
+        }
 
         const userIndex = user.sharedByUser.findIndex(
             (element) => element.to == `${email}`
@@ -175,6 +183,12 @@ function MainPage(props) {
         // let emailIndex = user.dashboards[currentDashboard].shared.indexOf(
         //     email
         // );
+        if (email == user.email) {
+            alert(
+                'Please ask dashboard owner to remove you from this dashboard'
+            );
+            return;
+        }
         const emailIndex = user.dashboards[currentDashboard].shared
             .map((el) => {
                 return el.email;
@@ -183,6 +197,7 @@ function MainPage(props) {
         if (emailIndex > -1) {
             user.dashboards[currentDashboard].shared.splice(emailIndex, 1);
             setUser({ ...user });
+            await updateUserProfile(user);
         }
 
         const userIndex = user.sharedByUser.findIndex(
@@ -577,10 +592,12 @@ function MainPage(props) {
                     <SharedDashboardInfoPanel sharedDashboards={sharedToUser} />
                 ) : null}
             </div> */}
-            <Chat
-                dashid={user.dashboards[currentDashboard].id}
-                user={user.email}
-            />
+            {user.dashboards[currentDashboard].shared.length > 0 ? (
+                <Chat
+                    dashid={user.dashboards[currentDashboard].id}
+                    user={user.email}
+                />
+            ) : null}
         </div>
     );
 }

@@ -79,7 +79,19 @@ function Chat(props) {
         li.style =
             'font-size:0.9rem;color:grey;padding:2px;word-Wrap:break-word;word-break:break-all;white-space:normal';
         // ul.appendChild(li);
-        ul.insertBefore(li, ul.childNodes[0]);
+        if (ul) {
+            ul.appendChild(li);
+        }
+        let view = document.getElementById('view');
+        if (view) {
+            view.scrollIntoView(false);
+        }
+    }
+    function handleKeyDown(e) {
+        // console.log('handle key down called', e.target.id, e.key);
+        if (e.target.id == 'inputbox' && e.key == 'Enter') {
+            handleNewMessage();
+        }
     }
 
     return (
@@ -108,6 +120,7 @@ function Chat(props) {
                         wordBreak: 'break-all',
                     }}
                 ></ul>
+                <span id="view"></span>
             </div>
             <div
                 style={{
@@ -121,6 +134,8 @@ function Chat(props) {
                 }}
             >
                 <input
+                    onKeyPress={handleKeyDown}
+                    id="inputbox"
                     style={{ width: '70%' }}
                     onChange={handleInputChange}
                     type="text"
