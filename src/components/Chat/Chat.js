@@ -79,9 +79,13 @@ function Chat(props) {
         li.style =
             'font-size:0.9rem;color:grey;padding:2px;word-Wrap:break-word;word-break:break-all;white-space:normal';
         // ul.appendChild(li);
-        ul.appendChild(li);
+        if (ul) {
+            ul.appendChild(li);
+        }
         let view = document.getElementById('view');
-        view.scrollIntoView(false);
+        if (view) {
+            view.scrollIntoView(false);
+        }
     }
     function handleKeyDown(e) {
         // console.log('handle key down called', e.target.id, e.key);
