@@ -7,9 +7,18 @@
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.5.0",
         "@testing-library/user-event": "^7.2.1",
+        "axios": "^0.19.2",
         "bcrypt": "^4.0.1",
+        "cors": "^2.8.5",
         "crypto-js": "^4.0.0",
+        "express-session": "^1.17.1",
         "mongoose": "^5.9.9",
+        "node-mailjet": "^3.3.1",
+        "passport": "^0.4.1",
+        "passport-facebook": "^3.0.0",
+        "passport-github": "^1.1.0",
+        "passport-google-oauth": "^2.0.0",
+        "passport-twitter": "^1.0.4",
         "react": "^16.13.1",
         "react-bootstrap": "^1.0.1",
         "react-dom": "^16.13.1",
@@ -19,7 +28,8 @@
         "socket.io": "^2.3.0",
         "styled": "^1.0.0",
         "styled-components": "^5.1.0",
-        "uuid": "^7.0.3"
+        "uuid": "^7.0.3",
+        "uuidv4": "^6.0.7"
     },
     "scripts": {
         "start": "react-scripts start",

@@ -4,6 +4,7 @@ import { useGlobalStore } from '../GlobalStore/GlobalStore';
 import { login, secureStorage } from '../../utils';
 import { Link } from 'react-router-dom';
 import Message from '../Message/Message';
+import OAuth from '../OAuth/OAuth';
 
 // const LoginPage = (props) => {
 
@@ -119,17 +120,18 @@ function LoginPage(props) {
         if (result.email) {
             //secureStorage.setItem('email', result.email);
             //localStorage.setItem('email', result.email);
-            secureStorage.setItem('email', result.email);
-            console.log(secureStorage.getItem('email'));
-            dispatch({
-                do: 'setMessage',
-                type: 'success',
-                message: 'Logging in...',
-            });
-            setTimeout(function () {
-                dispatch({ do: 'clearMessage' });
-                dispatch({ do: 'loginState', loggedIn: true });
-            }, 1000);
+            // secureStorage.setItem('email', result.email);
+            // console.log(secureStorage.getItem('email'));
+            // dispatch({
+            //     do: 'setMessage',
+            //     type: 'success',
+            //     message: 'Logging in...',
+            // });
+            // setTimeout(function () {
+            //     dispatch({ do: 'clearMessage' });
+            //     dispatch({ do: 'loginState', loggedIn: true });
+            // }, 1000);
+            loginComplete(result);
         } else {
             dispatch({
                 do: 'setMessage',
@@ -137,6 +139,8 @@ function LoginPage(props) {
                 message: result.message
             });
         }
+
+
 
         // setTimeout(function () {
         //     dispatch({ do: 'setMessage', type: 'success', message: 'Logging in...' });
@@ -146,6 +150,21 @@ function LoginPage(props) {
         //     pathname: '/projectdashboard',
         //     state: { email: email }
         // });
+    }
+
+    function loginComplete(result) {
+        console.log(result);
+        secureStorage.setItem('email', result.email);
+        console.log(secureStorage.getItem('email'));
+        dispatch({
+            do: 'setMessage',
+            type: 'success',
+            message: 'Logging in...',
+        });
+        setTimeout(function () {
+            dispatch({ do: 'clearMessage' });
+            dispatch({ do: 'loginState', loggedIn: true });
+        }, 1000);
     }
 
     return (
@@ -159,6 +178,14 @@ function LoginPage(props) {
                         Keep your projects organized.
                     </h4>
                 </div>
+                
+                    {/* <p style={{ color: 'white' }}>
+                         Skip registration. Start working on your tasks right now!<br/>  
+                        Login with your Google account.
+                    </p> */}
+                    <div className="card-header">Login with your Google account.</div>
+                <OAuth providers={['google']} loginComplete={loginComplete} />
+                
                 <div className="card-header">Login</div>
                 <Message />
                 <div className="card-body">
