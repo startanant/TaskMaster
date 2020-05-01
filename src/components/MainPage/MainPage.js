@@ -592,10 +592,12 @@ function MainPage(props) {
                     <SharedDashboardInfoPanel sharedDashboards={sharedToUser} />
                 ) : null}
             </div> */}
-            <Chat
-                dashid={user.dashboards[currentDashboard].id}
-                user={user.email}
-            />
+            {user.dashboards[currentDashboard].shared.length > 0 ? (
+                <Chat
+                    dashid={user.dashboards[currentDashboard].id}
+                    user={user.email}
+                />
+            ) : null}
         </div>
     );
 }
