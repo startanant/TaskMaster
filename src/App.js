@@ -28,7 +28,10 @@ import {
     useGlobalStore,
 } from './components/GlobalStore/GlobalStore';
 //import {  } from './components/GlobalStore/GlobalStore';
-
+import {
+    GlobalUserStore,
+    useGlobalUserStore,
+} from './components/GlobalUserStore/GlobalUserStore';
 function App() {
     const isLoggedIn = localStorage.getItem('email') ? true : false;
     //const [globalData, dispatch] = useGlobalStore();
@@ -43,30 +46,36 @@ function App() {
     return (
         <Router>
             <GlobalStore>
-                <Switch>
-                    <Route exact path="/" component={LoginPage} />
-                    <Route exact path="/login" component={LoginPage} />
-                    <Route exact path="/register" component={RegisterPage} />
-                    <PrivateRoute
-                        exact
-                        path="/projectdashboard"
-                        component={TaskMaster}
-                        title={`dashboard`}
-                    />
-                    <PrivateRoute
-                        exact
-                        path="/mytasks"
-                        component={TaskMaster}
-                        title={`mytasks`}
-                    />
-                    <PrivateRoute
-                        exact
-                        path="/settings"
-                        component={TaskMaster}
-                        title={`settings`}
-                    />
-                </Switch>
-                {/* <Message /> */}
+                <GlobalUserStore>
+                    <Switch>
+                        <Route exact path="/" component={LoginPage} />
+                        <Route exact path="/login" component={LoginPage} />
+                        <Route
+                            exact
+                            path="/register"
+                            component={RegisterPage}
+                        />
+                        <PrivateRoute
+                            exact
+                            path="/projectdashboard"
+                            component={TaskMaster}
+                            title={`dashboard`}
+                        />
+                        <PrivateRoute
+                            exact
+                            path="/mytasks"
+                            component={TaskMaster}
+                            title={`mytasks`}
+                        />
+                        <PrivateRoute
+                            exact
+                            path="/settings"
+                            component={TaskMaster}
+                            title={`settings`}
+                        />
+                    </Switch>
+                    {/* <Message /> */}
+                </GlobalUserStore>
             </GlobalStore>
         </Router>
 
