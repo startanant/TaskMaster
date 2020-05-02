@@ -7,10 +7,9 @@ import AssignCard from '../AssignCard/AssignCard';
 
 function Card(props) {
     // console.log('logging props passed to Card', props);
-
-    function setAccordShow(id){
-        console.log("Btn clicked -- card ID:", id)
-        
+    const card = props.card;
+    function setAccordShow(id) {
+        console.log('Btn clicked -- card ID:', id);
     }
 
     return (
@@ -29,8 +28,8 @@ function Card(props) {
                 </div>
                 <div className="card-header">
                     <TextArea
-                        id={'title' + props.cardid}
-                        value={props.title}
+                        id={'title' + card.id}
+                        value={card.title}
                         placeholder="Title"
                     />
                 </div>
@@ -40,14 +39,14 @@ function Card(props) {
                         placeholder="Description"
                         value={props.description}
                     /> */}
-                    <TextAreaDesc 
-                        id={'desc' + props.cardid}
+                    <TextAreaDesc
+                        id={'desc' + card.id}
                         placeholder="Description"
-                        value={props.description}
+                        value={card.description}
                     />
-                    <DueDate id={'date' + props.cardid} value={props.dueDate} />
+                    <DueDate id={'date' + card.id} value={card.dueDate} />
                     <AssignCard
-                        id={'email' + props.cardid}
+                        id={'email' + card.id}
                         shared={props.shared}
                         colIndex={props.colIndex}
                         cardIndex={props.cardIndex}
@@ -56,7 +55,6 @@ function Card(props) {
                 </div>
             </div>
 
-        
             {/* <div style={style} id={props.cardid}> */}
             {/* <textarea
                 id={'title' + props.cardid}
