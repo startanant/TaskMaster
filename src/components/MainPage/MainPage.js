@@ -12,6 +12,10 @@ import openSocket from 'socket.io-client';
 import { secureStorage } from '../../utils';
 import Chat from '../Chat/Chat';
 import Modal from 'react-bootstrap/Modal';
+import {
+    GlobalUserStore,
+    useGlobalUserStore,
+} from '../GlobalUserStore/GlobalUserStore';
 
 const query = { query: `user=${secureStorage.getItem('email')}` };
 const socket = openSocket('http://localhost:8080', query);
@@ -26,7 +30,13 @@ function MainPage(props) {
         lastname: '',
         dashboards: [{ columns: [], shared: [] }],
     });
-
+    const [
+        userProfile,
+        dispatch,
+        currentDash,
+        setCurrentDash,
+    ] = useGlobalUserStore();
+    console.log('logging userProfile from MainPage component', userProfile);
     //console.log(props.location.state.email);
     const [sharedToUser, setSharedToUser] = useState([]);
     // const [sharedFromUser, setSharedFromUser] = useState([]);
@@ -96,6 +106,10 @@ function MainPage(props) {
     }
     function switchDashboard(dashboardIndex) {
         setCurrentDashboard(dashboardIndex);
+        setCurrentDash({
+            type: 'CHANGE_DASHBOARD',
+            payload: { currentDash: dashboardIndex },
+        });
     }
 
     function updateDashboard(dashboardIndex) {}
@@ -581,7 +595,12 @@ function MainPage(props) {
                     <button
                         type="button"
                         className="btn-lg btn-dark"
-                        onClick={addColumn}
+                        onClick={() =>
+                            dispatch({
+                                type: 'ADD_COLUMN',
+                                payload: { currentDashboard: currentDashboard },
+                            })
+                        }
                     >
                         Add column
                     </button>

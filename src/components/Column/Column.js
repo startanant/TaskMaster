@@ -6,12 +6,17 @@ import Draggable from '../Draggable/Draggable';
 import styled from 'styled-components';
 import ColumnTitle from '../ColumTitle/ColumnTitle';
 import { v4 as uuidv4 } from 'uuid';
-
+import { useGlobalUserStore } from '../GlobalUserStore/GlobalUserStore';
 function Column(props) {
     // console.log('showing props.columns from column component', props.cards);
     const [cards, setCard] = useState(props.cards ? props.cards : []);
     // const [id, setId] = useState(props.id);
-
+    const [
+        userProfile,
+        dispatch,
+        currentDashboard,
+        setCurrentDash,
+    ] = useGlobalUserStore();
     const [show, setShow] = useState(false);
 
     function showModal() {
@@ -122,9 +127,18 @@ function Column(props) {
             <button
                 type="button"
                 className="btn-sm btn-dark"
-                onClick={() => props.addCard(props.colIndex)}
+                // onClick={() => props.addCard(props.colIndex)}
+                onClick={() =>
+                    dispatch({
+                        type: 'ADD_CARD',
+                        payload: {
+                            columnIndex: props.colIndex,
+                            currentDashboard: currentDashboard,
+                        },
+                    })
+                }
             >
-                Add Card +
+                Add Card
             </button>
             {cards.map((element, index) => {
                 return (
@@ -134,7 +148,6 @@ function Column(props) {
                         cardIndex={index}
                         colIndex={props.colIndex}
                         deleteCard={props.deleteCard}
-                        cardid={element.id}
                         saveCard={props.saveCard}
                         key={uuidv4()}
                         show={show}
@@ -142,14 +155,10 @@ function Column(props) {
                         handleModalOpen={showModal}
                     >
                         <Card
-                            title={element.title}
-                            dueDate={element.duedate}
-                            description={element.description}
-                            cardid={element.id}
+                            card={element}
                             columnid={props.colid}
                             key={uuidv4()}
                             shared={props.shared}
-                            asignee={element.asignee}
                             deleteCard={props.deleteCard}
                             cardIndex={index}
                             colIndex={props.colIndex}
